@@ -2,8 +2,13 @@
 
 A new Flutter project.
 
-## Getting Started
+## I am currently in development...
 
-now Developing..
-
-like this android app  [https://github.com/CodingBot000/LocationShop]
+</br>
+It is the same as the Android app in the link on the right.
+</br></br>
+I am converting Android/iOS apps to Flutter.
+</br>
+It is also possible for me to convert Flutter apps to Android/iOS.
+</br>
+Android, iOS, Flutter, and React can all be converted to each other.
