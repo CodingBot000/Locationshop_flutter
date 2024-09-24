@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:location_shop/component/top_app_bar_sub.dart';
 
 import '../../common/routes.dart';
 
@@ -15,6 +16,10 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
   @override
   Widget build(BuildContext context) {
     // final args = ModalRoute.of(context)!.settings.arguments as MenuScreenArguments;
-    return Text(AboutUsScreen.routeName);
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: TopAppBarSub(title: AboutUsScreen.routeName),
+      body: Text(AboutUsScreen.routeName)
+    );
   }
 }

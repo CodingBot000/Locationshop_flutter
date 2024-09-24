@@ -5,7 +5,7 @@ import 'package:location_shop/component/banner_slider.dart';
 import 'package:location_shop/component/home_grid.dart';
 import 'package:location_shop/component/home_location_grid.dart';
 import 'package:location_shop/component/title_main_and_sub.dart';
-import 'package:location_shop/component/top_app_bar.dart';
+import 'package:location_shop/component/top_app_bar_home.dart';
 import 'package:location_shop/pages/auth/login_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TopAppBar(
+      appBar: TopAppBarHome(
         backgroundColor: Colors.white,
         actions: <Widget>[
           Container(

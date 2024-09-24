@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
+class TopAppBarHome extends StatelessWidget implements PreferredSizeWidget {
   final Color backgroundColor;
   final List<Widget> actions;
 
-  TopAppBar({required this.backgroundColor, required this.actions});
+  TopAppBarHome({required this.backgroundColor, required this.actions});
 
   @override
   Widget build(BuildContext context) {
