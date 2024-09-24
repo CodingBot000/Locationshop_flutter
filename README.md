@@ -5,7 +5,7 @@ A new Flutter project.
 ## I am currently in development...
 
 </br>
-It is the same as the Android app in the link on the right.
+It is the same as the Android app in the link on the right.   [https://github.com/CodingBot000/LocationShop]
 </br></br>
 I am converting Android/iOS apps to Flutter.
 </br>
