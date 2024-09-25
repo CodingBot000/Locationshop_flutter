@@ -7,6 +7,7 @@ import 'package:location_shop/server/dump_server.dart';
 import '../data/MenuSection.dart';
 import '../data/chip_location_data.dart';
 import '../data/home_banner_data.dart';
+import '../data/surgery_data.dart';
 
 class DataRepository {
   /**
@@ -71,6 +72,24 @@ class DataRepository {
       }
     }
     return homeLocationHospitals;
+  }
+
+  static SurgeryData getSurgeryDataByName(String surgeryName) {
+    var list = DumpServer().getSurgeryData();
+    for (var data in list) {
+      if (surgeryName.toLowerCase().replaceAll(" ", "").contains(
+          data.surgeryName.toLowerCase().replaceAll(" ", ""))
+      ) {
+        if (data.surgeryImgs.length > 0) {
+          if (!data.surgeryImgs[0].contains('assets/images/surger')) {
+            data.surgeryImgs[0] =
+            "assets/images/surgery/${data.surgeryImgs[0]}";
+          }
+        }
+        return data;
+      }
+    }
+    return SurgeryData(id: 999, surgeryName: surgeryName, surgeryImgs: [], surgeryDesc: "Developing...");
   }
 
 // static const String imageRoot = 'assets/images';
