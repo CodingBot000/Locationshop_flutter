@@ -52,11 +52,10 @@ class _HomeLocationGridState extends State<HomeLocationGrid> {
       // height: (Constants.screenWidth / 2) * 4,
       child: Column(
         children: [
-          const SizedBox(height: 20),
           const TitleMainAndSub(
               mainTitle: 'Hospitals', subTitle: 'Choose the region you want'),
           ChipsLocation(onButtonPressed: onButtonPressed),
-          const SizedBox(height: 20),
+          const SizedBox(height: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -66,7 +65,7 @@ class _HomeLocationGridState extends State<HomeLocationGrid> {
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           // Expanded(
           //   child:
           GridView.builder(

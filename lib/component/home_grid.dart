@@ -28,6 +28,7 @@ class _HomeGridState extends State<HomeGrid> {
         children: [
           const TitleMainAndSub(
               mainTitle: 'New Beauty', subTitle: 'Today Hospital'),
+          const SizedBox(height: 20),
           // Expanded(
           //   child:
           GridView.builder(

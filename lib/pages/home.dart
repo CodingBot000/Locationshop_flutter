@@ -38,25 +38,27 @@ class _HomePageState extends State<HomePage> {
                   child: Text("Login")))
         ],
       ),
-      drawer: Drawer(child: MenuPage()),
+      drawer: const Drawer(child: MenuPage()),
       body: SingleChildScrollView(
         child: Column(
           children: [
             BannerSlider(activeIndex: activeIndex),
-            Padding(
+            const SizedBox(height: 40),
+            const Padding(
               padding: const EdgeInsets.only(
                   left: Dimens.home_grid_horizontal_padding,
                   right: Dimens.home_grid_horizontal_padding),
               child: HomeGrid(),
             ),
-            Padding(
+            const SizedBox(height: 40),
+            const Padding(
               padding: const EdgeInsets.only(
                   left: Dimens.home_grid_horizontal_padding,
                   right: Dimens.home_grid_horizontal_padding),
               child: HomeLocationGrid(),
             ),
-            SizedBox(height: 20),
-            FooterView()
+            const SizedBox(height: 20),
+            const FooterView()
           ],
         ),
       ),
