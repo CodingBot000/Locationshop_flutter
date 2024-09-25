@@ -1,6 +1,6 @@
 import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:flutter/material.dart' hide CarouselController;
-import 'package:location_shop/common/routes.dart';
+import 'package:location_shop/common/route_arguments.dart';
 import 'package:location_shop/component/banner_slider.dart';
 import 'package:location_shop/component/home_grid.dart';
 import 'package:location_shop/component/home_location_grid.dart';

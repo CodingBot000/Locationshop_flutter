@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:location_shop/server/dump_respository.dart';
 
-import '../../common/routes.dart';
+import '../../common/route_arguments.dart';
 import '../../component/top_app_bar_sub.dart';
 
 class SurgeryInfo extends StatelessWidget {

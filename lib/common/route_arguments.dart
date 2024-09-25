@@ -8,7 +8,12 @@ class MenuScreenArguments {
 }
 
 class MenuScreenLocationArguments {
-  final String menuTitle;
   final LocationChipData chipData;
-  MenuScreenLocationArguments(this.menuTitle, this.chipData);
+  MenuScreenLocationArguments(this.chipData);
+}
+
+
+class HosptialDetailArguments {
+  final int id;
+  HosptialDetailArguments(this.id);
 }

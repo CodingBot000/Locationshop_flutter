@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:location_shop/common/routes.dart';
+import 'package:location_shop/common/route_arguments.dart';
 import 'package:location_shop/component/chips_location.dart';
 import 'package:location_shop/data/chip_location_data.dart';
 import 'package:location_shop/data/hospital_data.dart';
 import 'package:location_shop/pages/drawer_menu/menu_title.dart';
+import 'package:location_shop/pages/hospital/hospital_detail.dart';
 
 import '../../common/enums.dart';
 import '../../component/chips_menu.dart';
@@ -84,12 +85,19 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                     itemCount: gridListByLocation.length, // 아이템 개수
                     itemBuilder: (context, index) {
-                      return Center(
-                        child: Image.asset(
-                          gridListByLocation[index].images[0], // 로컬 이미지 경로
-                          width: Dimens.gridImageSize, // 이미지 크기
-                          height: Dimens.gridImageSize, // 이미지 크기
-                          fit: BoxFit.cover, // 이미지 비율 유지하면서 잘림
+                      return GestureDetector(
+                        onTap: () => {
+                          Navigator.pushNamed(context,
+                              HospitalDetailScreen.routeName,
+                              arguments: HosptialDetailArguments(DataRepository.newBeautyList[index].id))
+                        },
+                        child: Center(
+                          child: Image.asset(
+                            gridListByLocation[index].images[0], // 로컬 이미지 경로
+                            width: Dimens.gridImageSize, // 이미지 크기
+                            height: Dimens.gridImageSize, // 이미지 크기
+                            fit: BoxFit.cover, // 이미지 비율 유지하면서 잘림
+                          ),
                         ),
                       );
                     },

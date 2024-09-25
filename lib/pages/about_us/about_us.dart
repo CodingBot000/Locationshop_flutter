@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:location_shop/component/top_app_bar_sub.dart';
 
-import '../../common/routes.dart';
+import '../../common/route_arguments.dart';
 
 class AboutUsScreen extends StatefulWidget {
   const AboutUsScreen({super.key});

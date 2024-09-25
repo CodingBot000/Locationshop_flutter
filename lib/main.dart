@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:location_shop/common/routes.dart';
+import 'package:location_shop/common/route_arguments.dart';
 import 'package:location_shop/pages/about_us/about_us.dart';
 import 'package:location_shop/pages/auth/login_screen.dart';
 import 'package:location_shop/pages/event_screen/event_screen.dart';

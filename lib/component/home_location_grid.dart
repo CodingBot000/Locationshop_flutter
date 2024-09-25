@@ -5,8 +5,11 @@ import 'package:location_shop/common/enums.dart';
 import 'package:location_shop/component/chips_location.dart';
 import 'package:location_shop/data/chip_location_data.dart';
 import 'package:location_shop/data/hospital_data.dart';
+import 'package:location_shop/pages/location_screen/location_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../common/route_arguments.dart';
+import '../pages/hospital/hospital_detail.dart';
 import '../server/dump_respository.dart';
 import 'title_main_and_sub.dart';
 import '../utils/constants.dart';
@@ -43,13 +46,7 @@ class _HomeLocationGridState extends State<HomeLocationGrid> {
 
   @override
   Widget build(BuildContext context) {
-    // const int GRID_NUM = 2;
-    // // final double ratio = (Constants.screenWidth / GRID_NUM) / ((Constants.screenWidth /GRID_NUM ) );
-    // const double ratio = 1;
-    // final imageSize =
-    //     Constants.screenWidth / 2 - Dimens.home_grid_horizontal_padding * 2;
     return Container(
-      // height: (Constants.screenWidth / 2) * 4,
       child: Column(
         children: [
           const TitleMainAndSub(
@@ -59,9 +56,15 @@ class _HomeLocationGridState extends State<HomeLocationGrid> {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const Text(
-                "See All >",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              GestureDetector(
+                onTap: () => {
+                  Navigator.pushNamed(context, LocationScreen.routeName,
+                  arguments: MenuScreenLocationArguments(selectedCurLocationData))
+                },
+                child: const Text(
+                  "See All >",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
               ),
             ],
           ),
@@ -75,19 +78,23 @@ class _HomeLocationGridState extends State<HomeLocationGrid> {
                 crossAxisCount: Constants.GRID_NUM,
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 10.0,
-                // childAspectRatio: 1,
                 childAspectRatio: Constants.GRID_RATIO,
               ),
-              // childAspectRatio: (Constants.screenWidth / 2) / ((Constants.screenWidth /2 ) * 1.2),
-              // children: List.generate(6 , (index) {
               itemCount: getItemCount(),
               itemBuilder: (context, index) {
-                return Center(
-                  child: Image.asset(
-                    hosptialList[index].images[0],
-                    width: Dimens.gridImageSize,
-                    height: Dimens.gridImageSize,
-                    fit: BoxFit.cover,
+                return GestureDetector(
+                  onTap: () => {
+                    Navigator.pushNamed(context,
+                        HospitalDetailScreen.routeName,
+                        arguments: HosptialDetailArguments(DataRepository.newBeautyList[index].id))
+                  },
+                  child: Center(
+                    child: Image.asset(
+                      hosptialList[index].images[0],
+                      width: Dimens.gridImageSize,
+                      height: Dimens.gridImageSize,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 );
               }),

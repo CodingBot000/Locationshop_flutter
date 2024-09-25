@@ -62,6 +62,14 @@ class DataRepository {
     newBeautyList = randomIndices.map((index) => hospitalDatas[index]).toList();
   }
 
+  static HospitalData? getHospitalDetailInfoById(int id) {
+    try {
+      return DumpServer().getHospitalData().firstWhere((data) => data.id == id);
+    } catch (e) {
+      return null;
+    }
+  }
+
   static List<HospitalData> getHospitalListByLocation(String currentRegion) {
       var list = DumpServer().getHospitalData()
           .where((data) => data.region.toLowerCase() == (currentRegion.toLowerCase())).toList();

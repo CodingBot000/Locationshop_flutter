@@ -1,6 +1,8 @@
 import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:location_shop/common/route_arguments.dart';
+import 'package:location_shop/pages/hospital/hospital_detail.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../server/dump_respository.dart';
@@ -17,11 +19,6 @@ class HomeGrid extends StatefulWidget {
 class _HomeGridState extends State<HomeGrid> {
   @override
   Widget build(BuildContext context) {
-    const int GRID_NUM = 2;
-    // final double ratio = (Constants.screenWidth / GRID_NUM) / ((Constants.screenWidth /GRID_NUM ) );
-    const double ratio = 1;
-    final imageSize =
-        Constants.screenWidth / 2 - Dimens.home_grid_horizontal_padding * 2;
     return Container(
       // height: (Constants.screenWidth / 2) * 4,
       child: Column(
@@ -42,18 +39,25 @@ class _HomeGridState extends State<HomeGrid> {
               ),
               itemCount: 6,
               itemBuilder: (context, index) {
-                return Center(
-                  // child: Image.network(DataRepository.newBeautyList[index].images[0])
-                  // Image.network(
-                  //   src: DataRepository.newBeautyList[index].images[0]
-                  //   // height: Constants.screenWidth / 2 ,
-                  //   // fit: BoxFit.cover,
-                  // ),
-                  child: Image.asset(
-                    DataRepository.newBeautyList[index].images[0],
-                    width: Dimens.gridImageSize,
-                    height: Dimens.gridImageSize,
-                    fit: BoxFit.cover,
+                return GestureDetector(
+                  onTap: () => {
+                    Navigator.pushNamed(context,
+                        HospitalDetailScreen.routeName,
+                    arguments: HosptialDetailArguments(DataRepository.newBeautyList[index].id))
+                  },
+                  child: Center(
+                    // child: Image.network(DataRepository.newBeautyList[index].images[0])
+                    // Image.network(
+                    //   src: DataRepository.newBeautyList[index].images[0]
+                    //   // height: Constants.screenWidth / 2 ,
+                    //   // fit: BoxFit.cover,
+                    // ),
+                    child: Image.asset(
+                      DataRepository.newBeautyList[index].images[0],
+                      width: Dimens.gridImageSize,
+                      height: Dimens.gridImageSize,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 );
               }),

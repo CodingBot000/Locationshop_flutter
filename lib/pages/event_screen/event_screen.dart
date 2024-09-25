@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../common/routes.dart';
+import '../../common/route_arguments.dart';
 import '../../component/top_app_bar_sub.dart';
 
 class EventScreen extends StatefulWidget {

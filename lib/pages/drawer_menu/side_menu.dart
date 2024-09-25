@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:location_shop/common/routes.dart';
+import 'package:location_shop/common/route_arguments.dart';
 import 'package:location_shop/component/chips_menu.dart';
 import 'package:location_shop/data/chip_location_data.dart';
 import 'package:location_shop/pages/about_us/about_us.dart';
@@ -63,7 +63,7 @@ class MenuPage extends StatelessWidget {
               Navigator.popAndPushNamed(
                 context,
                 LocationScreen.routeName,
-                arguments: MenuScreenLocationArguments(location, locationData),
+                arguments: MenuScreenLocationArguments(locationData),
               );
             },
             mainMenuName: MenuTitleList.LOCATION,
