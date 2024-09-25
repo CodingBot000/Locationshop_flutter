@@ -43,11 +43,11 @@ class _HomeLocationGridState extends State<HomeLocationGrid> {
 
   @override
   Widget build(BuildContext context) {
-    const int GRID_NUM = 2;
-    // final double ratio = (Constants.screenWidth / GRID_NUM) / ((Constants.screenWidth /GRID_NUM ) );
-    const double ratio = 1;
-    final imageSize =
-        Constants.screenWidth / 2 - Dimens.home_grid_horizontal_padding * 2;
+    // const int GRID_NUM = 2;
+    // // final double ratio = (Constants.screenWidth / GRID_NUM) / ((Constants.screenWidth /GRID_NUM ) );
+    // const double ratio = 1;
+    // final imageSize =
+    //     Constants.screenWidth / 2 - Dimens.home_grid_horizontal_padding * 2;
     return Container(
       // height: (Constants.screenWidth / 2) * 4,
       child: Column(
@@ -72,11 +72,11 @@ class _HomeLocationGridState extends State<HomeLocationGrid> {
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
+                crossAxisCount: Constants.GRID_NUM,
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 10.0,
                 // childAspectRatio: 1,
-                childAspectRatio: ratio,
+                childAspectRatio: Constants.GRID_RATIO,
               ),
               // childAspectRatio: (Constants.screenWidth / 2) / ((Constants.screenWidth /2 ) * 1.2),
               // children: List.generate(6 , (index) {
@@ -85,8 +85,8 @@ class _HomeLocationGridState extends State<HomeLocationGrid> {
                 return Center(
                   child: Image.asset(
                     hosptialList[index].images[0],
-                    width: imageSize,
-                    height: imageSize,
+                    width: Dimens.gridImageSize,
+                    height: Dimens.gridImageSize,
                     fit: BoxFit.cover,
                   ),
                 );

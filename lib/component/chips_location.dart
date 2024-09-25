@@ -5,9 +5,10 @@ import 'package:location_shop/server/dump_respository.dart';
 import '../common/enums.dart';
 
 class ChipsLocation extends StatefulWidget {
-  const ChipsLocation({super.key, required this.onButtonPressed});
+  const ChipsLocation({super.key, required this.onButtonPressed, this.selectedCurLocationData});
 
   final Function(LocationChipData) onButtonPressed;
+  final LocationChipData? selectedCurLocationData;
 
   @override
   State<ChipsLocation> createState() => _ChipsLocationState();
@@ -15,8 +16,30 @@ class ChipsLocation extends StatefulWidget {
 
 class _ChipsLocationState extends State<ChipsLocation> {
   int? _value = 0;
-  LocationChipData _selectedCurLocationData =
-      LocationChipData(region: LocationNames.APGUJEONG, isSelected: false);
+  List<LocationChipData> locationChipsList = DataRepository.locationChipList;
+  late LocationChipData _selectedCurLocationData;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedCurLocationData = widget.selectedCurLocationData ??
+        LocationChipData(
+          region: LocationNames.APGUJEONG,
+          isSelected: false,
+        );
+
+    _initializeSelectedValue();
+  }
+
+  void _initializeSelectedValue() {
+    for (int i = 0; i < locationChipsList.length; i++) {
+      if (locationChipsList[i].region ==
+          _selectedCurLocationData.region) {
+        _value = i;
+        break;
+      }
+    }
+  }
 
   void _handleButtonPress(LocationChipData data) {
     setState(() {
@@ -35,22 +58,22 @@ class _ChipsLocationState extends State<ChipsLocation> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          // Text('Choose an item', style: textTheme.labelLarge),
           const SizedBox(height: 10.0),
           Wrap(
             spacing: 5.0,
             children: List<Widget>.generate(
-              DataRepository.locationChipList.length,
+              locationChipsList.length,
               (int index) {
                 return ChoiceChip(
                   label:
-                      Text(DataRepository.locationChipList[index].region.value),
+                      Text(locationChipsList[index].region.value),
+                  labelPadding: const EdgeInsets.all(1.0),
                   selected: _value == index,
                   onSelected: (bool selected) {
                     setState(() {
                       _value = selected ? index : null;
                       LocationChipData data =
-                          DataRepository.locationChipList[index];
+                          locationChipsList[index];
                       _handleButtonPress(data);
                       _selectedLocationChipList(data.region);
                     });
@@ -65,7 +88,7 @@ class _ChipsLocationState extends State<ChipsLocation> {
   }
 
   void _selectedLocationChipList(LocationNames selectedLocation) {
-    for (var location in DataRepository.locationChipList) {
+    for (var location in locationChipsList) {
       location.isSelected = false;
       if (location.region == selectedLocation) {
         location.isSelected = true;

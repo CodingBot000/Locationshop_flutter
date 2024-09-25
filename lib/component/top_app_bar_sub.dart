@@ -12,7 +12,8 @@ class TopAppBarSub extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.white,
       centerTitle: true,
       title:
-          Text(title),
+          Text(title,
+          style: TextStyle(fontWeight: FontWeight.bold)),
       leading: Builder(builder: (context) {
         return IconButton(
             onPressed: () {

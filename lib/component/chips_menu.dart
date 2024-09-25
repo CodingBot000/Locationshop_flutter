@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:location_shop/common/init_value.dart';
 import 'package:location_shop/data/chip_location_data.dart';
 import 'package:location_shop/server/dump_respository.dart';
 
@@ -6,9 +7,10 @@ import '../common/enums.dart';
 
 class ChipsMenu extends StatefulWidget {
   const ChipsMenu(
-      {super.key, required this.onButtonPressed, required this.chipsList});
+      {super.key, required this.mainMenuName, required this.onButtonPressed, required this.chipsList});
 
   final Function(String) onButtonPressed;
+  final MenuTitleList mainMenuName;
   final List<String> chipsList;
 
   @override
@@ -36,14 +38,17 @@ class _ChipsMenuState extends State<ChipsMenu> {
               widget.chipsList.length,
               (int index) {
                 String menuStr = widget.chipsList[index];
-                if (menuStr.contains('surgery_')) {
-                  menuStr = menuStr.replaceAll('surgery_', '');
-                } else {
-                  menuStr = menuStr.replaceAll('cosmetic_', '');
+                if (widget.mainMenuName == MainMenuName.SURGICAL_PROCEDURE
+                || widget.mainMenuName == MainMenuName.COSMETIC_PROCEDURE) {
+                  if (menuStr.contains('surgery_')) {
+                    menuStr = menuStr.replaceAll('surgery_', '');
+                  } else {
+                    menuStr = menuStr.replaceAll('cosmetic_', '');
+                  }
                 }
                 return RawChip(
                   label: Text(menuStr),
-                  // selected: _value == index,
+                  labelPadding: const EdgeInsets.all(1.0),
                   onSelected: (bool selected) {
                     setState(() {
                       // _value = selected ? index : null;

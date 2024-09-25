@@ -63,16 +63,10 @@ class DataRepository {
   }
 
   static List<HospitalData> getHospitalListByLocation(String currentRegion) {
-    List<HospitalData> hospitalDatas = DumpServer().getHospitalData();
-    List<HospitalData> homeLocationHospitals = [];
-    // homeLocationHospitals.clear();
-    for (var hospitalData in hospitalDatas) {
-      if (hospitalData.region == currentRegion) {
-        homeLocationHospitals.add(hospitalData);
-      }
+      var list = DumpServer().getHospitalData()
+          .where((data) => data.region.toLowerCase() == (currentRegion.toLowerCase())).toList();
+      return list;
     }
-    return homeLocationHospitals;
-  }
 
   static SurgeryData getSurgeryDataByName(String surgeryName) {
     var list = DumpServer().getSurgeryData();

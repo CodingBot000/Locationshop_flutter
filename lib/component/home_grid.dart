@@ -35,10 +35,10 @@ class _HomeGridState extends State<HomeGrid> {
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: GRID_NUM,
+                crossAxisCount: Constants.GRID_NUM,
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 10.0,
-                childAspectRatio: ratio,
+                childAspectRatio: Constants.GRID_RATIO,
               ),
               itemCount: 6,
               itemBuilder: (context, index) {
@@ -51,8 +51,8 @@ class _HomeGridState extends State<HomeGrid> {
                   // ),
                   child: Image.asset(
                     DataRepository.newBeautyList[index].images[0],
-                    width: imageSize,
-                    height: imageSize,
+                    width: Dimens.gridImageSize,
+                    height: Dimens.gridImageSize,
                     fit: BoxFit.cover,
                   ),
                 );

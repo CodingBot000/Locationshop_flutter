@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:location_shop/common/routes.dart';
 import 'package:location_shop/component/chips_menu.dart';
+import 'package:location_shop/data/chip_location_data.dart';
 import 'package:location_shop/pages/about_us/about_us.dart';
 import 'package:location_shop/pages/event_screen/event_screen.dart';
 import 'package:location_shop/pages/favorite_screen/favorite_screen.dart';
+import 'package:location_shop/pages/location_screen/location_screen.dart';
 import 'package:location_shop/pages/surgery_info/surgery_info.dart';
 
 import '../../common/enums.dart';
@@ -28,6 +30,7 @@ class MenuPage extends StatelessWidget {
                 arguments: MenuScreenArguments(chip),
               );
             },
+            mainMenuName: MenuTitleList.SURGICAL_PROCEDURE,
             chipsList: SurgeryResList.namesList()),
         MenuTitleWidget(title: MenuTitleList.COSMETIC_PROCEDURE.value),
         ChipsMenu(
@@ -38,16 +41,32 @@ class MenuPage extends StatelessWidget {
                 arguments: MenuScreenArguments(chip),
               );
             },
+            mainMenuName: MenuTitleList.COSMETIC_PROCEDURE,
             chipsList: CosmeticResList.namesList()),
         MenuTitleWidget(title: MenuTitleList.LOCATION.value),
         ChipsMenu(
             onButtonPressed: (String location) {
+              LocationChipData? locationData;
+              for (var locationName in LocationNames.values) {
+                if (locationName == location) {
+                  locationData = LocationChipData(
+                      region: locationName,
+                      isSelected: locationName == LocationNames.APGUJEONG);
+                  break;
+                }
+              }
+
+              locationData ??= LocationChipData(
+                    region: LocationNames.APGUJEONG,
+                    isSelected: true);
+
               Navigator.popAndPushNamed(
                 context,
-                SurgeryInfo.routeName,
-                arguments: MenuScreenArguments(location),
+                LocationScreen.routeName,
+                arguments: MenuScreenLocationArguments(location, locationData),
               );
             },
+            mainMenuName: MenuTitleList.LOCATION,
             chipsList: LocationNames.namesList()),
         MenuTitleWidget(
           title: MenuTitleList.FAVORITE.value,
