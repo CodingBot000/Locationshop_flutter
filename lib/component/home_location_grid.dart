@@ -12,7 +12,7 @@ import '../common/route_arguments.dart';
 import '../pages/hospital/hospital_detail.dart';
 import '../server/dump_respository.dart';
 import 'title_main_and_sub.dart';
-import '../utils/constants.dart';
+import '../common/constants.dart';
 
 class HomeLocationGrid extends StatefulWidget {
   const HomeLocationGrid({super.key});

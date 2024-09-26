@@ -18,14 +18,20 @@ enum MenuTitleList {
 
 // Surgery Resource Enum
 enum SurgeryResList {
-  ACNE("surgery_acne"),
-  BODY("surgery_body"),
-  BOTOX("surgery_botox"),
-  LIFTING("surgery_lifting"),
-  PIGMENTATION("surgery_pigmentation"),
-  PORE("surgery_pore"),
-  SKINBOOSTER("surgery_skinbooster");
-
+  // ACNE("surgery_acne"),
+  // BODY("surgery_body"),
+  // BOTOX("surgery_botox"),
+  // LIFTING("surgery_lifting"),
+  // PIGMENTATION("surgery_pigmentation"),
+  // PORE("surgery_pore"),
+  // SKINBOOSTER("surgery_skinbooster");
+  ACNE("acne"),
+  BODY("body"),
+  BOTOX("botox"),
+  LIFTING("lifting"),
+  PIGMENTATION("pigmentation"),
+  PORE("pore"),
+  SKINBOOSTER("skinbooster");
   final String value;
 
   const SurgeryResList(this.value);
@@ -56,7 +62,16 @@ enum CosmeticResList {
 }
 
 // Recommend Menu Enum
-enum RecommendMenu { EVENT, REVIEW, HOSPITAL }
+enum RecommendMenu {
+  EVENT("EVENT"),
+  REVIEW("REVIEW"),
+  HOSPITAL("HOSPITAL");
+
+  final String value;
+
+  const RecommendMenu(this.value);
+
+}
 
 // Location Names Enum
 enum LocationNames {
@@ -67,9 +82,22 @@ enum LocationNames {
   SONGDO("SONGDO"),
   HONGDAE("HONGDAE");
 
+  static const Map<String, String> locationMap = {
+    'APGUJEONG': "0",
+    'MYUNGDONG': "1",
+    'GANGNAM': "2",
+    'CHUNGDAM': "3",
+    'SONGDO': "4",
+    'HONGDAE': "5",
+  };
+
   final String value;
 
   const LocationNames(this.value);
+
+  static String getId(String locationName) {
+    return locationMap[locationName] ?? "0";
+  }
 
   static List<String> namesList() {
     return LocationNames.values.map((data) => data.value).toList();

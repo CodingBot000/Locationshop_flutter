@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:location_shop/data/event_data.dart';
-import 'package:location_shop/utils/constants.dart';
+import 'package:location_shop/common/constants.dart';
 
 class EventListCell extends StatelessWidget {
   const EventListCell({super.key, required this.onButtonPressed, required this.data});

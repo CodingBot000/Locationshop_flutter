@@ -14,11 +14,11 @@ class SurgeryInfo extends StatelessWidget {
     final args =
         ModalRoute.of(context)!.settings.arguments as MenuScreenArguments;
     String title = args.menuTitle;
-    if (title.contains('surgery_')) {
-      title = title.replaceAll('surgery_', '');
-    } else {
-      title = title.replaceAll('cosmetic_', '');
-    }
+    // if (title.contains('surgery_')) {
+    //   title = title.replaceAll('surgery_', '');
+    // } else {
+    //   title = title.replaceAll('cosmetic_', '');
+    // }
 
     var surgeryData = DataRepository.getSurgeryDataByName(title);
     return Scaffold(

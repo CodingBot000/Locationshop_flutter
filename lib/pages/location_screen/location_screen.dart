@@ -10,7 +10,7 @@ import '../../common/enums.dart';
 import '../../component/chips_menu.dart';
 import '../../component/top_app_bar_sub.dart';
 import '../../server/dump_respository.dart';
-import '../../utils/constants.dart';
+import '../../common/constants.dart';
 
 class LocationScreen extends StatefulWidget {
   const LocationScreen({super.key});
@@ -34,7 +34,7 @@ class _LocationScreenState extends State<LocationScreen> {
       final args = ModalRoute.of(context)!.settings.arguments as MenuScreenLocationArguments;
       selectedCurLocationData = args.chipData;
       gridListByLocation = DataRepository.getHospitalListByLocation(selectedCurLocationData.region.value);
-      _isInitialized = true; // Set the flag to true after initialization
+      _isInitialized = true;
     }
   }
 

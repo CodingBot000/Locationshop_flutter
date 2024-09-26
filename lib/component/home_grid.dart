@@ -7,7 +7,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../server/dump_respository.dart';
 import 'title_main_and_sub.dart';
-import '../utils/constants.dart';
+import '../common/constants.dart';
 
 class HomeGrid extends StatefulWidget {
   const HomeGrid({super.key});

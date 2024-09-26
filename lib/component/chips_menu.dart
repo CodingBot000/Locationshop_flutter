@@ -6,11 +6,11 @@ import 'package:location_shop/server/dump_respository.dart';
 import '../common/enums.dart';
 
 class ChipsMenu extends StatefulWidget {
-  const ChipsMenu(
-      {super.key, required this.mainMenuName, required this.onButtonPressed, required this.chipsList});
+  ChipsMenu(
+      {super.key, this.mainMenuName, required this.onButtonPressed, required this.chipsList});
 
   final Function(String) onButtonPressed;
-  final MenuTitleList mainMenuName;
+  MenuTitleList? mainMenuName;
   final List<String> chipsList;
 
   @override
@@ -38,14 +38,14 @@ class _ChipsMenuState extends State<ChipsMenu> {
               widget.chipsList.length,
               (int index) {
                 String menuStr = widget.chipsList[index];
-                if (widget.mainMenuName == MainMenuName.SURGICAL_PROCEDURE
-                || widget.mainMenuName == MainMenuName.COSMETIC_PROCEDURE) {
-                  if (menuStr.contains('surgery_')) {
-                    menuStr = menuStr.replaceAll('surgery_', '');
-                  } else {
-                    menuStr = menuStr.replaceAll('cosmetic_', '');
-                  }
-                }
+                // if (widget.mainMenuName == MainMenuName.SURGICAL_PROCEDURE
+                // || widget.mainMenuName == MainMenuName.COSMETIC_PROCEDURE) {
+                //   if (menuStr.contains('surgery_')) {
+                //     menuStr = menuStr.replaceAll('surgery_', '');
+                //   } else {
+                //     menuStr = menuStr.replaceAll('cosmetic_', '');
+                //   }
+                // }
                 return RawChip(
                   label: Text(menuStr),
                   labelPadding: const EdgeInsets.all(1.0),

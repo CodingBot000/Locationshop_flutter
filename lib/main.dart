@@ -1,46 +1,14 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:location_shop/common/route_arguments.dart';
-import 'package:location_shop/pages/about_us/about_us.dart';
-import 'package:location_shop/pages/auth/login_screen.dart';
-import 'package:location_shop/pages/event_screen/event_detail_screen.dart';
-import 'package:location_shop/pages/event_screen/event_screen.dart';
-import 'package:location_shop/pages/favorite_screen/favorite_screen.dart';
 import 'package:location_shop/pages/home.dart';
-import 'package:location_shop/pages/hospital/hospital_detail.dart';
-import 'package:location_shop/pages/location_screen/location_screen.dart';
-import 'package:location_shop/pages/surgery_info/surgery_info.dart';
 import 'package:location_shop/server/dump_respository.dart';
-import 'package:location_shop/server/dump_server.dart';
-import 'package:location_shop/data/hospital_detail_info_desc.dart';
-import 'package:location_shop/server/jsondata/hospital_detail_desc_json.dart';
-import 'package:location_shop/utils/constants.dart';
+import 'package:location_shop/common/constants.dart';
 
-import 'data/event_data.dart';
-import 'data/hospital_data.dart';
-import 'data/hospital_detail_data.dart';
-import 'data/review_data.dart';
-import 'data/surgery_data.dart';
+import 'common/page_router.dart';
 
 void main() {
-  // DumpServer();
   DataRepository();
-  // Test();
-
   runApp(const MyApp());
 }
-
-// void Test() {
-//   List<EventData> test1 = DumpServer().getEventData();
-//   List<HospitalData> test2 = DumpServer().getHospitalData();
-//   List<HospitalDetail> test3 = DumpServer().getHospitalDetailData();
-//   List<DetailHospitalInfoDesc> test4 = DumpServer().getDetailHospitalInfoDescData();
-//   List<ReviewData> test5 = DumpServer().getReviewData();
-//   List<SurgeryData> test6 = DumpServer().getSurgeryData();
-//
-//   print("aaaA");
-// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -62,14 +30,13 @@ class MyApp extends StatelessWidget {
   }
 }
 
-final Map<String, WidgetBuilder> appRoutes = {
-  HomePage.routeName: (ctx) => const HomePage(),
-  LoginScreen.routeName: (ctx) => const LoginScreen(),
-  SurgeryInfo.routeName: (ctx) => const SurgeryInfo(),
-  LocationScreen.routeName: (ctx) => const LocationScreen(),
-  HospitalDetailScreen.routeName: (ctx) => const HospitalDetailScreen(),
-  FavoriteScreen.routeName: (ctx) => const FavoriteScreen(),
-  EventScreen.routeName: (ctx) => const EventScreen(),
-  AboutUsScreen.routeName: (ctx) => const AboutUsScreen(),
-  EventDetailScreen.routeName: (ctx) => const EventDetailScreen(),
-};
+// void Test() {
+//   List<EventData> test1 = DumpServer().getEventData();
+//   List<HospitalData> test2 = DumpServer().getHospitalData();
+//   List<HospitalDetail> test3 = DumpServer().getHospitalDetailData();
+//   List<DetailHospitalInfoDesc> test4 = DumpServer().getDetailHospitalInfoDescData();
+//   List<ReviewData> test5 = DumpServer().getReviewData();
+//   List<SurgeryData> test6 = DumpServer().getSurgeryData();
+//
+//   print("aaaA");
+// }

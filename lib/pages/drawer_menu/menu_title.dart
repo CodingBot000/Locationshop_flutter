@@ -18,11 +18,14 @@ class MenuTitleWidget extends StatelessWidget {
       },
       child: Padding(
         padding: const EdgeInsets.only(top: 5, bottom: 5),
-        child: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
