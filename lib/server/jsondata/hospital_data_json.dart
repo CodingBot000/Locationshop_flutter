@@ -37,7 +37,7 @@ final String hospitalDataJson = '''
               "id":1001,
               "productName": "Chungdam Oracle",
               "searchQuery": "청담오라클피부과의원",
-              "region": "${LocationNames.CHUNGDAM}",
+              "region": "${LocationNames.CHUNGDAM.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["hospital1"]}"],
               "surgeries": [2, 3, 5, 6, 7, 1000, 1001, 1002, 1003, 1004],
               "wish": false
@@ -46,7 +46,7 @@ final String hospitalDataJson = '''
               "id":1002,
               "productName": "Youjins",
                 "searchQuery": "브이라인성형외과",
-              "region": "${LocationNames.GANGNAM}",
+              "region": "${LocationNames.GANGNAM.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["youjins"]}"],
               "surgeries": [2, 3, 5, 6, 7, 1000, 1001, 1002, 1003, 1004],
               "wish": false
@@ -64,7 +64,7 @@ final String hospitalDataJson = '''
               "id":1004,
               "productName": "Boss",
             "searchQuery": "보스의원",
-              "region": "${LocationNames.HONGDAE}",
+              "region": "${LocationNames.HONGDAE.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["boss"]}"],
               "surgeries": [2, 3, 5, 6, 7, 1000, 1001, 1002, 1003, 1004],
               "wish": false
@@ -73,7 +73,7 @@ final String hospitalDataJson = '''
               "id":1005,
               "productName": "Hospital-5",
             "searchQuery": "청담포레브",
-              "region": "${LocationNames.SONGDO}",
+              "region": "${LocationNames.SONGDO.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["vline"]}"],
               "surgeries": [2, 3, 5, 6, 7, 1000, 1001, 1002, 1003, 1004],
               "wish": false
@@ -82,7 +82,7 @@ final String hospitalDataJson = '''
               "id":1006,
               "productName": "Hospital-6",
           "searchQuery": "청담포레브",
-              "region": "${LocationNames.MYUNGDONG}",
+              "region": "${LocationNames.MYUNGDONG.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["vline"]}"],
               "surgeries": [2, 3, 5, 6, 7, 1000, 1001, 1002, 1003, 1004],
               "wish": false
@@ -91,7 +91,7 @@ final String hospitalDataJson = '''
               "id":1007,
               "productName": "Hospital-7",
              "searchQuery": "청담포레브",
-              "region": "${LocationNames.MYUNGDONG}",
+              "region": "${LocationNames.MYUNGDONG.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["hospital1"]}"],
               "surgeries": [2, 3, 5, 6, 7, 1000, 1001, 1002, 1003, 1004],
               "wish": false

@@ -48,10 +48,10 @@ class MenuPage extends StatelessWidget {
             onButtonPressed: (String location) {
               LocationChipData? locationData;
               for (var locationName in LocationNames.values) {
-                if (locationName == location) {
+                if (locationName.value == location) {
                   locationData = LocationChipData(
                       region: locationName,
-                      isSelected: locationName == LocationNames.APGUJEONG);
+                      isSelected: true);
                   break;
                 }
               }

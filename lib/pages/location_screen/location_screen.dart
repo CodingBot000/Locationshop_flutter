@@ -24,6 +24,19 @@ class LocationScreen extends StatefulWidget {
 class _LocationScreenState extends State<LocationScreen> {
   // var _currentLocation = LocationNames.APGUJEONG.value;
   List<HospitalData> gridListByLocation = [];
+  late LocationChipData selectedCurLocationData;
+  bool _isInitialized = false; // Flag to prevent re-initialization
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_isInitialized) {
+      final args = ModalRoute.of(context)!.settings.arguments as MenuScreenLocationArguments;
+      selectedCurLocationData = args.chipData;
+      gridListByLocation = DataRepository.getHospitalListByLocation(selectedCurLocationData.region.value);
+      _isInitialized = true; // Set the flag to true after initialization
+    }
+  }
 
   @override
   void initState() {
@@ -33,26 +46,42 @@ class _LocationScreenState extends State<LocationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as MenuScreenLocationArguments;
-    var _currentLocation = args.chipData;
-    gridListByLocation = DataRepository.getHospitalListByLocation(_currentLocation.region.value);
+    // final args = ModalRoute.of(context)!.settings.arguments as MenuScreenLocationArguments;
+    // LocationChipData selectedCurLocationData = args.chipData;
+    // gridListByLocation = DataRepository.getHospitalListByLocation(selectedCurLocationData.region.value);
+    // //
+    //
+    //
+    // List<HospitalData> hosptialList =
+    // DataRepository.getHospitalListByLocation(LocationNames.APGUJEONG.value);
+
+
+    void onButtonPressed(LocationChipData chipData) {
+      setState(() {
+        selectedCurLocationData = chipData;
+        gridListByLocation = DataRepository.getHospitalListByLocation(
+            selectedCurLocationData.region.value);
+      });
+    }
+
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: TopAppBarSub(title: "Locations"),
         body: Column(
           children: [
+            MenuTitleWidget(title: selectedCurLocationData.region.value),
+            ChipsLocation(onButtonPressed: onButtonPressed,
+            selectedCurLocationData: selectedCurLocationData,),
+            // ChipsLocation(
+            //     selectedCurLocationData: _currentLocation,
+            //     onButtonPressed: (LocationChipData location) {
+            //       _currentLocation = location;
+            //       setState(() {
+            //         gridListByLocation = DataRepository.getHospitalListByLocation(_currentLocation.region.value);
+            //
+            //       });
+            //     }),
 
-            MenuTitleWidget(title: _currentLocation.region.value),
-            // ChipsLocation(onButtonPressed: onButtonPressed)
-            ChipsLocation(
-                selectedCurLocationData: _currentLocation,
-                onButtonPressed: (LocationChipData location) {
-                  _currentLocation = location;
-                  setState(() {
-                    gridListByLocation = DataRepository.getHospitalListByLocation(_currentLocation.region.value);
-
-                  });
-                }),
             // ChipsMenu(
             //     onButtonPressed: (String location) {
             //         _currentLocation = location;

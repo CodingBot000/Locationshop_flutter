@@ -71,11 +71,25 @@ class DataRepository {
   }
 
   static List<HospitalData> getHospitalListByLocation(String currentRegion) {
+    // var hopsitalDatas = DumpServer().getHospitalData();
+    // testGroupBy(hopsitalDatas);
       var list = DumpServer().getHospitalData()
           .where((data) => data.region.toLowerCase() == (currentRegion.toLowerCase())).toList();
       return list;
     }
+  static testGroupBy(List<HospitalData> hospitalList) {
+      Map<String, int> regionCounts = {};
 
+      for (var hospital in hospitalList) {
+        String region = hospital.region;
+        regionCounts.update(region, (count) => count + 1, ifAbsent: () => 1);
+      }
+
+      // Print the counts per region
+      regionCounts.forEach((region, count) {
+        print('Region: $region, Count: $count');
+      });
+  }
   static SurgeryData getSurgeryDataByName(String surgeryName) {
     var list = DumpServer().getSurgeryData();
     for (var data in list) {
