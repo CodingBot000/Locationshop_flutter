@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:location_shop/common/route_arguments.dart';
 import 'package:location_shop/pages/about_us/about_us.dart';
 import 'package:location_shop/pages/auth/login_screen.dart';
+import 'package:location_shop/pages/event_screen/event_detail_screen.dart';
 import 'package:location_shop/pages/event_screen/event_screen.dart';
 import 'package:location_shop/pages/favorite_screen/favorite_screen.dart';
 import 'package:location_shop/pages/home.dart';
@@ -44,7 +45,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     Constants.screenWidth = MediaQuery.of(context).size.width;
@@ -71,4 +71,5 @@ final Map<String, WidgetBuilder> appRoutes = {
   FavoriteScreen.routeName: (ctx) => const FavoriteScreen(),
   EventScreen.routeName: (ctx) => const EventScreen(),
   AboutUsScreen.routeName: (ctx) => const AboutUsScreen(),
+  EventDetailScreen.routeName: (ctx) => const EventDetailScreen(),
 };

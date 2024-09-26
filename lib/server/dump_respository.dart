@@ -6,6 +6,7 @@ import 'package:location_shop/server/dump_server.dart';
 
 import '../data/MenuSection.dart';
 import '../data/chip_location_data.dart';
+import '../data/event_data.dart';
 import '../data/home_banner_data.dart';
 import '../data/surgery_data.dart';
 
@@ -29,7 +30,11 @@ class DataRepository {
    * home's Location Hospital List
    */
   // static List<HospitalData> homeLocationHospitals = [];
-
+  // /**
+  //  * Event Datas
+  //  */
+  // static List<String> eventDatas = [];
+  //
   static Map<String, String> surgeryImgMaps = {};
 
   // static List<String> bannerSliders = [];
@@ -107,6 +112,11 @@ class DataRepository {
     }
     return SurgeryData(id: 999, surgeryName: surgeryName, surgeryImgs: [], surgeryDesc: "Developing...");
   }
+
+  static List<EventData> getEventDatas() {
+    return DumpServer().getEventData();
+  }
+
 
 // static const String imageRoot = 'assets/images';
 // static const String imageSurgery = '$imageRoot/surgery';
