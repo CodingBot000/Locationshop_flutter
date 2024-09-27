@@ -39,7 +39,7 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: TopAppBarSub(
-            title: HospitalDetailScreen.routeName,
+            title: data?.productName ?? "Hospital Detail",
           showLikeButton: true,
           isLiked: isLiked,
           onLikePressed: () {
@@ -62,7 +62,7 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
 
             }, chipsList: data!.surgeries.map(
                     (data) => SurgeryIdMapper[data] ?? 'Unknown').toList()),
-            TabsDetailWidget()
+            Expanded(child: TabsDetailWidget())
           ],
         )
 

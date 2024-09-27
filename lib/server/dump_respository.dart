@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:location_shop/common/enums.dart';
 import 'package:location_shop/data/hospital_data.dart';
+import 'package:location_shop/data/review_data.dart';
 import 'package:location_shop/server/dump_server.dart';
 
 import '../data/MenuSection.dart';
@@ -115,6 +116,10 @@ class DataRepository {
 
   static List<EventData> getEventDatas() {
     return DumpServer().getEventData();
+  }
+
+  static List<ReviewData> getReviewData() {
+    return DumpServer().getReviewData();
   }
 
 

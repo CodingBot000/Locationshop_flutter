@@ -93,6 +93,22 @@ class DumpServer {
     return convertStr;
   }
 
+
+  void updateLocalImagePathReview() {
+    List<ReviewData> updatedReviewDataList = _reviewDataList.map((review) {
+      return ReviewData(
+        id: review.id,
+        hospitalId: review.hospitalId,
+        surgeryId: review.surgeryId,
+        reviewImg: "assets/images/reviews/${review.reviewImg}",
+        userId: review.userId,
+        reviewDesc: review.reviewDesc,
+      );
+    }).toList();
+    _reviewDataList = updatedReviewDataList;
+
+  }
+
   void _buildEventData() {
     if (isLocalData) {
       Map<String, dynamic> jsonData =
@@ -141,14 +157,23 @@ class DumpServer {
 
   void _buildReviewData() {
     if (isLocalData) {
+
+      RegExp regExp = RegExp(r'review_.*?\.(png|jpg|jpeg)');
+      // 모든 매치를 찾아서 변환
+      String modifyImgaePathDataJson = reviewDataJson.replaceAllMapped(regExp, (match) {
+        return 'assets/images/reviews/${match.group(0)}';
+      });
       Map<String, dynamic> jsonData =
-          jsonDecode(convertLocalData(reviewDataJson));
+      jsonDecode(convertLocalData(modifyImgaePathDataJson));
+
       _reviewDataList = ReviewDatas.fromJson(jsonData).datas;
+      // updateLocalImagePathReview();
     } else {
       Map<String, dynamic> jsonData = jsonDecode(reviewDataJson);
       _reviewDataList = ReviewDatas.fromJson(jsonData).datas;
     }
   }
+
 
   void _buildSurgeryData() {
     if (isLocalData) {

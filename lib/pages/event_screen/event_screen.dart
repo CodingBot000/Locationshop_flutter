@@ -7,6 +7,7 @@ import 'package:location_shop/server/dump_server.dart';
 
 import '../../common/route_arguments.dart';
 import '../../component/top_app_bar_sub.dart';
+import 'event_list_widget.dart';
 
 class EventScreen extends StatefulWidget {
   const EventScreen({super.key});
@@ -24,25 +25,28 @@ class _EventScreenState extends State<EventScreen> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: TopAppBarSub(title: "EVENT"),
-        body: Container(
-          child: ListView.builder(
-            scrollDirection: Axis.vertical,
-              padding: const EdgeInsets.all(10),
-              itemCount: list.length,
-              itemBuilder: (BuildContext context, int index) {
-                return EventListCell(
-                  data: list[index],
-                  onButtonPressed: (EventData eventData) => {
-                    Navigator.pushNamed(
-                        context,
-                        EventDetailScreen.routeName,
-                        arguments: EventArguments(eventData)
-                    )
-                  },
-
-                );
-              })
-        )
+        body:
+        EventListWidget()
+        // Container(
+        //   child:
+        //   ListView.builder(
+        //     scrollDirection: Axis.vertical,
+        //       padding: const EdgeInsets.all(10),
+        //       itemCount: list.length,
+        //       itemBuilder: (BuildContext context, int index) {
+        //         return EventListCell(
+        //           data: list[index],
+        //           onButtonPressed: (EventData eventData) => {
+        //             Navigator.pushNamed(
+        //                 context,
+        //                 EventDetailScreen.routeName,
+        //                 arguments: EventArguments(eventData)
+        //             )
+        //           },
+        //
+        //         );
+        //       })
+        // )
 
     );
   }

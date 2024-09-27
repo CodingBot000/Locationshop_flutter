@@ -24,13 +24,12 @@ class EventListCell extends StatelessWidget {
               height: Dimens.listImageSize,
               fit: BoxFit.cover,
             ),
-            const SizedBox(width: 8.0), // Add some spacing between image and text
+            const SizedBox(width: 8.0),
             Expanded(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch, // Stretch to fill width
-                mainAxisAlignment: MainAxisAlignment.center, // Center vertically
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Center-aligned text
                   Align(
                     alignment: Alignment.center,
                     child: Text(
@@ -38,14 +37,12 @@ class EventListCell extends StatelessWidget {
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  const SizedBox(height: 4.0), // Add vertical spacing
-                  // Right-aligned text
+                  const SizedBox(height: 4.0),
                   Align(
                     alignment: Alignment.centerRight,
                     child: Text("${data.eventDateFrom} ~ ${data.eventDateTo}"),
                   ),
-                  const SizedBox(height: 4.0), // Add vertical spacing
-                  // Left-aligned text
+                  const SizedBox(height: 4.0),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
