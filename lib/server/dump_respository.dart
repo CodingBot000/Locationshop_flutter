@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:location_shop/common/enums.dart';
 import 'package:location_shop/data/hospital_data.dart';
+import 'package:location_shop/data/hospital_detail_data.dart';
+import 'package:location_shop/data/hospital_detail_info_desc.dart';
 import 'package:location_shop/data/review_data.dart';
 import 'package:location_shop/server/dump_server.dart';
 
@@ -68,9 +70,17 @@ class DataRepository {
     newBeautyList = randomIndices.map((index) => hospitalDatas[index]).toList();
   }
 
-  static HospitalData? getHospitalDetailInfoById(int id) {
+  static HospitalData? getHospitalInfoById(int id) {
     try {
       return DumpServer().getHospitalData().firstWhere((data) => data.id == id);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  static HospitalDetail? getHospitalDetailInfoById(int id) {
+    try {
+      return DumpServer().getHospitalDetailData().firstWhere((data) => data.id == id);
     } catch (e) {
       return null;
     }
@@ -102,7 +112,7 @@ class DataRepository {
       if (surgeryName.toLowerCase().replaceAll(" ", "").contains(
           data.surgeryName.toLowerCase().replaceAll(" ", ""))
       ) {
-        if (data.surgeryImgs.length > 0) {
+        if (data.surgeryImgs.isNotEmpty) {
           if (!data.surgeryImgs[0].contains('assets/images/surger')) {
             data.surgeryImgs[0] =
             "assets/images/surgery/${data.surgeryImgs[0]}";
@@ -114,43 +124,30 @@ class DataRepository {
     return SurgeryData(id: 999, surgeryName: surgeryName, surgeryImgs: [], surgeryDesc: "Developing...");
   }
 
-  static List<EventData> getEventDatas() {
+  static List<EventData> getEventAllDatas() {
     return DumpServer().getEventData();
   }
 
-  static List<ReviewData> getReviewData() {
+  static List<EventData> getEventDataListById(int id) {
+    var list =  DumpServer().getEventData();
+    return list.where((data) => data.hospitalId == id).toList();
+  }
+
+  static List<ReviewData> getReviewAllDatas() {
     return DumpServer().getReviewData();
   }
 
+  static List<ReviewData> getReviewDataListById(int id) {
+    var list =  DumpServer().getReviewData();
+    return list.where((data) => data.hospitalId == id).toList();
+  }
 
-// static const String imageRoot = 'assets/images';
-// static const String imageSurgery = '$imageRoot/surgery';
-// static const List bannerLists  = [
-//   '$imageSurgery/surgery_acne.png',
-//   '$imageSurgery/surgery_body.png',
-//   '$imageSurgery/surgery_botox.png',
-//   '$imageSurgery/surgery_pore.png',
-//   '$imageSurgery/surgery_lifting.png',
-//   '$imageSurgery/surgery_skinbooster.png',
-// ];
-
-// static const String imageHospitalImg = '$imageRoot/hospitalimg';
-// static const List newBeautyList  = [
-//   '$imageHospitalImg/hospital_reone.png',
-//   '$imageHospitalImg/hospital2_youjins.png',
-//   '$imageHospitalImg/hospital_wanna_plastic_surgery.png',
-//   '$imageHospitalImg/hospital5_vline.png',
-//   '$imageHospitalImg/hospital4_boss.png',
-//   '$imageHospitalImg/hospital3_brillyn.png',
-// ];
-
-// static const String imageHospitalImg = '$imageRoot/hospitalimg';
-// static const List newBeautyList  = [
-// '$imageHospitalImg/hospital_reone.png',
-// '$imageHospitalImg/hospital2_youjins.png',
-// '$imageHospitalImg/hospital_wanna_plastic_surgery.png',
-// '$imageHospitalImg/hospital_vline.png',
-// '$imageHospitalImg/hospital_boss.png',
-// '$imageHospitalImg/hospital3_brillyn.png',
-// ];
+  static DetailHospitalInfoDesc? getDetailHospitalInfoDescData(int id) {
+    var list =  DumpServer().getDetailHospitalInfoDescData();
+    // var data = list.firstWhere((data) => data.id == id);
+    DetailHospitalInfoDesc? data = list.firstWhere((data) => data.id == id);
+    return data;
+    // return DumpServer().getDetailHospitalInfoDescData()
+    //     .firstWhere((data) => data.id == id);
+  }
 }

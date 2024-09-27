@@ -19,35 +19,14 @@ class EventScreen extends StatefulWidget {
 }
 
 class _EventScreenState extends State<EventScreen> {
-  List<EventData> list = DataRepository.getEventDatas();
+  List<EventData> list = DataRepository.getEventAllDatas();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
         backgroundColor: Colors.white,
         appBar: TopAppBarSub(title: "EVENT"),
         body:
         EventListWidget()
-        // Container(
-        //   child:
-        //   ListView.builder(
-        //     scrollDirection: Axis.vertical,
-        //       padding: const EdgeInsets.all(10),
-        //       itemCount: list.length,
-        //       itemBuilder: (BuildContext context, int index) {
-        //         return EventListCell(
-        //           data: list[index],
-        //           onButtonPressed: (EventData eventData) => {
-        //             Navigator.pushNamed(
-        //                 context,
-        //                 EventDetailScreen.routeName,
-        //                 arguments: EventArguments(eventData)
-        //             )
-        //           },
-        //
-        //         );
-        //       })
-        // )
-
     );
   }
 }

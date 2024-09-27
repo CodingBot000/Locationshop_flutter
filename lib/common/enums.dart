@@ -103,3 +103,21 @@ enum LocationNames {
     return LocationNames.values.map((data) => data.value).toList();
   }
 }
+
+enum SNSIconType {
+  NONE("NONE"),
+  KAKAOTALK("KAKAOTALK"),
+  TEL("TEL"),
+  HOMEPAGE("HOMEPAGE"),
+  INSTAGRAM("INSTAGRAM"),
+  FACEBOOK("FACEBOOK"),
+  BLOG("BLOG"),
+  YOUTUBE("YOUTUBE"),
+  TIKTOK("TIKTOK"),
+  SNAPCHAT("SNAPCHAT"),
+  MAP("MAP");
+
+  final String value;
+
+  const SNSIconType(this.value);
+}

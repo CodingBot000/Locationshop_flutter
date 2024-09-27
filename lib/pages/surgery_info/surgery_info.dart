@@ -27,14 +27,24 @@ class SurgeryInfo extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Text(args.menuTitle,
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold),
+              Text(
+                args.menuTitle,
+                style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
               surgeryData.surgeryImgs.isNotEmpty
-                  ? Image.asset(surgeryData.surgeryImgs[0])
+                  ? Image.asset(
+                      surgeryData.surgeryImgs[0],
+                      height: 300,
+                      fit: BoxFit.fitHeight,
+                      errorBuilder: (context, error, stackTrace) {
+                        return const Icon(
+                          Icons.error,
+                          size: 300,
+                          color: Colors.red,
+                        );
+                      },
+                    )
                   : const SizedBox(
                       height: 200,
                       child: Center(

@@ -42,7 +42,15 @@ class _SliderBannerState extends State<SliderBanner> {
         width: double.infinity,
         height: 240,
         color: Colors.grey,
-        child: Image.asset(path, fit: BoxFit.cover),
+        child: Image.asset(path,
+            fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) {
+            return const Icon(
+              Icons.error,
+              size: 240,
+              color: Colors.red,
+            );
+          },),
       );
 
   Widget indicator() => Container(

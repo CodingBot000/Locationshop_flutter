@@ -76,5 +76,16 @@ class StaticServerUrlPath {
     "doctor_reone2": "$doctorsImgPath/doctor_reone2.png",
     "doctor_reone3": "$doctorsImgPath/doctor_reone3.png",
     "doctor_wanna1": "$doctorsImgPath/doctor_wanna1.png",
+    "doctor_temp0": "$doctorsImgPath/doctor_temp0.png",
+    "doctor_temp1": "$doctorsImgPath/doctor_temp1.png",
+    "doctor_temp2": "$doctorsImgPath/doctor_temp2.png",
+    "doctor_temp3": "$doctorsImgPath/doctor_temp3.png",
+    "doctor_temp4": "$doctorsImgPath/doctor_temp4.png",
+
+    "doctor_temp5": "$doctorsImgPath/doctor_temp4.png",
+    "doctor_temp6": "$doctorsImgPath/doctor_temp4.png",
+    "doctor_temp7": "$doctorsImgPath/doctor_temp4.png",
+    "doctor_temp8": "$doctorsImgPath/doctor_temp4.png",
+
   };
 }

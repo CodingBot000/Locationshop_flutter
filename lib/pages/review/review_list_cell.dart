@@ -3,6 +3,8 @@ import 'package:location_shop/data/event_data.dart';
 import 'package:location_shop/common/constants.dart';
 import 'package:location_shop/data/review_data.dart';
 
+import '../../common/utils/helper.dart';
+
 class ReviewListCell extends StatelessWidget {
   const ReviewListCell(
       {super.key, required this.onButtonPressed, required this.data});
@@ -25,6 +27,13 @@ class ReviewListCell extends StatelessWidget {
                 width: double.infinity,
                 height: 150,
                 fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return const Icon(
+                    Icons.error,
+                    size: 150,
+                    color: Colors.red,
+                  );
+                },
               ),
             // const SizedBox(height: 8.0),
 

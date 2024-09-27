@@ -15,10 +15,9 @@ class FavoriteScreen extends StatefulWidget {
 class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
-    // final args = ModalRoute.of(context)!.settings.arguments as MenuScreenArguments;
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: TopAppBarSub(title: FavoriteScreen.routeName),
+        appBar: TopAppBarSub(title: "Favorite"),
         body: Text(FavoriteScreen.routeName)
     );
   }

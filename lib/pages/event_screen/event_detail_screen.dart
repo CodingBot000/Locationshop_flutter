@@ -36,6 +36,13 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                 width: double.infinity,
                 height: 350,
                 fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return const Icon(
+                    Icons.error,
+                    size: 350,
+                    color: Colors.red,
+                  );
+                },
               ),
               SizedBox(
                 height: 20,

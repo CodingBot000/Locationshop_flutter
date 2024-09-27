@@ -6,11 +6,10 @@ import 'package:location_shop/data/hospital_data.dart';
 import 'package:location_shop/pages/drawer_menu/menu_title.dart';
 import 'package:location_shop/pages/hospital/hospital_detail.dart';
 
-import '../../common/enums.dart';
-import '../../component/chips_menu.dart';
+import '../../common/constants.dart';
+import '../../component/empty_view.dart';
 import '../../component/top_app_bar_sub.dart';
 import '../../server/dump_respository.dart';
-import '../../common/constants.dart';
 
 class LocationScreen extends StatefulWidget {
   const LocationScreen({super.key});
@@ -25,7 +24,7 @@ class _LocationScreenState extends State<LocationScreen> {
   // var _currentLocation = LocationNames.APGUJEONG.value;
   List<HospitalData> gridListByLocation = [];
   late LocationChipData selectedCurLocationData;
-  bool _isInitialized = false; // Flag to prevent re-initialization
+  bool _isInitialized = false;
 
   @override
   void didChangeDependencies() {
@@ -92,7 +91,7 @@ class _LocationScreenState extends State<LocationScreen> {
             //     },
             //     chipsList: LocationNames.namesList()),
         Expanded(
-            child: gridListByLocation.isEmpty ? EmptyView()
+            child: gridListByLocation.isEmpty ? const EmptyView()
             : SingleChildScrollView(
               child: Column(
                 children: [
@@ -122,10 +121,17 @@ class _LocationScreenState extends State<LocationScreen> {
                         },
                         child: Center(
                           child: Image.asset(
-                            gridListByLocation[index].images[0], // 로컬 이미지 경로
-                            width: Dimens.gridImageSize, // 이미지 크기
-                            height: Dimens.gridImageSize, // 이미지 크기
-                            fit: BoxFit.cover, // 이미지 비율 유지하면서 잘림
+                            gridListByLocation[index].images[0],
+                            width: Dimens.gridImageSize,
+                            height: Dimens.gridImageSize,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Icon(
+                                Icons.error,
+                                size: Dimens.gridImageSize,
+                                color: Colors.red,
+                              );
+                            },
                           ),
                         ),
                       );
@@ -145,18 +151,6 @@ class _LocationScreenState extends State<LocationScreen> {
       child: Center(
         child: Text(
           "Google Map ... to be continue..",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-      ),
-    );
-  }
-
-  Widget EmptyView() {
-    return const SizedBox(
-      height: 200,
-      child: Center(
-        child: Text(
-          "Empty Data",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),

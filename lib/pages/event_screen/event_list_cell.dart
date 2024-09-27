@@ -23,6 +23,13 @@ class EventListCell extends StatelessWidget {
               width: Dimens.listImageSize,
               height: Dimens.listImageSize,
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return const Icon(
+                  Icons.error,
+                  size: Dimens.listImageSize,
+                  color: Colors.red,
+                );
+              },
             ),
             const SizedBox(width: 8.0),
             Expanded(

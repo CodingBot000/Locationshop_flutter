@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:location_shop/common/enums.dart';
-import 'package:location_shop/pages/about_us/about_us.dart';
+import 'package:location_shop/data/hospital_detail_data.dart';
+import 'package:location_shop/data/hospital_detail_info_desc.dart';
 import 'package:location_shop/pages/event_screen/event_list_widget.dart';
-import 'package:location_shop/pages/event_screen/event_screen.dart';
 import 'package:location_shop/pages/hospital/hospital_info_widget.dart';
 import 'package:location_shop/pages/review/review_widget.dart';
+import 'package:location_shop/server/dump_respository.dart';
+
+import '../../component/empty_view.dart';
+import '../../data/hospital_data.dart';
 
 class TabsDetailWidget extends StatefulWidget {
-  const TabsDetailWidget({Key? key}) : super(key: key);
+  const TabsDetailWidget({super.key, required this.data});
+
+  final HospitalData data;
 
   @override
   State<TabsDetailWidget> createState() => _TabsDetailWidgetState();
@@ -21,6 +27,19 @@ class _TabsDetailWidgetState extends State<TabsDetailWidget> with SingleTickerPr
 
     animationDuration: const Duration(milliseconds: 800),
   );
+  late final DetailHospitalInfoDesc? descData;
+  late final HospitalDetail? dataDetail;
+
+  @override
+  void initState() {
+    super.initState();
+    dataDetail = DataRepository.getHospitalDetailInfoById(widget.data.id);
+    descData = DataRepository.getDetailHospitalInfoDescData(widget.data.id);
+
+    print('descData:$descData');
+    print('dataDetail:$dataDetail');
+  }
+
 
   @override
   void dispose() {
@@ -30,7 +49,7 @@ class _TabsDetailWidgetState extends State<TabsDetailWidget> with SingleTickerPr
 
   @override
   Widget build(BuildContext context) {
-    String event = RecommendMenu.EVENT.value;
+
     return Container(
       height: MediaQuery.of(context).size.height,
       child: Column(
@@ -47,9 +66,11 @@ class _TabsDetailWidgetState extends State<TabsDetailWidget> with SingleTickerPr
               child: TabBarView(
                 controller: tabController,
                 children: [
-                  EventListWidget(),
-                  ReviewWidget(),
-                  HospitalInfoWidget(),
+                  EventListWidget(id: widget.data.id),
+                  ReviewWidget(id: widget.data.id),
+                  dataDetail == null || descData == null ?
+                      const EmptyView()
+                  : HospitalInfoWidget(detaildata: dataDetail!, descData: descData! ),
                 ],
               ),
           ),

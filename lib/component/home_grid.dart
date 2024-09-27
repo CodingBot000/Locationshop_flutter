@@ -57,6 +57,13 @@ class _HomeGridState extends State<HomeGrid> {
                       width: Dimens.gridImageSize,
                       height: Dimens.gridImageSize,
                       fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Icon(
+                          Icons.error,
+                          size: Dimens.gridImageSize,
+                          color: Colors.red,
+                        );
+                      },
                     ),
                   ),
                 );

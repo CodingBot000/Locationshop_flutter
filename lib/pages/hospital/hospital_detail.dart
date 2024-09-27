@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:location_shop/common/constants.dart';
 import 'package:location_shop/component/chips_menu.dart';
+import 'package:location_shop/component/empty_view.dart';
 import 'package:location_shop/component/slider_image.dart';
+import 'package:location_shop/data/hospital_detail_data.dart';
 import 'package:location_shop/pages/hospital/tabs_detail.dart';
 import 'package:location_shop/pages/surgery_info/surgery_info.dart';
 import 'package:location_shop/server/dump_respository.dart';
 
 import '../../common/route_arguments.dart';
+import '../../common/utils/helper.dart';
 import '../../component/top_app_bar_sub.dart';
 import '../../data/hospital_data.dart';
 
@@ -21,15 +24,17 @@ class HospitalDetailScreen extends StatefulWidget {
 
 class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
   bool isLiked = false;
-  bool _isInitialized = false; // Flag to prevent re-initialization
+  bool _isInitialized = false;
   late HospitalData? data;
+  // late HospitalDetail? dataDetail;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (!_isInitialized) {
       final args = ModalRoute.of(context)!.settings.arguments as HosptialDetailArguments;
-      data = DataRepository.getHospitalDetailInfoById(args.id);
+      data = DataRepository.getHospitalInfoById(args.id);
+      // dataDetail = DataRepository.getHospitalDetailInfoById(args.id);
       _isInitialized = true;
     }
   }
@@ -53,32 +58,22 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
             }
           },),
         body:
-        data == null ? EmptyView()
+        data == null ? const EmptyView()
         : Column(
           children: [
-            //assets/images/hospitalimg/hospital3_brillyn.png
             SliderImage(imageList: data!.images),
             ChipsMenu(onButtonPressed: (String chipName) => {
 
             }, chipsList: data!.surgeries.map(
                     (data) => SurgeryIdMapper[data] ?? 'Unknown').toList()),
-            Expanded(child: TabsDetailWidget())
+            Expanded(child: TabsDetailWidget(data: data!))
           ],
-        )
-
-    );
-  }
-
-
-  Widget EmptyView() {
-    return const SizedBox(
-      height: 200,
-      child: Center(
-        child: Text(
-          "Empty Data",
-          style: TextStyle(fontWeight: FontWeight.bold),
         ),
-      ),
+        floatingActionButton: Column(
+          children: [
+            // Image.asset(dataDetail.blog.)
+          ],
+        ),
     );
   }
 }

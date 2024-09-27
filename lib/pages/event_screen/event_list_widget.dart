@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:location_shop/component/empty_view.dart';
 import 'package:location_shop/data/event_data.dart';
 import 'package:location_shop/pages/event_screen/event_detail_screen.dart';
 import 'package:location_shop/pages/event_screen/event_list_cell.dart';
@@ -9,30 +10,33 @@ import '../../common/route_arguments.dart';
 import '../../component/top_app_bar_sub.dart';
 
 class EventListWidget extends StatelessWidget {
-  List<EventData> list = DataRepository.getEventDatas();
+  const EventListWidget({super.key, this.id});
+
+  final int? id;
+
   @override
   Widget build(BuildContext context) {
+    final List<EventData> list = id != null
+        ? DataRepository.getEventDataListById(id!)
+        : DataRepository.getEventAllDatas();
+
     return Container(
-      child: ListView.builder(
-            scrollDirection: Axis.vertical,
+      child: list.isEmpty
+          ? const EmptyView()
+          : ListView.builder(
+              scrollDirection: Axis.vertical,
               padding: const EdgeInsets.all(10),
               itemCount: list.length,
               itemBuilder: (BuildContext context, int index) {
                 return EventListCell(
                   data: list[index],
-                  onButtonPressed: (EventData eventData) =>
-                  {
-                    Navigator.pushNamed(
-                        context,
-                        EventDetailScreen.routeName,
-                        arguments: EventArguments(eventData)
-                    )
+                  onButtonPressed: (EventData eventData) => {
+                    Navigator.pushNamed(context, EventDetailScreen.routeName,
+                        arguments: EventArguments(eventData))
                   },
-
                 );
               },
-          ),
-      );
-    }
-
+            ),
+    );
+  }
 }
