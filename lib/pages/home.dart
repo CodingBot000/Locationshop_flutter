@@ -10,6 +10,7 @@ import 'package:location_shop/pages/auth/login_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../common/constants.dart';
+import '../component/footer_view.dart';
 import 'drawer_menu/side_menu.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,7 +23,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // int activeIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,6 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // SliderBanner(activeIndex: activeIndex),
             SliderBanner(),
             const SizedBox(height: 40),
             const Padding(
@@ -60,35 +59,6 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 20),
             const FooterView()
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class FooterView extends StatelessWidget {
-  const FooterView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: Dimens.footer_height,
-      color: Colors.grey,
-      width: double.infinity,
-      child: Padding(
-        padding: const EdgeInsets.only(
-          left: Dimens.home_grid_horizontal_padding,
-          right: Dimens.home_grid_horizontal_padding,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "@ Corp",
-              style: TextStyle(color: Colors.white), // 텍스트 색을 흰색으로 변경 (선택 사항)
-            ),
           ],
         ),
       ),

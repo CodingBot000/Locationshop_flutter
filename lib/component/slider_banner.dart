@@ -8,7 +8,6 @@ import '../server/dump_respository.dart';
 class SliderBanner extends StatefulWidget {
   SliderBanner({super.key});
 
-  // int activeIndex;
 
   @override
   State<SliderBanner> createState() => _SliderBannerState();
@@ -16,13 +15,17 @@ class SliderBanner extends StatefulWidget {
 
 class _SliderBannerState extends State<SliderBanner> {
   int activeIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Stack(alignment: Alignment.topCenter, children: <Widget>[
       CarouselSlider.builder(
         options: CarouselOptions(
+          height: 300,
           initialPage: 0,
           viewportFraction: 1,
+          autoPlay: true,
+          autoPlayInterval: const Duration(seconds: 3),
           enlargeCenterPage: true,
           onPageChanged: (index, reason) => setState(() {
             activeIndex = index;
@@ -34,7 +37,12 @@ class _SliderBannerState extends State<SliderBanner> {
           return imageSlider(path, index);
         },
       ),
-      Align(alignment: Alignment.bottomCenter, child: indicator())
+      Positioned(
+        bottom: 0,
+        left: 0,
+        right: 0,
+        child: indicator(),
+      ),
     ]);
   }
 
