@@ -4,7 +4,7 @@ class TopAppBarHome extends StatelessWidget implements PreferredSizeWidget {
   final Color backgroundColor;
   final List<Widget> actions;
 
-  TopAppBarHome({required this.backgroundColor, required this.actions});
+  const TopAppBarHome({super.key, required this.backgroundColor, required this.actions});
 
   @override
   Widget build(BuildContext context) {

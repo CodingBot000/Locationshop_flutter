@@ -13,7 +13,7 @@ class ReviewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     List<ReviewData> list = DataRepository.getReviewDataListById(id);
     return list.isEmpty
-        ? EmptyView()
+        ? const EmptyView()
         : ListView.builder(
             scrollDirection: Axis.vertical,
             padding: const EdgeInsets.all(10),

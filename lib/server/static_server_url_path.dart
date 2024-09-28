@@ -1,37 +1,37 @@
 class StaticServerUrlPath {
-  static const String imgOnlinePath_Prefix =
+  static const String imgOnlinePathPrefix =
       "https://tqyarvckzieoraneohvv.supabase.co/storage/v1/object/public/hospitalstatic";
-  static const String subpath_images_path = "/staticdata/images/";
+  static const String subpathImagesPath = "/staticdata/images/";
   static const String surgeryImgPath =
-      "$imgOnlinePath_Prefix${subpath_images_path}surgery";
+      "$imgOnlinePathPrefix${subpathImagesPath}surgery";
   static const String hospitalImgPath =
-      "$imgOnlinePath_Prefix${subpath_images_path}hospitalimg";
+      "$imgOnlinePathPrefix${subpathImagesPath}hospitalimg";
   static const String eventsImgPath =
-      "$imgOnlinePath_Prefix${subpath_images_path}events";
+      "$imgOnlinePathPrefix${subpathImagesPath}events";
   static const String doctorsImgPath =
-      "$imgOnlinePath_Prefix${subpath_images_path}doctors";
+      "$imgOnlinePathPrefix${subpathImagesPath}doctors";
 
-  void getPrintResUrlsForDebug() {
-    String filteringDebugText = "getPrintResUrlsForDebug-";
-    print("$filteringDebugText[surgeryImgMaps]");
-
-    printDebug(surgeryImgMaps);
-
-    print("$filteringDebugText[hospitalImgUrlMaps]");
-    printDebug(hospitalImgUrlMaps);
-
-    print("$filteringDebugText[eventsImgUrlMaps]");
-    printDebug(eventsImgUrlMaps);
-
-    print("$filteringDebugText[doctorsImgUrlMaps]");
-    printDebug(doctorsImgUrlMaps);
-  }
-
-  void printDebug(Map<String, String> map) {
-    map.forEach((key, value) {
-      print('key: $key, value: $value');
-    });
-  }
+  // void getPrintResUrlsForDebug() {
+  //   String filteringDebugText = "getPrintResUrlsForDebug-";
+  //   print("$filteringDebugText[surgeryImgMaps]");
+  //
+  //   printDebug(surgeryImgMaps);
+  //
+  //   print("$filteringDebugText[hospitalImgUrlMaps]");
+  //   printDebug(hospitalImgUrlMaps);
+  //
+  //   print("$filteringDebugText[eventsImgUrlMaps]");
+  //   printDebug(eventsImgUrlMaps);
+  //
+  //   print("$filteringDebugText[doctorsImgUrlMaps]");
+  //   printDebug(doctorsImgUrlMaps);
+  // }
+  //
+  // void printDebug(Map<String, String> map) {
+  //   map.forEach((key, value) {
+  //     print('key: $key, value: $value');
+  //   });
+  // }
 
   static const Map<String, String> surgeryImgMaps = {
     "surgery_acne": "$surgeryImgPath/surgery_acne.png",

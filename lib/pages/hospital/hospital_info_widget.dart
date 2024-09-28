@@ -27,26 +27,26 @@ class _HospitalInfoWidgetState extends State<HospitalInfoWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _Title("Address"),
-          _SubDetail(widget.descData.descAddress),
+          _title("Address"),
+          _subDetail(widget.descData.descAddress),
           const SizedBox(height: infoPadding),
 
-          _Title("Opening Hour"),
-          _SubDetail(widget.descData.openingHour),
+          _title("Opening Hour"),
+          _subDetail(widget.descData.openingHour),
           const SizedBox(height: infoPadding),
 
-          _Title("Facilities"),
-          _SubDetail(widget.descData.facilities),
+          _title("Facilities"),
+          _subDetail(widget.descData.facilities),
           const SizedBox(height: infoPadding),
 
           if (widget.descData.etc.isNotEmpty) ...[
-            _Title("etc"),
-            _SubDetail(widget.descData.etc),
+            _title("etc"),
+            _subDetail(widget.descData.etc),
           ],
           const SizedBox(height: infoPadding),
 
           if (widget.descData.doctors.isNotEmpty) ...[
-            _Title("doctors"),
+            _title("doctors"),
             Wrap(
               spacing: 10,
               children: widget.descData.doctors
@@ -59,12 +59,12 @@ class _HospitalInfoWidgetState extends State<HospitalInfoWidget> {
     );
   }
 
-  Widget _Title(String title) => Text(
+  Widget _title(String title) => Text(
     title,
     style: TextStyle(fontSize: fonstSizeTitle, fontWeight: FontWeight.bold)
   );
 
-  Widget _SubDetail(String content) => Text(
+  Widget _subDetail(String content) => Text(
     content,
     style: TextStyle(fontSize: fonstSizeContent),
   );

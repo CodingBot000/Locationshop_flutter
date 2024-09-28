@@ -8,7 +8,6 @@ class ReviewListCell extends StatelessWidget {
       {super.key, required this.onButtonPressed, required this.data});
 
   final Function(ReviewData) onButtonPressed;
-
   final ReviewData data;
 
   @override
@@ -16,7 +15,7 @@ class ReviewListCell extends StatelessWidget {
     return GestureDetector(
       onTap: () => {onButtonPressed(data)},
       child: Card(
-        margin: EdgeInsets.all(5),
+        margin: const EdgeInsets.all(5),
         child: Column(
           children: [
             if (data.reviewImg.isNotEmpty)
@@ -54,9 +53,12 @@ class ReviewListCell extends StatelessWidget {
                       Text(data.userId),
                       // ),
                       Align(
-                        alignment: Alignment.centerRight,
-                        child: Text(surgeryIdMapper[data.surgeryId] ?? ""),
-                      ),
+                          alignment: Alignment.centerRight,
+                          child: Row(
+                            children: data.surgeryId
+                                .map((id) => Text(surgeryIdMapper[id] ?? ""))
+                                .toList(),
+                          )),
                     ],
                   )
                 ],

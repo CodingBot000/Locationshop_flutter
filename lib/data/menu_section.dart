@@ -1,5 +1,4 @@
 
-// SectionData 클래스
 class SectionData {
   final int id;
   final String headerText;
@@ -14,7 +13,6 @@ class SectionData {
   });
 }
 
-// SectionSubData 클래스
 class SectionSubData {
   final int id;
   final String subText;

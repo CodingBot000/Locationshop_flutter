@@ -54,7 +54,7 @@ class ImageLinkerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('imageName: $imageName');
+    // print('imageName: $imageName');
     const double size = 30;
     String extension = '';
     if (imageName.contains('.')) {

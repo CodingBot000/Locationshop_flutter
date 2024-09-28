@@ -1,4 +1,4 @@
-import '../data/MenuSection.dart';
+import '../data/menu_section.dart';
 import '../data/chip_location_data.dart';
 import '../data/home_banner_data.dart';
 import '../server/dump_respository.dart';

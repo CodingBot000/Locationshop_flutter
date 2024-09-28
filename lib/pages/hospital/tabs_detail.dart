@@ -35,11 +35,7 @@ class _TabsDetailWidgetState extends State<TabsDetailWidget> with SingleTickerPr
     super.initState();
     dataDetail = DataRepository.getHospitalDetailInfoById(widget.data.id);
     descData = DataRepository.getDetailHospitalInfoDescData(widget.data.id);
-
-    print('descData:$descData');
-    print('dataDetail:$dataDetail');
   }
-
 
   @override
   void dispose() {
@@ -49,8 +45,7 @@ class _TabsDetailWidgetState extends State<TabsDetailWidget> with SingleTickerPr
 
   @override
   Widget build(BuildContext context) {
-
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
@@ -70,7 +65,10 @@ class _TabsDetailWidgetState extends State<TabsDetailWidget> with SingleTickerPr
                   ReviewWidget(id: widget.data.id),
                   dataDetail == null || descData == null ?
                       const EmptyView()
-                  : HospitalInfoWidget(detaildata: dataDetail!, descData: descData! ),
+                  : HospitalInfoWidget(
+                      detaildata: dataDetail!,
+                      descData: descData!
+                  ),
                 ],
               ),
           ),

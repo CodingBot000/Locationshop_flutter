@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../common/enums.dart';
 
 class ChipsMenu extends StatefulWidget {
-  ChipsMenu(
+  const ChipsMenu(
       {super.key,
       this.mainMenuName,
       required this.onButtonPressed,
       required this.chipsList});
 
   final Function(String) onButtonPressed;
-  MenuTitleList? mainMenuName;
+  final MenuTitleList? mainMenuName;
   final List<String> chipsList;
 
   @override
@@ -24,8 +24,7 @@ class _ChipsMenuState extends State<ChipsMenu> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
+    return  Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -50,7 +49,7 @@ class _ChipsMenuState extends State<ChipsMenu> {
             ).toList(),
           ),
         ],
-      ),
+
     );
   }
 }

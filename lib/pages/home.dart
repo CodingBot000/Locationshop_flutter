@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.white,
         actions: <Widget>[
           Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+              margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
               child: GestureDetector(
                   onTap: () =>
                       {Navigator.pushNamed(context, LoginScreen.routeName)},

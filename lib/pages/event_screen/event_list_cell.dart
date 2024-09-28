@@ -14,7 +14,7 @@ class EventListCell extends StatelessWidget {
       onTap: () => {
         onButtonPressed(data)
       },
-      child: Container(
+      child: SizedBox(
         height: Dimens.listHeight,
         child: Row(
           children: [

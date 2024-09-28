@@ -9,16 +9,14 @@ class TitleMainAndSub extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Text(mainTitle,
-              style:
-                  const TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
-          Text(subTitle,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
-        ],
-      ),
+    return Column(
+      children: [
+        Text(mainTitle,
+            style:
+                const TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
+        Text(subTitle,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
+      ],
     );
   }
 }

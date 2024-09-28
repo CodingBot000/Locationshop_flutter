@@ -22,7 +22,7 @@ class _HomeGridState extends State<HomeGrid> {
             mainTitle: 'New Beauty', subTitle: 'Today Hospital'),
         const SizedBox(height: 20),
         GridView.builder(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: Constants.GRID_NUM,

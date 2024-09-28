@@ -6,7 +6,7 @@ import 'package:location_shop/data/hospital_detail_info_desc.dart';
 import 'package:location_shop/data/review_data.dart';
 import 'package:location_shop/server/dump_server.dart';
 
-import '../data/MenuSection.dart';
+import '../data/menu_section.dart';
 import '../data/chip_location_data.dart';
 import '../data/event_data.dart';
 import '../data/home_banner_data.dart';
@@ -92,10 +92,9 @@ class DataRepository {
         regionCounts.update(region, (count) => count + 1, ifAbsent: () => 1);
       }
 
-      // Print the counts per region
-      regionCounts.forEach((region, count) {
-        print('Region: $region, Count: $count');
-      });
+      // regionCounts.forEach((region, count) {
+      //   print('Region: $region, Count: $count');
+      // });
   }
   static SurgeryData getSurgeryDataByName(String surgeryName) {
     var list = DumpServer().getSurgeryData();
