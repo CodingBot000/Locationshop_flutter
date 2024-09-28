@@ -1,5 +1,5 @@
 
-import '../static_server_url_path.dart';
+
 
 const String hospitalDetailJson =
     '''

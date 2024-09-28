@@ -1,9 +1,6 @@
 import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../server/dump_respository.dart';
 
 class SliderImage extends StatefulWidget {
   SliderImage({super.key, required this.imageList});

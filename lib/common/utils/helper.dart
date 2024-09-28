@@ -4,7 +4,7 @@ import '../enums.dart';
 
 
 
-Map<int, String> SurgeryIdMapper = {
+Map<int, String> surgeryIdMapper = {
   1000: "Eyes",
   1001: "Nose",
   1002: "bimaxillary operation",
@@ -40,63 +40,78 @@ Map<int, String> SurgeryIdMapper = {
 class SNSInfoResult {
   final SNSIconType linkType;
   final String hyperText;
-
-  SNSInfoResult(this.linkType, this.hyperText);
+  String iconImageName = '';
+  SNSInfoResult(this.linkType, this.hyperText, this.iconImageName);
 }
 
 List<SNSInfoResult> getSNSInfoList(HospitalDetail data)
 {
   List<SNSInfoResult> list = [];
   for (var snsValue in SNSIconType.values) {
-    if (snsValue != SNSIconType.NONE) {
-      list.add(getSNSInfo(snsType: snsValue, data: data));
+    if (snsValue != SNSIconType.none) {
+      SNSInfoResult snsInfo = getSNSInfo(snsType: snsValue, data: data);
+      if (snsInfo.hyperText.isNotEmpty) {
+        list.add(snsInfo);
+      }
     }
   }
   return list;
 }
-
+// assets/images/icons/icon_sns_call.png
 SNSInfoResult getSNSInfo({
   required SNSIconType snsType,
   required HospitalDetail data,
 }) {
   String hyperText = '';
-  SNSIconType linkType = SNSIconType.NONE;
+  String iconImageName = '';
+  String path = 'assets/images/icons';
+  SNSIconType linkType = SNSIconType.none;
 
-  if (snsType == SNSIconType.KAKAOTALK && data.kakaotalk.isNotEmpty) {
+  if (snsType == SNSIconType.kakaotalk && data.kakaotalk.isNotEmpty) {
     hyperText = data.kakaotalk;
-    linkType = SNSIconType.KAKAOTALK;
-  } else if (snsType == SNSIconType.TEL && data.tel.isNotEmpty) {
+    linkType = SNSIconType.kakaotalk;
+    iconImageName = '$path/icon_sns_kakaotalk.png';
+  } else if (snsType == SNSIconType.tel && data.tel.isNotEmpty) {
     hyperText = data.tel;
-    linkType = SNSIconType.TEL;
-  } else if (snsType == SNSIconType.HOMEPAGE && data.homepage.isNotEmpty) {
+    linkType = SNSIconType.tel;
+    iconImageName = '$path/icon_sns_call.svg';
+  } else if (snsType == SNSIconType.homepage && data.homepage.isNotEmpty) {
     hyperText = data.homepage;
-    linkType = SNSIconType.HOMEPAGE;
-  } else if (snsType == SNSIconType.BLOG && data.blog.isNotEmpty) {
+    linkType = SNSIconType.homepage;
+    iconImageName = '$path/icon_sns_homepage.svg';
+  } else if (snsType == SNSIconType.blog && data.blog.isNotEmpty) {
     hyperText = data.blog;
-    linkType = SNSIconType.BLOG;
-  } else if (snsType == SNSIconType.FACEBOOK && data.facebook.isNotEmpty) {
+    linkType = SNSIconType.blog;
+    iconImageName = '$path/icon_sns_blog.png';
+  } else if (snsType == SNSIconType.facebook && data.facebook.isNotEmpty) {
     hyperText = data.facebook;
-    linkType = SNSIconType.FACEBOOK;
-  } else if (snsType == SNSIconType.INSTAGRAM && data.instagram.isNotEmpty) {
+    linkType = SNSIconType.facebook;
+    iconImageName = '$path/icon_sns_facebook.png';
+  } else if (snsType == SNSIconType.instagram && data.instagram.isNotEmpty) {
     hyperText = data.instagram;
-    linkType = SNSIconType.INSTAGRAM;
-  } else if (snsType == SNSIconType.SNAPCHAT && data.snapchat.isNotEmpty) {
+    linkType = SNSIconType.instagram;
+    iconImageName = '$path/icon_sns_instagram.png';
+  } else if (snsType == SNSIconType.snapchat && data.snapchat.isNotEmpty) {
     hyperText = data.snapchat;
-    linkType = SNSIconType.SNAPCHAT;
-  } else if (snsType == SNSIconType.TIKTOK && data.tiktok.isNotEmpty) {
+    linkType = SNSIconType.snapchat;
+    iconImageName = '$path/icon_sns_snapchat.png';
+  } else if (snsType == SNSIconType.tiktok && data.tiktok.isNotEmpty) {
     hyperText = data.tiktok;
-    linkType = SNSIconType.TIKTOK;
-  } else if (snsType == SNSIconType.YOUTUBE && data.youtube.isNotEmpty) {
+    linkType = SNSIconType.tiktok;
+    iconImageName = '$path/icon_sns_tiktok.png';
+  } else if (snsType == SNSIconType.youtube && data.youtube.isNotEmpty) {
     hyperText = data.youtube;
-    linkType = SNSIconType.YOUTUBE;
+    linkType = SNSIconType.youtube;
+    iconImageName = '$path/icon_sns_youtube.svg';
     // } else if (snsType == SNSIconType.MAP && data.map.isNotEmpty) {
     //   hyperText = data.map;
     //   linkType = SNSIconType.MAP;
   } else {
     // NONE
     hyperText = '';
-    linkType = SNSIconType.NONE;
+    linkType = SNSIconType.none;
   }
 
-  return SNSInfoResult(linkType, hyperText);
+  return SNSInfoResult(linkType, hyperText, iconImageName);
 }
+

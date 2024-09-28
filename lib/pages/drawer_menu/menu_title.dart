@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:location_shop/common/enums.dart';
-import 'package:location_shop/component/chips_menu.dart';
 
 class MenuTitleWidget extends StatelessWidget {
   const MenuTitleWidget({super.key, required this.title, this.onButtonPressed});

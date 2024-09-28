@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../common/route_arguments.dart';
 import '../../component/top_app_bar_sub.dart';
 
 class FavoriteScreen extends StatefulWidget {
@@ -15,7 +14,7 @@ class FavoriteScreen extends StatefulWidget {
 class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
         backgroundColor: Colors.white,
         appBar: TopAppBarSub(title: "Favorite"),
         body: Text(FavoriteScreen.routeName)

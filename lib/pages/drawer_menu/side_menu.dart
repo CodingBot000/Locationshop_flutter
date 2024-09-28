@@ -22,8 +22,8 @@ class MenuPage extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       child: Column(
         children: [
-          SizedBox(height: 50),
-          MenuTitleWidget(title: MenuTitleList.SURGICAL_PROCEDURE.value),
+          const SizedBox(height: 50),
+          MenuTitleWidget(title: MenuTitleList.surgicalProcedure.value),
           ChipsMenu(
               onButtonPressed: (String chip) {
                 Navigator.pushNamed(
@@ -32,10 +32,10 @@ class MenuPage extends StatelessWidget {
                   arguments: MenuScreenArguments(chip),
                 );
               },
-              mainMenuName: MenuTitleList.SURGICAL_PROCEDURE,
+              mainMenuName: MenuTitleList.surgicalProcedure,
               chipsList: SurgeryResList.namesList()),
-          SizedBox(height: 10),
-          MenuTitleWidget(title: MenuTitleList.COSMETIC_PROCEDURE.value),
+          const SizedBox(height: 10),
+          MenuTitleWidget(title: MenuTitleList.cosmeticProcedure.value),
           ChipsMenu(
               onButtonPressed: (String chip) {
                 Navigator.pushNamed(
@@ -44,10 +44,10 @@ class MenuPage extends StatelessWidget {
                   arguments: MenuScreenArguments(chip),
                 );
               },
-              mainMenuName: MenuTitleList.COSMETIC_PROCEDURE,
+              mainMenuName: MenuTitleList.cosmeticProcedure,
               chipsList: CosmeticResList.namesList()),
-          SizedBox(height: 10),
-          MenuTitleWidget(title: MenuTitleList.LOCATION.value),
+          const SizedBox(height: 10),
+          MenuTitleWidget(title: MenuTitleList.location.value),
           ChipsMenu(
               onButtonPressed: (String location) {
                 LocationChipData? locationData;
@@ -61,7 +61,7 @@ class MenuPage extends StatelessWidget {
                 }
 
                 locationData ??= LocationChipData(
-                      region: LocationNames.APGUJEONG,
+                      region: LocationNames.ApguJeong,
                       isSelected: true);
 
                 Navigator.popAndPushNamed(
@@ -70,21 +70,21 @@ class MenuPage extends StatelessWidget {
                   arguments: MenuScreenLocationArguments(locationData),
                 );
               },
-              mainMenuName: MenuTitleList.LOCATION,
+              mainMenuName: MenuTitleList.location,
               chipsList: LocationNames.namesList()),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           MenuTitleWidget(
-            title: MenuTitleList.FAVORITE.value,
+            title: MenuTitleList.favorite.value,
             onButtonPressed: () =>
                 {Navigator.popAndPushNamed(context, FavoriteScreen.routeName)},
           ),
           MenuTitleWidget(
-            title: MenuTitleList.EVENT.value,
+            title: MenuTitleList.event.value,
             onButtonPressed: () =>
                 {Navigator.popAndPushNamed(context, EventScreen.routeName)},
           ),
           MenuTitleWidget(
-            title: MenuTitleList.ABOUT_US.value,
+            title: MenuTitleList.aboutUs.value,
             onButtonPressed: () =>
                 {Navigator.popAndPushNamed(context, AboutUsScreen.routeName)},
           ),

@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:location_shop/common/enums.dart';
 import 'package:location_shop/data/hospital_data.dart';
 import 'package:location_shop/data/hospital_detail_data.dart';
 import 'package:location_shop/data/hospital_detail_info_desc.dart';
@@ -14,24 +13,16 @@ import '../data/home_banner_data.dart';
 import '../data/surgery_data.dart';
 
 class DataRepository {
-  /**
-   * Home's banner Slider
-   */
+  /// Home's banner Slider
   static List<HomeBannerData> homeBannerDatas = [];
 
-  /**
-   * home's' New Beauty List
-   */
+  /// home's' New Beauty List
   static List<HospitalData> newBeautyList = [];
 
-  /**
-   * home's Location Chips List
-   */
+  /// home's Location Chips List
   static List<LocationChipData> locationChipList = [];
 
-  /**
-   * home's Location Hospital List
-   */
+  /// home's Location Hospital List
   // static List<HospitalData> homeLocationHospitals = [];
   // /**
   //  * Event Datas

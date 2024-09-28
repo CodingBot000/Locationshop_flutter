@@ -1,15 +1,12 @@
-// MenuTitle Enum
 import 'package:location_shop/server/dump_respository.dart';
 
-import 'init_value.dart';
-
 enum MenuTitleList {
-  SURGICAL_PROCEDURE("Surgical procedure"),
-  COSMETIC_PROCEDURE("Cosmetic procedure"),
-  LOCATION("Location"),
-  FAVORITE("Favorite"),
-  EVENT("Event"),
-  ABOUT_US("About Us");
+  surgicalProcedure("Surgical procedure"),
+  cosmeticProcedure("Cosmetic procedure"),
+  location("Location"),
+  favorite("Favorite"),
+  event("Event"),
+  aboutUs("About Us");
 
   final String value;
 
@@ -25,13 +22,13 @@ enum SurgeryResList {
   // PIGMENTATION("surgery_pigmentation"),
   // PORE("surgery_pore"),
   // SKINBOOSTER("surgery_skinbooster");
-  ACNE("acne"),
-  BODY("body"),
-  BOTOX("botox"),
-  LIFTING("lifting"),
-  PIGMENTATION("pigmentation"),
-  PORE("pore"),
-  SKINBOOSTER("skinbooster");
+  acne("acne"),
+  body("body"),
+  botox("botox"),
+  lifting("lifting"),
+  pigmentation("pigmentation"),
+  pore("pore"),
+  skinBooster("skinbooster");
   final String value;
 
   const SurgeryResList(this.value);
@@ -44,11 +41,11 @@ enum SurgeryResList {
 }
 
 enum CosmeticResList {
-  EYES("eyes"),
-  NOSE("nose"),
-  BIMAXILLARY_OPERATION("bimaxillary_operation"),
-  LIPOSUCTION("liposuction"),
-  HAIR_TRANSPLANTATION("hair_transplantation");
+  eyes("eyes"),
+  nose("nose"),
+  bimaxillaryOperation("bimaxillary_operation"),
+  liposuction("liposuction"),
+  hairTransplantation("hair_transplantation");
 
   final String value;
 
@@ -63,24 +60,23 @@ enum CosmeticResList {
 
 // Recommend Menu Enum
 enum RecommendMenu {
-  EVENT("EVENT"),
-  REVIEW("REVIEW"),
-  HOSPITAL("HOSPITAL");
+  event("EVENT"),
+  review("REVIEW"),
+  hospital("HOSPITAL");
 
   final String value;
 
   const RecommendMenu(this.value);
-
 }
 
 // Location Names Enum
 enum LocationNames {
-  APGUJEONG("APGUJEONG"),
-  MYUNGDONG("MYUNGDONG"),
-  GANGNAM("GANGNAM"),
-  CHUNGDAM("CHUNGDAM"),
-  SONGDO("SONGDO"),
-  HONGDAE("HONGDAE");
+  ApguJeong("APGUJEONG"),
+  MyungDong("MYUNGDONG"),
+  GangNam("GANGNAM"),
+  ChungDam("CHUNGDAM"),
+  SongDo("SONGDO"),
+  HongDae("HONGDAE");
 
   static const Map<String, String> locationMap = {
     'APGUJEONG': "0",
@@ -105,17 +101,17 @@ enum LocationNames {
 }
 
 enum SNSIconType {
-  NONE("NONE"),
-  KAKAOTALK("KAKAOTALK"),
-  TEL("TEL"),
-  HOMEPAGE("HOMEPAGE"),
-  INSTAGRAM("INSTAGRAM"),
-  FACEBOOK("FACEBOOK"),
-  BLOG("BLOG"),
-  YOUTUBE("YOUTUBE"),
-  TIKTOK("TIKTOK"),
-  SNAPCHAT("SNAPCHAT"),
-  MAP("MAP");
+  none("NONE"),
+  kakaotalk("KAKAOTALK"),
+  tel("TEL"),
+  homepage("HOMEPAGE"),
+  instagram("INSTAGRAM"),
+  facebook("FACEBOOK"),
+  blog("BLOG"),
+  youtube("YOUTUBE"),
+  tiktok("TIKTOK"),
+  snapchat("SNAPCHAT"),
+  map("MAP");
 
   final String value;
 

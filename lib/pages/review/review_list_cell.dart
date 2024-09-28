@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:location_shop/data/event_data.dart';
-import 'package:location_shop/common/constants.dart';
 import 'package:location_shop/data/review_data.dart';
 
 import '../../common/utils/helper.dart';
@@ -57,7 +55,7 @@ class ReviewListCell extends StatelessWidget {
                       // ),
                       Align(
                         alignment: Alignment.centerRight,
-                        child: Text(SurgeryIdMapper[data.surgeryId] ?? ""),
+                        child: Text(surgeryIdMapper[data.surgeryId] ?? ""),
                       ),
                     ],
                   )

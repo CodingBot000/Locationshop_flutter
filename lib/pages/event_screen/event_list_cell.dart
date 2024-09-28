@@ -41,7 +41,7 @@ class EventListCell extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Text(
                       data.eventName,
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ),
                   const SizedBox(height: 4.0),

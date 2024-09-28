@@ -24,7 +24,7 @@ class _ChipsLocationState extends State<ChipsLocation> {
     super.initState();
     _selectedCurLocationData = widget.selectedCurLocationData ??
         LocationChipData(
-          region: LocationNames.APGUJEONG,
+          region: LocationNames.ApguJeong,
           isSelected: false,
         );
 

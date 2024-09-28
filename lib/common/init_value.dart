@@ -36,7 +36,7 @@ class InitValue {
     DataRepository.locationChipList = LocationNames.values.map((locationName) {
       return LocationChipData(
         region: locationName,
-        isSelected: locationName == LocationNames.APGUJEONG,
+        isSelected: locationName == LocationNames.ApguJeong,
       );
     }).toList();
   }
@@ -122,7 +122,7 @@ class InitValue {
   // Locations Data
   static List<String> getHospitalList(LocationNames location) {
     switch (location) {
-      case LocationNames.APGUJEONG:
+      case LocationNames.ApguJeong:
         return [
           "리원피부과의원",
           "청담에이스의원",
@@ -136,7 +136,7 @@ class InitValue {
           "더3.0피부과의원",
           "압구정 리더스피부과의원"
         ];
-      case LocationNames.MYUNGDONG:
+      case LocationNames.MyungDong:
         return [
           "아비쥬의원",
           "제이디의원",
@@ -147,7 +147,7 @@ class InitValue {
           "더프리티영의원",
           "톡스앤필의원명동점"
         ];
-      case LocationNames.GANGNAM:
+      case LocationNames.GangNam:
         return [
           "디알피부과의원",
           "세알피부과",
@@ -159,7 +159,7 @@ class InitValue {
           "서울에이치피부과의원",
           "예젤의원"
         ];
-      case LocationNames.CHUNGDAM:
+      case LocationNames.ChungDam:
         return [
           "청담피부과의원",
           "CU클린업피부과의원 청담점",
@@ -170,7 +170,7 @@ class InitValue {
           "디오디피부과의원 청담",
           "오가나셀 피부과의원",
         ];
-      case LocationNames.SONGDO:
+      case LocationNames.SongDo:
         return [
           "신사에그의원",
           "청담은피부과의원",
@@ -180,7 +180,7 @@ class InitValue {
           "휴먼피부과의원",
           "리더스피부과 송도점"
         ];
-      case LocationNames.HONGDAE:
+      case LocationNames.HongDae:
         return [
           "홍대예쁨주의쁨의원",
           "홍대 고운세상피부과",

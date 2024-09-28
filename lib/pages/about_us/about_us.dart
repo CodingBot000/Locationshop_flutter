@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:location_shop/component/top_app_bar_sub.dart';
 
-import '../../common/route_arguments.dart';
-
 class AboutUsScreen extends StatefulWidget {
   const AboutUsScreen({super.key});
 
@@ -18,7 +16,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
     // final args = ModalRoute.of(context)!.settings.arguments as MenuScreenArguments;
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: TopAppBarSub(title: "About Us"),
+        appBar: const TopAppBarSub(title: "About Us"),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(18.10),
@@ -26,11 +24,11 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
               children: [
                 Text(
                   title,
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Text(contents,
-                style: TextStyle(fontSize: 15))
+                style: const TextStyle(fontSize: 15))
               ],
             ),
           ),

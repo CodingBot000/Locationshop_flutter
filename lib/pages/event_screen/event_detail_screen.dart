@@ -20,7 +20,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
     EventData data = args.data;
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: TopAppBarSub(title: "Event For You"),
+      appBar: const TopAppBarSub(title: "Event For You"),
       body: SingleChildScrollView(
         child: Expanded(
           child: Column(
@@ -40,7 +40,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                   );
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Padding(

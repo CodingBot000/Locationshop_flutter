@@ -3,13 +3,13 @@ class StaticServerUrlPath {
       "https://tqyarvckzieoraneohvv.supabase.co/storage/v1/object/public/hospitalstatic";
   static const String subpath_images_path = "/staticdata/images/";
   static const String surgeryImgPath =
-      imgOnlinePath_Prefix + subpath_images_path + "surgery";
+      "$imgOnlinePath_Prefix${subpath_images_path}surgery";
   static const String hospitalImgPath =
-      imgOnlinePath_Prefix + subpath_images_path + "hospitalimg";
+      "$imgOnlinePath_Prefix${subpath_images_path}hospitalimg";
   static const String eventsImgPath =
-      imgOnlinePath_Prefix + subpath_images_path + "events";
+      "$imgOnlinePath_Prefix${subpath_images_path}events";
   static const String doctorsImgPath =
-      imgOnlinePath_Prefix + subpath_images_path + "doctors";
+      "$imgOnlinePath_Prefix${subpath_images_path}doctors";
 
   void getPrintResUrlsForDebug() {
     String filteringDebugText = "getPrintResUrlsForDebug-";

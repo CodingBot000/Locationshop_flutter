@@ -57,9 +57,9 @@ class _TabsDetailWidgetState extends State<TabsDetailWidget> with SingleTickerPr
           TabBar(
             controller: tabController,
             tabs: [
-              Tab(text: RecommendMenu.EVENT.value),
-              Tab(text: RecommendMenu.REVIEW.value),
-              Tab(text: RecommendMenu.HOSPITAL.value),
+              Tab(text: RecommendMenu.event.value),
+              Tab(text: RecommendMenu.review.value),
+              Tab(text: RecommendMenu.hospital.value),
             ],
           ),
           Expanded(

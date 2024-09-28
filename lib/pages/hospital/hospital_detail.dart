@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:location_shop/common/constants.dart';
 import 'package:location_shop/component/chips_menu.dart';
 import 'package:location_shop/component/empty_view.dart';
 import 'package:location_shop/component/slider_image.dart';
 import 'package:location_shop/data/hospital_detail_data.dart';
+import 'package:location_shop/pages/hospital/sns_list_widget.dart';
 import 'package:location_shop/pages/hospital/tabs_detail.dart';
-import 'package:location_shop/pages/surgery_info/surgery_info.dart';
 import 'package:location_shop/server/dump_respository.dart';
 
 import '../../common/route_arguments.dart';
@@ -26,25 +25,26 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
   bool isLiked = false;
   bool _isInitialized = false;
   late HospitalData? data;
-  // late HospitalDetail? dataDetail;
+  late HospitalDetail? dataDetail;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (!_isInitialized) {
-      final args = ModalRoute.of(context)!.settings.arguments as HosptialDetailArguments;
+      final args =
+          ModalRoute.of(context)!.settings.arguments as HosptialDetailArguments;
       data = DataRepository.getHospitalInfoById(args.id);
-      // dataDetail = DataRepository.getHospitalDetailInfoById(args.id);
+      dataDetail = DataRepository.getHospitalDetailInfoById(args.id);
       _isInitialized = true;
     }
   }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: TopAppBarSub(
-            title: data?.productName ?? "Hospital Detail",
+          title: data?.productName ?? "Hospital Detail",
           showLikeButton: true,
           isLiked: isLiked,
           onLikePressed: () {
@@ -52,28 +52,30 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
               isLiked = !isLiked;
             });
             if (isLiked) {
-
-            } else {
-
-            }
-          },),
-        body:
-        data == null ? const EmptyView()
-        : Column(
-          children: [
-            SliderImage(imageList: data!.images),
-            ChipsMenu(onButtonPressed: (String chipName) => {
-
-            }, chipsList: data!.surgeries.map(
-                    (data) => SurgeryIdMapper[data] ?? 'Unknown').toList()),
-            Expanded(child: TabsDetailWidget(data: data!))
-          ],
+            } else {}
+          },
         ),
-        floatingActionButton: Column(
+        body: Stack(
           children: [
-            // Image.asset(dataDetail.blog.)
+            data == null
+                ? const EmptyView()
+                : Column(
+                    children: [
+                      SliderImage(imageList: data!.images),
+                      ChipsMenu(
+                          onButtonPressed: (String chipName) => {},
+                          chipsList: data!.surgeries
+                              .map((data) => surgeryIdMapper[data] ?? 'Unknown')
+                              .toList()),
+                      Expanded(child: TabsDetailWidget(data: data!))
+                    ],
+                  ),
+            Positioned(
+              bottom: 16.0,
+              right: 16.0,
+              child: SnsListWidget(detailData: dataDetail!),
+            ),
           ],
-        ),
-    );
+        ));
   }
 }
