@@ -15,8 +15,8 @@ class EventListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<EventData> list = id != null
-        ? DataRepository.getEventDataListById(id!)
-        : DataRepository.getEventAllDatas();
+        ? DataRepository.instance.getEventDataListById(id!)
+        : DataRepository.instance.getEventAllDatas();
 
     return Container(
       child: list.isEmpty

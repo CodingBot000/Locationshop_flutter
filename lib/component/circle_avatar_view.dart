@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CircleAvatarViewWidget extends StatelessWidget {
-  final String fileName;
-
   const CircleAvatarViewWidget({super.key, required this.fileName});
+
+  final String fileName;
 
   @override
   Widget build(BuildContext context) {

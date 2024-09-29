@@ -27,7 +27,6 @@ class DumpServer {
   // Private constructor to prevent external instantiation
   DumpServer._internal() {
     InitValue();
-
     _buildEventData();
     _buildHospitalData();
     _buildHospitalDetailData();
@@ -35,7 +34,6 @@ class DumpServer {
     _buildReviewData();
     _buildSurgeryData();
   }
-
 
   // The single instance of DumpServer
   static final DumpServer _instance = DumpServer._internal();
@@ -107,7 +105,6 @@ class DumpServer {
       );
     }).toList();
     _reviewDataList = updatedReviewDataList;
-
   }
 
   void _buildEventData() {

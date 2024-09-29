@@ -20,7 +20,7 @@ class SurgeryInfo extends StatelessWidget {
     //   title = title.replaceAll('cosmetic_', '');
     // }
 
-    var surgeryData = DataRepository.getSurgeryDataByName(title);
+    var surgeryData = DataRepository.instance.getSurgeryDataByName(title);
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: TopAppBarSub(title: args.menuTitle),

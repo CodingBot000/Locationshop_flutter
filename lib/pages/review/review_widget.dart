@@ -11,7 +11,7 @@ class ReviewWidget extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    List<ReviewData> list = DataRepository.getReviewDataListById(id);
+    List<ReviewData> list = DataRepository.instance.getReviewDataListById(id);
     return list.isEmpty
         ? const EmptyView()
         : ListView.builder(

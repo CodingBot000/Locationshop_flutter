@@ -32,7 +32,7 @@ class _LocationScreenState extends State<LocationScreen> {
       final args = ModalRoute.of(context)!.settings.arguments
           as MenuScreenLocationArguments;
       selectedCurLocationData = args.chipData;
-      gridListByLocation = DataRepository.getHospitalListByLocation(
+      gridListByLocation = DataRepository.instance.getHospitalListByLocation(
           selectedCurLocationData.region.value);
       _isInitialized = true;
     }
@@ -43,7 +43,7 @@ class _LocationScreenState extends State<LocationScreen> {
     void onButtonPressed(LocationChipData chipData) {
       setState(() {
         selectedCurLocationData = chipData;
-        gridListByLocation = DataRepository.getHospitalListByLocation(
+        gridListByLocation = DataRepository.instance.getHospitalListByLocation(
             selectedCurLocationData.region.value);
       });
     }

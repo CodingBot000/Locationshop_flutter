@@ -33,8 +33,8 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
     if (!_isInitialized) {
       final args =
           ModalRoute.of(context)!.settings.arguments as HosptialDetailArguments;
-      data = DataRepository.getHospitalInfoById(args.id);
-      dataDetail = DataRepository.getHospitalDetailInfoById(args.id);
+      data = DataRepository.instance.getHospitalInfoById(args.id);
+      dataDetail = DataRepository.instance.getHospitalDetailInfoById(args.id);
       _isInitialized = true;
     }
   }

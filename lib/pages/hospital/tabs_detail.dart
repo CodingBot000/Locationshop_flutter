@@ -33,8 +33,8 @@ class _TabsDetailWidgetState extends State<TabsDetailWidget> with SingleTickerPr
   @override
   void initState() {
     super.initState();
-    dataDetail = DataRepository.getHospitalDetailInfoById(widget.data.id);
-    descData = DataRepository.getDetailHospitalInfoDescData(widget.data.id);
+    dataDetail = DataRepository.instance.getHospitalDetailInfoById(widget.data.id);
+    descData = DataRepository.instance.getDetailHospitalInfoDescData(widget.data.id);
   }
 
   @override
