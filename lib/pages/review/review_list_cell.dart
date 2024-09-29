@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:location_shop/data/review_data.dart';
+import 'package:location_shop/model/review_data.dart';
 
 import '../../common/utils/helper.dart';
 

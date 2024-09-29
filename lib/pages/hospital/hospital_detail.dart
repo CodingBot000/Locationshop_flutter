@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:location_shop/component/chips_menu.dart';
 import 'package:location_shop/component/empty_view.dart';
 import 'package:location_shop/component/slider_image.dart';
-import 'package:location_shop/data/hospital_detail_data.dart';
+import 'package:location_shop/model/hospital_detail_data.dart';
 import 'package:location_shop/pages/hospital/sns_list_widget.dart';
 import 'package:location_shop/pages/hospital/tabs_detail.dart';
-import 'package:location_shop/server/dump_respository.dart';
+import 'package:location_shop/repository/respository.dart';
 
 import '../../common/route_arguments.dart';
 import '../../common/utils/helper.dart';
 import '../../component/top_app_bar_sub.dart';
-import '../../data/hospital_data.dart';
+import '../../model/hospital_data.dart';
 
 class HospitalDetailScreen extends StatefulWidget {
   const HospitalDetailScreen({super.key});

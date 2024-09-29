@@ -3,7 +3,7 @@ import 'package:location_shop/common/route_arguments.dart';
 import 'package:location_shop/pages/hospital/hospital_detail.dart';
 
 import '../common/constants.dart';
-import '../server/dump_respository.dart';
+import '../repository/respository.dart';
 import 'title_main_and_sub.dart';
 
 class HomeGrid extends StatefulWidget {

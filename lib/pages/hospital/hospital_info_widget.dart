@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:location_shop/component/circle_avatar_view.dart';
-import 'package:location_shop/data/hospital_detail_data.dart';
-import 'package:location_shop/data/hospital_detail_info_desc.dart';
+import 'package:location_shop/model/hospital_detail_data.dart';
+import 'package:location_shop/model/hospital_detail_info_desc.dart';
 
 class HospitalInfoWidget extends StatefulWidget {
   const HospitalInfoWidget({super.key, required this.detaildata, required this.descData});

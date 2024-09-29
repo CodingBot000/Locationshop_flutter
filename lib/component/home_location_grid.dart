@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:location_shop/common/enums.dart';
 import 'package:location_shop/component/chips_location.dart';
-import 'package:location_shop/data/chip_location_data.dart';
-import 'package:location_shop/data/hospital_data.dart';
 import 'package:location_shop/pages/location_screen/location_screen.dart';
 
 import '../common/constants.dart';
 import '../common/route_arguments.dart';
+import '../model/chip_location_data.dart';
+import '../model/hospital_data.dart';
 import '../pages/hospital/hospital_detail.dart';
-import '../server/dump_respository.dart';
+import '../repository/respository.dart';
 import 'title_main_and_sub.dart';
 
 class HomeLocationGrid extends StatefulWidget {

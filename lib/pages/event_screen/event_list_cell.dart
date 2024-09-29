@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:location_shop/data/event_data.dart';
+import 'package:location_shop/model/event_data.dart';
 import 'package:location_shop/common/constants.dart';
 
 class EventListCell extends StatelessWidget {

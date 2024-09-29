@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:location_shop/common/route_arguments.dart';
 import 'package:location_shop/component/chips_menu.dart';
-import 'package:location_shop/data/chip_location_data.dart';
+import 'package:location_shop/model/chip_location_data.dart';
 import 'package:location_shop/pages/about_us/about_us.dart';
 import 'package:location_shop/pages/event_screen/event_screen.dart';
 import 'package:location_shop/pages/favorite_screen/favorite_screen.dart';

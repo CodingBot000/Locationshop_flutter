@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:location_shop/common/route_arguments.dart';
 import 'package:location_shop/component/chips_location.dart';
-import 'package:location_shop/data/chip_location_data.dart';
-import 'package:location_shop/data/hospital_data.dart';
+import 'package:location_shop/model/chip_location_data.dart';
+import 'package:location_shop/model/hospital_data.dart';
 import 'package:location_shop/pages/drawer_menu/menu_title.dart';
 import 'package:location_shop/pages/hospital/hospital_detail.dart';
 
 import '../../common/constants.dart';
 import '../../component/empty_view.dart';
 import '../../component/top_app_bar_sub.dart';
-import '../../server/dump_respository.dart';
+import '../../repository/respository.dart';
 
 class LocationScreen extends StatefulWidget {
   const LocationScreen({super.key});

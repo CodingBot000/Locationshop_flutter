@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:location_shop/data/event_data.dart';
+import 'package:location_shop/model/event_data.dart';
 
 import '../../common/route_arguments.dart';
 import '../../component/top_app_bar_sub.dart';

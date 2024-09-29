@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:location_shop/pages/home.dart';
-import 'package:location_shop/server/dump_respository.dart';
+import 'package:location_shop/repository/respository.dart';
 import 'package:location_shop/common/constants.dart';
 
 import 'common/page_router.dart';

@@ -1,16 +1,16 @@
 import 'dart:math';
 
-import 'package:location_shop/data/hospital_data.dart';
-import 'package:location_shop/data/hospital_detail_data.dart';
-import 'package:location_shop/data/hospital_detail_info_desc.dart';
-import 'package:location_shop/data/review_data.dart';
-import 'package:location_shop/server/dump_server.dart';
+import 'package:location_shop/model/hospital_data.dart';
+import 'package:location_shop/model/hospital_detail_data.dart';
+import 'package:location_shop/model/hospital_detail_info_desc.dart';
+import 'package:location_shop/model/review_data.dart';
+import 'package:location_shop/datasource/data_source.dart';
 
-import '../data/menu_section.dart';
-import '../data/chip_location_data.dart';
-import '../data/event_data.dart';
-import '../data/home_banner_data.dart';
-import '../data/surgery_data.dart';
+import '../model/menu_section.dart';
+import '../model/chip_location_data.dart';
+import '../model/event_data.dart';
+import '../model/home_banner_data.dart';
+import '../model/surgery_data.dart';
 
 class DataRepository {
   /// Home's banner Slider
