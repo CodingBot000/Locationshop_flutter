@@ -1,5 +1,5 @@
 
-import '../../data/hospital_detail_data.dart';
+import '../../model/hospital_detail_data.dart';
 import '../enums.dart';
 
 

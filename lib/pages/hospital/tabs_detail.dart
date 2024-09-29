@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:location_shop/common/enums.dart';
-import 'package:location_shop/data/hospital_detail_data.dart';
-import 'package:location_shop/data/hospital_detail_info_desc.dart';
+import 'package:location_shop/model/hospital_detail_data.dart';
+import 'package:location_shop/model/hospital_detail_info_desc.dart';
 import 'package:location_shop/pages/event_screen/event_list_widget.dart';
 import 'package:location_shop/pages/hospital/hospital_info_widget.dart';
 import 'package:location_shop/pages/review/review_widget.dart';
-import 'package:location_shop/server/dump_respository.dart';
+import 'package:location_shop/repository/respository.dart';
 
 import '../../component/empty_view.dart';
-import '../../data/hospital_data.dart';
+import '../../model/hospital_data.dart';
 
 class TabsDetailWidget extends StatefulWidget {
   const TabsDetailWidget({super.key, required this.data});
@@ -33,8 +33,8 @@ class _TabsDetailWidgetState extends State<TabsDetailWidget> with SingleTickerPr
   @override
   void initState() {
     super.initState();
-    dataDetail = DataRepository.getHospitalDetailInfoById(widget.data.id);
-    descData = DataRepository.getDetailHospitalInfoDescData(widget.data.id);
+    dataDetail = DataRepository.instance.getHospitalDetailInfoById(widget.data.id);
+    descData = DataRepository.instance.getDetailHospitalInfoDescData(widget.data.id);
   }
 
   @override

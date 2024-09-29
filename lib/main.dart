@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:location_shop/pages/home.dart';
-import 'package:location_shop/server/dump_respository.dart';
+import 'package:location_shop/pages/home/home.dart';
+import 'package:location_shop/repository/respository.dart';
 import 'package:location_shop/common/constants.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'common/page_router.dart';
 
 void main() {
   DataRepository();
-  runApp(const MyApp());
+  runApp(ProviderScope(child: MyApp())) ;
 }
 
 class MyApp extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:location_shop/common/enums.dart';
-import 'package:location_shop/data/hospital_detail_data.dart';
+import 'package:location_shop/model/hospital_detail_data.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../common/utils/helper.dart';

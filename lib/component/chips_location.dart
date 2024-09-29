@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:location_shop/data/chip_location_data.dart';
-import 'package:location_shop/server/dump_respository.dart';
+
+import 'package:location_shop/repository/respository.dart';
 
 import '../common/enums.dart';
+import '../model/chip_location_data.dart';
 
 class ChipsLocation extends StatefulWidget {
   const ChipsLocation({super.key, required this.onButtonPressed, this.selectedCurLocationData});

@@ -1,37 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:location_shop/common/enums.dart';
-import 'package:location_shop/component/chips_location.dart';
-import 'package:location_shop/data/chip_location_data.dart';
-import 'package:location_shop/data/hospital_data.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:location_shop/pages/location_screen/location_screen.dart';
 
 import '../common/constants.dart';
 import '../common/route_arguments.dart';
+import '../model/chip_location_data.dart';
+import '../model/hospital_data.dart';
 import '../pages/hospital/hospital_detail.dart';
-import '../server/dump_respository.dart';
-import 'title_main_and_sub.dart';
 
-class HomeLocationGrid extends StatefulWidget {
-  const HomeLocationGrid({super.key});
+class HomeLocationGrid extends ConsumerWidget {
+  // const HomeLocationGrid({super.key});
+  const HomeLocationGrid({super.key, required this.selectedCurLocationData, required this.hosptialList});
 
-  @override
-  State<HomeLocationGrid> createState() => _HomeLocationGridState();
-}
+  final List<HospitalData> hosptialList;
+  final LocationChipData selectedCurLocationData;
 
-class _HomeLocationGridState extends State<HomeLocationGrid> {
-  LocationChipData selectedCurLocationData =
-      LocationChipData(region: LocationNames.ApguJeong, isSelected: false);
-
-  List<HospitalData> hosptialList =
-      DataRepository.getHospitalListByLocation(LocationNames.ApguJeong.value);
-
-  void onButtonPressed(LocationChipData chipData) {
-    setState(() {
-      selectedCurLocationData = chipData;
-      hosptialList = DataRepository.getHospitalListByLocation(
-          selectedCurLocationData.region.value);
-    });
-  }
 
   int getItemCount() {
     if (hosptialList.length >= 6) {
@@ -42,13 +25,10 @@ class _HomeLocationGridState extends State<HomeLocationGrid> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
     return Column(
       children: [
-        const TitleMainAndSub(
-            mainTitle: 'Hospitals', subTitle: 'Choose the region you want'),
-        ChipsLocation(onButtonPressed: onButtonPressed),
-        const SizedBox(height: 5),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -81,7 +61,7 @@ class _HomeLocationGridState extends State<HomeLocationGrid> {
                 onTap: () => {
                   Navigator.pushNamed(context, HospitalDetailScreen.routeName,
                       arguments: HosptialDetailArguments(
-                          DataRepository.newBeautyList[index].id))
+                          hosptialList[index].id))
                 },
                 child: Center(
                   child: Image.asset(

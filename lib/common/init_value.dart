@@ -1,7 +1,7 @@
-import '../data/menu_section.dart';
-import '../data/chip_location_data.dart';
-import '../data/home_banner_data.dart';
-import '../server/dump_respository.dart';
+
+import '../model/chip_location_data.dart';
+import '../model/home_banner_data.dart';
+import '../repository/respository.dart';
 import 'enums.dart';
 
 class InitValue {
@@ -17,8 +17,6 @@ class InitValue {
   InitValue._internal() {
     _bannerListInit();
     // _bannerSliderInit();
-    _menuSubSurgeryInit();
-    _menuSubCosmeticsInit();
     _locationChipListInit();
     _surgeryImgMapsInit();
     _menuMainCategoriesInit();
@@ -94,30 +92,6 @@ class InitValue {
     ];
   }
 
-  // Subcategories
-
-  void _menuSubSurgeryInit() {
-    DataRepository.menuSubSurgery = [
-      SectionSubData(id: 1000, subText: "Eyes"),
-      SectionSubData(id: 1001, subText: "Nose"),
-      SectionSubData(id: 1002, subText: "Bimaxillary operation"),
-      SectionSubData(id: 1003, subText: "Liposuction"),
-      SectionSubData(id: 1004, subText: "Hair transplantation"),
-    ];
-  }
-
-  void _menuSubCosmeticsInit() {
-    DataRepository.menuSubCosmetics = [
-      SectionSubData(id: 0, subText: "Ulthera"),
-      SectionSubData(id: 1, subText: "Thermage"),
-      SectionSubData(id: 2, subText: "InMode"),
-      SectionSubData(id: 3, subText: "Shrink"),
-      SectionSubData(id: 4, subText: "Botox"),
-      SectionSubData(id: 5, subText: "Filler"),
-      SectionSubData(id: 6, subText: "Skinbooster"),
-      SectionSubData(id: 7, subText: "Tune face"),
-    ];
-  }
 
   // Locations Data
   static List<String> getHospitalList(LocationNames location) {

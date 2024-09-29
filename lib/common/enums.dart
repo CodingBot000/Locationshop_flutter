@@ -1,4 +1,4 @@
-import 'package:location_shop/server/dump_respository.dart';
+import 'package:location_shop/repository/respository.dart';
 
 enum MenuTitleList {
   surgicalProcedure("Surgical procedure"),
