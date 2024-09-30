@@ -101,9 +101,8 @@ class DataRepository {
     return list;
   }
 
-  List<HospitalData> getHospitalListByLocation(String currentRegion) {
-    // var hopsitalDatas = DumpServer().getHospitalData();
-    // testGroupBy(hopsitalDatas);
+  Future<List<HospitalData>> getHospitalListByLocation(String currentRegion) async{
+    await Future.delayed(Duration(seconds: delayTime));
       var list = DumpServer().getHospitalData()
           .where((data) => data.region.toLowerCase() == (currentRegion.toLowerCase())).toList();
       return list;
@@ -143,18 +142,10 @@ class DataRepository {
     return DumpServer().getEventData();
   }
   Future<List<EventData>> getEventDataListById(int id) async {
-  // List<EventData> getEventDataListById(int id) {
+    await Future.delayed(Duration(seconds: delayTime));
     var list =  DumpServer().getEventData();
     return list.where((data) => data.hospitalId == id).toList();
   }
-  // List<EventData> getEventAllDatas() {
-  //   return DumpServer().getEventData();
-  // }
-
-  // List<EventData> getEventDataListById(int id) {
-  //   var list =  DumpServer().getEventData();
-  //   return list.where((data) => data.hospitalId == id).toList();
-  // }
 
   List<ReviewData> getReviewAllDatas() {
     return DumpServer().getReviewData();
