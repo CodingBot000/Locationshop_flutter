@@ -52,23 +52,23 @@ class _TabsDetailWidgetState extends State<TabsDetailWidget> with SingleTickerPr
           TabBar(
             controller: tabController,
             tabs: [
-              Tab(text: RecommendMenu.event.value),
-              Tab(text: RecommendMenu.review.value),
               Tab(text: RecommendMenu.hospital.value),
+              Tab(text: RecommendMenu.review.value),
+              Tab(text: RecommendMenu.event.value),
             ],
           ),
           Expanded(
               child: TabBarView(
                 controller: tabController,
                 children: [
-                  EventListWidget(id: widget.data.id),
-                  ReviewWidget(id: widget.data.id),
                   dataDetail == null || descData == null ?
-                      const EmptyView()
-                  : HospitalInfoWidget(
+                  const EmptyView()
+                      : HospitalInfoWidget(
                       detaildata: dataDetail!,
                       descData: descData!
                   ),
+                  ReviewWidget(id: widget.data.id),
+                  EventListWidget(id: widget.data.id),
                 ],
               ),
           ),

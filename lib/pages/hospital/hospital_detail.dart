@@ -71,7 +71,7 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
                     ],
                   ),
             Positioned(
-              bottom: 16.0,
+              bottom: 136.0,
               right: 16.0,
               child: SnsListWidget(snsInfoList: _getDataDetail(dataDetail!)),
             ),

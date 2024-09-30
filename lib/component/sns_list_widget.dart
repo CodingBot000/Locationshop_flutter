@@ -18,7 +18,7 @@ class SnsListWidget extends StatelessWidget {
       children: snsInfoList.map((snsInfo) {
 
         return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: GestureDetector(
             onTap: () async => {
                 print('snsInfo.hyperText: ${snsInfo.hyperText}'),
