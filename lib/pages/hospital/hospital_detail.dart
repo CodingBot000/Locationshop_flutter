@@ -3,7 +3,7 @@ import 'package:location_shop/component/chips_menu.dart';
 import 'package:location_shop/component/empty_view.dart';
 import 'package:location_shop/component/slider_image.dart';
 import 'package:location_shop/model/hospital_detail_data.dart';
-import 'package:location_shop/pages/hospital/sns_list_widget.dart';
+import 'package:location_shop/component/sns_list_widget.dart';
 import 'package:location_shop/pages/hospital/tabs_detail.dart';
 import 'package:location_shop/repository/respository.dart';
 
@@ -73,9 +73,14 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
             Positioned(
               bottom: 16.0,
               right: 16.0,
-              child: SnsListWidget(detailData: dataDetail!),
+              child: SnsListWidget(snsInfoList: _getDataDetail(dataDetail!)),
             ),
           ],
         ));
+  }
+
+  List<SNSInfoResult> _getDataDetail(HospitalDetail detailData) {
+    return getSNSInfoList(detailData);
+
   }
 }
