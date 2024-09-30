@@ -138,14 +138,23 @@ class DataRepository {
     return SurgeryData(id: 999, surgeryName: surgeryName, surgeryImgs: [], surgeryDesc: "Developing...");
   }
 
-  List<EventData> getEventAllDatas() {
+  Future<List<EventData>> getEventAllDatas() async {
+    await Future.delayed(Duration(seconds: delayTime));
     return DumpServer().getEventData();
   }
-
-  List<EventData> getEventDataListById(int id) {
+  Future<List<EventData>> getEventDataListById(int id) async {
+  // List<EventData> getEventDataListById(int id) {
     var list =  DumpServer().getEventData();
     return list.where((data) => data.hospitalId == id).toList();
   }
+  // List<EventData> getEventAllDatas() {
+  //   return DumpServer().getEventData();
+  // }
+
+  // List<EventData> getEventDataListById(int id) {
+  //   var list =  DumpServer().getEventData();
+  //   return list.where((data) => data.hospitalId == id).toList();
+  // }
 
   List<ReviewData> getReviewAllDatas() {
     return DumpServer().getReviewData();

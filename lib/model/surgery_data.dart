@@ -21,16 +21,16 @@ class SurgeryData {
   }
 }
 
-class SurgeryDatas {
+class SurgeryDataResponse {
   final List<SurgeryData> datas;
 
-  SurgeryDatas({required this.datas});
+  SurgeryDataResponse({required this.datas});
 
-  factory SurgeryDatas.fromJson(Map<String, dynamic> json) {
+  factory SurgeryDataResponse.fromJson(Map<String, dynamic> json) {
     var surgeryJson = json['surgery'] as List;
     List<SurgeryData> surgeryList =
         surgeryJson.map((surgery) => SurgeryData.fromJson(surgery)).toList();
 
-    return SurgeryDatas(datas: surgeryList);
+    return SurgeryDataResponse(datas: surgeryList);
   }
 }

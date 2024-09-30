@@ -33,15 +33,15 @@ class EventData {
   }
 }
 
-class EventDatas {
+class EventsResponse {
   final List<EventData> datas;
 
-  EventDatas({required this.datas});
+  EventsResponse({required this.datas});
 
-  factory EventDatas.fromJson(Map<String, dynamic> json) {
+  factory EventsResponse.fromJson(Map<String, dynamic> json) {
     var eventsJson = json['events'] as List;
     List<EventData> eventsList = eventsJson.map((event) => EventData.fromJson(event)).toList();
 
-    return EventDatas(datas: eventsList);
+    return EventsResponse(datas: eventsList);
   }
 }

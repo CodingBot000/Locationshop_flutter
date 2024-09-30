@@ -111,10 +111,10 @@ class DumpServer {
     if (isLocalData) {
       Map<String, dynamic> jsonData =
           jsonDecode(convertLocalData(eventDataJson));
-      _eventDataList = EventDatas.fromJson(jsonData).datas;
+      _eventDataList = EventsResponse.fromJson(jsonData).datas;
     } else {
       Map<String, dynamic> jsonData = jsonDecode(eventDataJson);
-      _eventDataList = EventDatas.fromJson(jsonData).datas;
+      _eventDataList = EventsResponse.fromJson(jsonData).datas;
     }
   }
 
@@ -122,10 +122,10 @@ class DumpServer {
     if (isLocalData) {
       Map<String, dynamic> jsonData =
           jsonDecode(convertLocalData(hospitalDataJson));
-      _hospitalDataList = HospitalDatas.fromJson(jsonData).datas;
+      _hospitalDataList = HospitalDataResponse.fromJson(jsonData).datas;
     } else {
       Map<String, dynamic> jsonData = jsonDecode(hospitalDataJson);
-      _hospitalDataList = HospitalDatas.fromJson(jsonData).datas;
+      _hospitalDataList = HospitalDataResponse.fromJson(jsonData).datas;
     }
   }
 
@@ -133,10 +133,10 @@ class DumpServer {
     if (isLocalData) {
       Map<String, dynamic> jsonData =
           jsonDecode(convertLocalData(hospitalDetailJson));
-      _hospitalDetailDataList = HospitalDetails.fromJson(jsonData).datas;
+      _hospitalDetailDataList = HospitalDetailResponse.fromJson(jsonData).datas;
     } else {
       Map<String, dynamic> jsonData = jsonDecode(hospitalDetailJson);
-      _hospitalDetailDataList = HospitalDetails.fromJson(jsonData).datas;
+      _hospitalDetailDataList = HospitalDetailResponse.fromJson(jsonData).datas;
     }
   }
 
@@ -145,11 +145,11 @@ class DumpServer {
       Map<String, dynamic> jsonData =
           jsonDecode(convertLocalData(detailHospitalInfoDescJson));
       _hospitalDetailInfoDescDataList =
-          DetailHospitalInfoDescList.fromJson(jsonData).datas;
+          DetailHospitalInfoDescResponse.fromJson(jsonData).datas;
     } else {
       Map<String, dynamic> jsonData = jsonDecode(detailHospitalInfoDescJson);
       _hospitalDetailInfoDescDataList =
-          DetailHospitalInfoDescList.fromJson(jsonData).datas;
+          DetailHospitalInfoDescResponse.fromJson(jsonData).datas;
     }
   }
 
@@ -164,11 +164,11 @@ class DumpServer {
       Map<String, dynamic> jsonData =
       jsonDecode(convertLocalData(modifyImgaePathDataJson));
 
-      _reviewDataList = ReviewDatas.fromJson(jsonData).datas;
+      _reviewDataList = ReviewDataResponse.fromJson(jsonData).datas;
       // updateLocalImagePathReview();
     } else {
       Map<String, dynamic> jsonData = jsonDecode(reviewDataJson);
-      _reviewDataList = ReviewDatas.fromJson(jsonData).datas;
+      _reviewDataList = ReviewDataResponse.fromJson(jsonData).datas;
     }
   }
 
@@ -177,10 +177,10 @@ class DumpServer {
     if (isLocalData) {
       Map<String, dynamic> jsonData =
           jsonDecode(convertLocalData(surgeryDataJson));
-      _surgeryDataList = SurgeryDatas.fromJson(jsonData).datas;
+      _surgeryDataList = SurgeryDataResponse.fromJson(jsonData).datas;
     } else {
       Map<String, dynamic> jsonData = jsonDecode(surgeryDataJson);
-      _surgeryDataList = SurgeryDatas.fromJson(jsonData).datas;
+      _surgeryDataList = SurgeryDataResponse.fromJson(jsonData).datas;
     }
   }
 }
