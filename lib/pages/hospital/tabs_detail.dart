@@ -28,12 +28,12 @@ class _TabsDetailWidgetState extends State<TabsDetailWidget> with SingleTickerPr
     animationDuration: const Duration(milliseconds: 800),
   );
   late final DetailHospitalInfoDesc? descData;
-  late final HospitalDetail? dataDetail;
+  late final HospitalDetail? detailData;
 
   @override
   void initState() {
     super.initState();
-    dataDetail = DataRepository.instance.getHospitalDetailInfoById(widget.data.id);
+    detailData = DataRepository.instance.getHospitalDetailInfoById(widget.data.id);
     descData = DataRepository.instance.getDetailHospitalInfoDescData(widget.data.id);
   }
 
@@ -61,10 +61,10 @@ class _TabsDetailWidgetState extends State<TabsDetailWidget> with SingleTickerPr
               child: TabBarView(
                 controller: tabController,
                 children: [
-                  dataDetail == null || descData == null ?
+                  detailData == null || descData == null ?
                   const EmptyView()
                       : HospitalInfoWidget(
-                      detaildata: dataDetail!,
+                      detailData: detailData!,
                       descData: descData!
                   ),
                   ReviewWidget(id: widget.data.id),

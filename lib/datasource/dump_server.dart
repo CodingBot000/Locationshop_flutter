@@ -43,7 +43,7 @@ class DumpServer {
     return _instance;
   }
 
-  List<EventData> getEventData() {
+  Future<List<EventData>> getEventData() async {
     if (_eventDataList.isEmpty) {
       _buildEventData();
     }

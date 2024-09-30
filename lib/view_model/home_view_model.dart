@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:location_shop/common/enums.dart';
 import 'package:location_shop/model/hospital_data.dart';
+import 'package:location_shop/repository/repository_newbeauty.dart';
 import 'package:location_shop/repository/respository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../model/chip_location_data.dart';
+import '../repository/repository_by_location.dart';
 
 class HomePageState {
   final AsyncValue<List<HospitalData>> hospitalDatasNewBeauty;
@@ -43,13 +45,23 @@ class HomePageState {
 
 final hospitalViewModelProvider =
     StateNotifierProvider<HomeViewModel, HomePageState>((ref) {
-  return HomeViewModel(DataRepository());
+  return HomeViewModel(
+      DataRepository(),
+      RepositoryByLocation(),
+      RepositoryNewBeauty(),
+  );
 });
 
 class HomeViewModel extends StateNotifier<HomePageState> {
   final DataRepository _repository;
+  final RepositoryByLocation _repositoryByLocation;
+  final RepositoryNewBeauty _repositoryNewBeauty;
 
-  HomeViewModel(this._repository) : super(HomePageState.initial()) {
+  HomeViewModel(
+      this._repository,
+      this._repositoryByLocation,
+      this._repositoryNewBeauty,
+      ) : super(HomePageState.initial()) {
     fetchNewBeautyData();
     fetchHospitalDataByLocation(LocationNames.ApguJeong.value);
   }
@@ -63,7 +75,7 @@ class HomeViewModel extends StateNotifier<HomePageState> {
     try {
       state =
           state.copyWith(hospitalDatasNewBeauty: const AsyncValue.loading());
-      final data = await _repository.getNewBeautyDatas();
+      final data = await _repositoryNewBeauty.getNewBeautyDatas();
       state = state.copyWith(hospitalDatasNewBeauty: AsyncValue.data(data));
     } catch (e, stack) {
       state =
@@ -76,7 +88,7 @@ class HomeViewModel extends StateNotifier<HomePageState> {
       state =
           state.copyWith(hospitalDatasByLocation: const AsyncValue.loading());
       final data =
-          await _repository.getHospitalListByLocationAsync(locationName);
+          await _repositoryByLocation.getHospitalListByLocation(locationName);
       state = state.copyWith(hospitalDatasByLocation: AsyncValue.data(data));
     } catch (e, stack) {
       state =

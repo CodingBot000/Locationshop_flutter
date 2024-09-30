@@ -4,6 +4,8 @@ class Constants {
   static double screenWidth = 0;
   static const int GRID_NUM = 2;
   static const double GRID_RATIO = 1;
+
+  static const delayTime = 2;
 }
 
 class Dimens {

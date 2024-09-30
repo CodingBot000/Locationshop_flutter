@@ -4,6 +4,7 @@ import 'package:location_shop/repository/respository.dart';
 import '../common/enums.dart';
 import '../model/chip_location_data.dart';
 import '../model/hospital_data.dart';
+import '../repository/repository_by_location.dart';
 
 class LocationScreenPageState {
   final AsyncValue<List<HospitalData>> hospitalDatasByLocation;
@@ -36,13 +37,11 @@ class LocationScreenPageState {
 
 final locationViewModelProvider =
     StateNotifierProvider<LocationViewModel, LocationScreenPageState>((ref) {
-  return LocationViewModel(DataRepository());
+  return LocationViewModel(RepositoryByLocation());
 });
 
 class LocationViewModel extends StateNotifier<LocationScreenPageState> {
-  final DataRepository _repository;
-
-  // final int _id;
+  final RepositoryByLocation _repository;
 
   LocationViewModel(this._repository)
       : super(LocationScreenPageState.initial()) {}
@@ -58,7 +57,7 @@ class LocationViewModel extends StateNotifier<LocationScreenPageState> {
           hospitalDatasByLocation: const AsyncValue.loading(),
           selectLocationButton: state.selectLocationButton);
       final data =
-          await _repository.getHospitalListByLocationAsync(locationName);
+          await _repository.getHospitalListByLocation(locationName);
       state = state.copyWith(
           hospitalDatasByLocation: AsyncValue.data(data),
           selectLocationButton: state.selectLocationButton);

@@ -4,8 +4,9 @@ import 'package:location_shop/model/hospital_data.dart';
 import 'package:location_shop/model/hospital_detail_data.dart';
 import 'package:location_shop/model/hospital_detail_info_desc.dart';
 import 'package:location_shop/model/review_data.dart';
-import 'package:location_shop/datasource/data_source.dart';
+import 'package:location_shop/datasource/dump_server.dart';
 
+import '../common/constants.dart';
 import '../model/menu_section.dart';
 import '../model/chip_location_data.dart';
 import '../model/event_data.dart';
@@ -16,30 +17,14 @@ class DataRepository {
   /// Home's banner Slider
   static List<HomeBannerData> homeBannerDatas = [];
 
-  /// home's' New Beauty List
-  static List<HospitalData> newBeautyList = [];
-
   /// home's Location Chips List
   static List<LocationChipData> locationChipList = [];
 
-  /// home's Location Hospital List
-  // static List<HospitalData> homeLocationHospitals = [];
-  // /**
-  //  * Event Datas
-  //  */
-  // static List<String> eventDatas = [];
-  //
   static Map<String, String> surgeryImgMaps = {};
-
-  // static List<String> bannerSliders = [];
-  static List<String> menuMainCategories = [];
-  static List<SectionSubData> menuSubCosmetics = [];
-  static List<SectionSubData> menuSubSurgery = [];
 
   DataRepository._internal() {
     DumpServer();
 
-    // _buildNewBeautyDatas();
   }
 
   // The single instance of DumpServer
@@ -51,32 +36,6 @@ class DataRepository {
     return _instance;
   }
   static DataRepository get instance => _instance;
-
-  static const delayTime = 2;
-  Future<List<HospitalData>> getNewBeautyDatas() async {
-    await Future.delayed(Duration(seconds: delayTime));
-    List<HospitalData> hospitalDatas = DumpServer().getHospitalData();
-    Random random = Random();
-    Set<int> randomIndices = {};
-    while (randomIndices.length < 6) {
-      randomIndices.add(
-          random.nextInt(hospitalDatas.length));
-    }
-    return randomIndices.map((index) => hospitalDatas[index]).toList();
-    // newBeautyList = randomIndices.map((index) => hospitalDatas[index]).toList();
-  }
-
-  // void _buildNewBeautyDatas() {
-  //
-  //   List<HospitalData> hospitalDatas = DumpServer().getHospitalData();
-  //   Random random = Random();
-  //   Set<int> randomIndices = {};
-  //   while (randomIndices.length < 6) {
-  //     randomIndices.add(
-  //         random.nextInt(hospitalDatas.length)); // 0부터 리스트 크기 - 1까지 랜덤한 인덱스 생성
-  //   }
-  //   newBeautyList = randomIndices.map((index) => hospitalDatas[index]).toList();
-  // }
 
   HospitalData? getHospitalInfoById(int id) {
     try {
@@ -94,19 +53,6 @@ class DataRepository {
     }
   }
 
-  Future<List<HospitalData>> getHospitalListByLocationAsync(String currentRegion) async {
-    await Future.delayed(Duration(seconds: delayTime));
-    var list = DumpServer().getHospitalData()
-        .where((data) => data.region.toLowerCase() == (currentRegion.toLowerCase())).toList();
-    return list;
-  }
-
-  Future<List<HospitalData>> getHospitalListByLocation(String currentRegion) async{
-    await Future.delayed(Duration(seconds: delayTime));
-      var list = DumpServer().getHospitalData()
-          .where((data) => data.region.toLowerCase() == (currentRegion.toLowerCase())).toList();
-      return list;
-    }
   testGroupBy(List<HospitalData> hospitalList) {
       Map<String, int> regionCounts = {};
 
@@ -137,16 +83,16 @@ class DataRepository {
     return SurgeryData(id: 999, surgeryName: surgeryName, surgeryImgs: [], surgeryDesc: "Developing...");
   }
 
-  Future<List<EventData>> getEventAllDatas() async {
-    await Future.delayed(Duration(seconds: delayTime));
-    return DumpServer().getEventData();
-  }
-  Future<List<EventData>> getEventDataListById(int id) async {
-    await Future.delayed(Duration(seconds: delayTime));
-    var list =  DumpServer().getEventData();
-    return list.where((data) => data.hospitalId == id).toList();
-  }
-
+  // Future<List<ReviewData>> getReviewAllDatas() async {
+  //   await Future.delayed(Duration(seconds: Constants.delayTime));
+  //   return DumpServer().getReviewData();
+  // }
+  //
+  // Future<List<ReviewData>> getReviewDataListById(int id) async {
+  //   await Future.delayed(Duration(seconds: Constants.delayTime));
+  //   var list =  DumpServer().getReviewData();
+  //   return list.where((data) => data.hospitalId == id).toList();
+  // }
   List<ReviewData> getReviewAllDatas() {
     return DumpServer().getReviewData();
   }

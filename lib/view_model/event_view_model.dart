@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:location_shop/model/event_data.dart';
+import 'package:location_shop/repository/repository_event.dart';
 import 'package:location_shop/repository/respository.dart';
 
 class EventScreenPageState {
@@ -27,10 +28,10 @@ class EventScreenPageState {
 final eventViewModelProviderFamily =
   StateNotifierProvider.family<EventViewModel, EventScreenPageState, int?>(
         (ref, id) {
-      return EventViewModel(DataRepository(), id);
+      return EventViewModel(RepositoryEvent(), id);
     });
 class EventViewModel extends StateNotifier<EventScreenPageState> {
-  final DataRepository _repository;
+  final RepositoryEvent _repository;
   final int? _id;
 
   EventViewModel(this._repository, this._id) : super(EventScreenPageState.initial()) {

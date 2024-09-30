@@ -82,8 +82,7 @@ class _LocationScreenState extends ConsumerState<LocationScreen> {
                                         Navigator.pushNamed(context,
                                             HospitalDetailScreen.routeName,
                                             arguments: HosptialDetailArguments(
-                                                DataRepository
-                                                    .newBeautyList[index].id))
+                                                data[index].id))
                                       },
                                       child: Center(
                                         child: Image.asset(

@@ -4,10 +4,9 @@ import 'package:location_shop/model/hospital_detail_data.dart';
 import 'package:location_shop/model/hospital_detail_info_desc.dart';
 
 class HospitalInfoWidget extends StatefulWidget {
-  const HospitalInfoWidget({super.key, required this.detaildata, required this.descData});
+  const HospitalInfoWidget({super.key, required this.detailData, required this.descData});
 
-  // final HospitalData data;
-  final HospitalDetail detaildata;
+  final HospitalDetail detailData;
   final DetailHospitalInfoDesc descData;
 
   @override
@@ -64,8 +63,11 @@ class _HospitalInfoWidgetState extends State<HospitalInfoWidget> {
     style: TextStyle(fontSize: fonstSizeTitle, fontWeight: FontWeight.bold)
   );
 
-  Widget _subDetail(String content) => Text(
-    content,
-    style: TextStyle(fontSize: fonstSizeContent),
-  );
+  Widget _subDetail(String content) => Padding(
+      padding: const EdgeInsets.only(left:10, right:20, top:10, bottom:15),
+      child: Text(
+        content,
+        style: TextStyle(fontSize: fonstSizeContent),
+      )
+    );
 }

@@ -25,7 +25,7 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
   bool isLiked = false;
   bool _isInitialized = false;
   late HospitalData? data;
-  late HospitalDetail? dataDetail;
+  late HospitalDetail? detailData;
 
   @override
   void didChangeDependencies() {
@@ -34,7 +34,7 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
       final args =
           ModalRoute.of(context)!.settings.arguments as HosptialDetailArguments;
       data = DataRepository.instance.getHospitalInfoById(args.id);
-      dataDetail = DataRepository.instance.getHospitalDetailInfoById(args.id);
+      detailData = DataRepository.instance.getHospitalDetailInfoById(args.id);
       _isInitialized = true;
     }
   }
@@ -73,13 +73,13 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
             Positioned(
               bottom: 136.0,
               right: 16.0,
-              child: SnsListWidget(snsInfoList: _getDataDetail(dataDetail!)),
+              child: SnsListWidget(snsInfoList: _getDetailData(detailData!)),
             ),
           ],
         ));
   }
 
-  List<SNSInfoResult> _getDataDetail(HospitalDetail detailData) {
+  List<SNSInfoResult> _getDetailData(HospitalDetail detailData) {
     return getSNSInfoList(detailData);
 
   }
