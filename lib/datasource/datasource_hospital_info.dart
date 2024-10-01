@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:location_shop/common/constants.dart';
-import 'package:location_shop/datasource/dump_server.dart';
+import 'package:location_shop/server/dump_server.dart';
 import 'package:location_shop/model/hospital_detail_data.dart';
 import 'package:location_shop/model/review_data.dart';
 import 'package:location_shop/model/surgery_data.dart';

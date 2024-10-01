@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:location_shop/datasource/dump_server.dart';
+import 'package:location_shop/server/dump_server.dart';
 import 'package:location_shop/presentation/home/home_screen.dart';
 
 import 'package:location_shop/common/constants.dart';
