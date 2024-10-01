@@ -4,7 +4,7 @@ import 'package:location_shop/model/hospital_data.dart';
 import 'package:location_shop/pages/hospital/hospital_detail.dart';
 
 import '../common/constants.dart';
-import '../repository/respository.dart';
+
 import 'title_main_and_sub.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

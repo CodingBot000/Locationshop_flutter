@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:location_shop/model/event_data.dart';
 import 'package:location_shop/repository/repository_event.dart';
-import 'package:location_shop/repository/respository.dart';
+
 
 class EventScreenPageState {
   final AsyncValue<List<EventData>> eventDataList;

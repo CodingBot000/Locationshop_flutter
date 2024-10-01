@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:location_shop/common/init_value.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../repository/respository.dart';
-
 class SliderBanner extends StatefulWidget {
   const SliderBanner({super.key});
 

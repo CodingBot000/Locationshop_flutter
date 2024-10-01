@@ -3,7 +3,7 @@ import 'package:location_shop/component/empty_view.dart';
 import 'package:location_shop/model/event_data.dart';
 import 'package:location_shop/pages/event_screen/event_detail_screen.dart';
 import 'package:location_shop/pages/event_screen/event_list_cell.dart';
-import 'package:location_shop/repository/respository.dart';
+
 import 'package:location_shop/view_model/event_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../common/route_arguments.dart';

@@ -10,7 +10,6 @@ import 'package:location_shop/view_model/location_view_model.dart';
 import '../../common/constants.dart';
 import '../../component/empty_view.dart';
 import '../../component/top_app_bar_sub.dart';
-import '../../repository/respository.dart';
 
 class LocationScreen extends ConsumerStatefulWidget {
   static const routeName = '/location';

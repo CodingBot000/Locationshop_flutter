@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:location_shop/model/hospital_detail_data.dart';
 import 'package:location_shop/model/hospital_detail_info_desc.dart';
 import 'package:location_shop/repository/repository_hospital_detail.dart';
-import 'package:location_shop/repository/respository.dart';
+
 
 import '../common/enums.dart';
 import '../model/chip_location_data.dart';

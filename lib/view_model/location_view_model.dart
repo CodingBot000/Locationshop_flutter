@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:location_shop/repository/respository.dart';
+
 
 import '../common/enums.dart';
 import '../model/chip_location_data.dart';

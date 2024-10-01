@@ -1,5 +1,4 @@
 import 'package:location_shop/common/init_value.dart';
-import 'package:location_shop/repository/respository.dart';
 
 enum MenuTitleList {
   surgicalProcedure("Surgical procedure"),
@@ -14,15 +13,8 @@ enum MenuTitleList {
   const MenuTitleList(this.value);
 }
 
-// Surgery Resource Enum
 enum SurgeryResList {
-  // ACNE("surgery_acne"),
-  // BODY("surgery_body"),
-  // BOTOX("surgery_botox"),
-  // LIFTING("surgery_lifting"),
-  // PIGMENTATION("surgery_pigmentation"),
-  // PORE("surgery_pore"),
-  // SKINBOOSTER("surgery_skinbooster");
+
   acne("acne"),
   body("body"),
   botox("botox"),

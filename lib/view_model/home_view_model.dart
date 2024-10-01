@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:location_shop/common/enums.dart';
 import 'package:location_shop/model/hospital_data.dart';
 import 'package:location_shop/repository/repository_newbeauty.dart';
-import 'package:location_shop/repository/respository.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../model/chip_location_data.dart';

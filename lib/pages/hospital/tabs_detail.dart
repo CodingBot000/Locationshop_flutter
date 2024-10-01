@@ -6,7 +6,7 @@ import 'package:location_shop/model/hospital_detail_info_desc.dart';
 import 'package:location_shop/pages/event_screen/event_list_widget.dart';
 import 'package:location_shop/pages/hospital/hospital_info_widget.dart';
 import 'package:location_shop/pages/review/review_widget.dart';
-import 'package:location_shop/repository/respository.dart';
+
 import 'package:location_shop/view_model/hospitaldetail_view_model.dart';
 
 import '../../component/empty_view.dart';

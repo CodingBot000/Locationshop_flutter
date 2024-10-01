@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:location_shop/common/init_value.dart';
 
-import 'package:location_shop/repository/respository.dart';
-
 import '../common/enums.dart';
 import '../model/chip_location_data.dart';
 
