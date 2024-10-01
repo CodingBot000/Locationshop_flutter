@@ -12,3 +12,9 @@ I am converting Android/iOS apps to Flutter.
 It is also possible for me to convert Flutter apps to Android/iOS.
 </br>
 Android, iOS, Flutter, and React can all be converted to each other.
+
+
+
+## Tech stack
+- Dart, RiverPod
+- MVVM Architecture  [ presentation - viewmodel - repository - datasource - server (local) ]
