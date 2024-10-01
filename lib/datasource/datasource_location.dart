@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:location_shop/common/constants.dart';
 import 'package:location_shop/datasource/dump_server.dart';
 import 'package:location_shop/model/hospital_detail_data.dart';
 import 'package:location_shop/model/review_data.dart';
@@ -18,8 +19,7 @@ import '../server/jsondata/hospital_detail_desc_json.dart';
 
 class DataSourceLocation {
   Future<List<HospitalData>> getHospitalListByLocation(String currentRegion) async {
-    var list = DumpServer().getHospitalData()
-        .where((data) => data.region.toLowerCase() == (currentRegion.toLowerCase())).toList();
-    return list;
+    await Future.delayed(const Duration(seconds: Constants.delayTime));
+    return await DumpServer().getHospitalListByLocation(currentRegion);
   }
 }

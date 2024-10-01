@@ -2,59 +2,79 @@ import 'package:flutter/material.dart';
 import 'package:location_shop/component/circle_avatar_view.dart';
 import 'package:location_shop/model/hospital_detail_data.dart';
 import 'package:location_shop/model/hospital_detail_info_desc.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class HospitalInfoWidget extends StatefulWidget {
-  const HospitalInfoWidget({super.key, required this.detailData, required this.descData});
+import '../../view_model/hospitaldetail_view_model.dart';
 
-  final HospitalDetail detailData;
-  final DetailHospitalInfoDesc descData;
+class HospitalInfoWidget extends ConsumerStatefulWidget {
+  const HospitalInfoWidget({super.key, required this.id});
+
+  final int id;
 
   @override
-  State<HospitalInfoWidget> createState() => _HospitalInfoWidgetState();
+  _HospitalInfoWidgetState createState() => _HospitalInfoWidgetState();
 }
 
 
-class _HospitalInfoWidgetState extends State<HospitalInfoWidget> {
+class _HospitalInfoWidgetState extends ConsumerState<HospitalInfoWidget> {
   final double fonstSizeTitle = 20;
   final double fonstSizeContent = 13;
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final viewModel = ref.read(hospitalDetailViewModelProvider.notifier);
+      viewModel.getDetailHospitalInfoDescData(widget.id);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final pageState = ref.watch(hospitalDetailViewModelProvider);
+    final detailHospitalInfoDesc = pageState.detailHospitalInfoDesc;
+
     const double infoPadding = 10;
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(18.10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _title("Address"),
-          _subDetail(widget.descData.descAddress),
-          const SizedBox(height: infoPadding),
+    return detailHospitalInfoDesc.when(
+      data: (data) {
+        return SingleChildScrollView(
+          padding: const EdgeInsets.all(18.10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _title("Address"),
+              _subDetail(detailHospitalInfoDesc.value!.descAddress),
+              const SizedBox(height: infoPadding),
 
-          _title("Opening Hour"),
-          _subDetail(widget.descData.openingHour),
-          const SizedBox(height: infoPadding),
+              _title("Opening Hour"),
+              _subDetail(detailHospitalInfoDesc.value!.openingHour),
+              const SizedBox(height: infoPadding),
 
-          _title("Facilities"),
-          _subDetail(widget.descData.facilities),
-          const SizedBox(height: infoPadding),
+              _title("Facilities"),
+              _subDetail(detailHospitalInfoDesc.value!.facilities),
+              const SizedBox(height: infoPadding),
 
-          if (widget.descData.etc.isNotEmpty) ...[
-            _title("etc"),
-            _subDetail(widget.descData.etc),
-          ],
-          const SizedBox(height: infoPadding),
+              if (detailHospitalInfoDesc.value!.etc.isNotEmpty) ...[
+                _title("etc"),
+                _subDetail(detailHospitalInfoDesc.value!.etc),
+              ],
+              const SizedBox(height: infoPadding),
 
-          if (widget.descData.doctors.isNotEmpty) ...[
-            _title("doctors"),
-            Wrap(
-              spacing: 10,
-              children: widget.descData.doctors
-                  .map((data) => CircleAvatarViewWidget(fileName: data))
-                  .toList(),
-            ),
-          ],
-        ],
-      ),
+              if (detailHospitalInfoDesc.value!.doctors.isNotEmpty) ...[
+                _title("doctors"),
+                Wrap(
+                  spacing: 10,
+                  children: detailHospitalInfoDesc.value!.doctors
+                      .map((data) => CircleAvatarViewWidget(fileName: data))
+                      .toList(),
+                ),
+              ],
+            ],
+          ),
+        );
+      },loading: () => Center(child: CircularProgressIndicator()),
+      error: (error, stack) =>
+          Center(child: Text('Error HomeGridWidget: $error')),
     );
   }
 

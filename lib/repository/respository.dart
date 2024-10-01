@@ -37,22 +37,6 @@ class DataRepository {
   }
   static DataRepository get instance => _instance;
 
-  HospitalData? getHospitalInfoById(int id) {
-    try {
-      return DumpServer().getHospitalData().firstWhere((data) => data.id == id);
-    } catch (e) {
-      return null;
-    }
-  }
-
-  HospitalDetail? getHospitalDetailInfoById(int id) {
-    try {
-      return DumpServer().getHospitalDetailData().firstWhere((data) => data.id == id);
-    } catch (e) {
-      return null;
-    }
-  }
-
   testGroupBy(List<HospitalData> hospitalList) {
       Map<String, int> regionCounts = {};
 
@@ -84,30 +68,22 @@ class DataRepository {
   }
 
   // Future<List<ReviewData>> getReviewAllDatas() async {
-  //   await Future.delayed(Duration(seconds: Constants.delayTime));
+  //   await Future.delayed(const Duration(seconds: Constants.delayTime));
   //   return DumpServer().getReviewData();
   // }
   //
   // Future<List<ReviewData>> getReviewDataListById(int id) async {
-  //   await Future.delayed(Duration(seconds: Constants.delayTime));
+  //   await Future.delayed(const Duration(seconds: Constants.delayTime));
   //   var list =  DumpServer().getReviewData();
   //   return list.where((data) => data.hospitalId == id).toList();
   // }
   List<ReviewData> getReviewAllDatas() {
-    return DumpServer().getReviewData();
+    return DumpServer().getReviewDataAllList();
   }
 
   List<ReviewData> getReviewDataListById(int id) {
-    var list =  DumpServer().getReviewData();
+    var list =  DumpServer().getReviewDataAllList();
     return list.where((data) => data.hospitalId == id).toList();
   }
 
-  DetailHospitalInfoDesc? getDetailHospitalInfoDescData(int id) {
-    var list =  DumpServer().getDetailHospitalInfoDescData();
-    // var data = list.firstWhere((data) => data.id == id);
-    DetailHospitalInfoDesc? data = list.firstWhere((data) => data.id == id);
-    return data;
-    // return DumpServer().getDetailHospitalInfoDescData()
-    //     .firstWhere((data) => data.id == id);
-  }
 }

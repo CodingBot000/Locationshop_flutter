@@ -9,6 +9,7 @@ import 'package:location_shop/server/jsondata/hospital_detail_json.dart';
 import 'package:location_shop/server/jsondata/review_data_json.dart';
 import 'package:location_shop/server/jsondata/surgery_data_json.dart';
 
+import '../common/constants.dart';
 import '../common/init_value.dart';
 import '../model/event_data.dart';
 import '../model/hospital_data.dart';
@@ -18,6 +19,7 @@ import '../server/jsondata/hospital_detail_desc_json.dart';
 
 class DataSourceEvent {
   Future<List<EventData>> getEventData() async {
-    return DumpServer().getEventData();
+    await Future.delayed(const Duration(seconds: Constants.delayTime));
+    return DumpServer().getEventDataAllList();
   }
 }

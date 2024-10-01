@@ -6,7 +6,7 @@ import 'package:location_shop/repository/respository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../model/chip_location_data.dart';
-import '../repository/repository_by_location.dart';
+import '../repository/repository_location.dart';
 
 class HomePageState {
   final AsyncValue<List<HospitalData>> hospitalDatasNewBeauty;
@@ -46,19 +46,16 @@ class HomePageState {
 final hospitalViewModelProvider =
     StateNotifierProvider<HomeViewModel, HomePageState>((ref) {
   return HomeViewModel(
-      DataRepository(),
       RepositoryByLocation(),
       RepositoryNewBeauty(),
   );
 });
 
 class HomeViewModel extends StateNotifier<HomePageState> {
-  final DataRepository _repository;
   final RepositoryByLocation _repositoryByLocation;
   final RepositoryNewBeauty _repositoryNewBeauty;
 
   HomeViewModel(
-      this._repository,
       this._repositoryByLocation,
       this._repositoryNewBeauty,
       ) : super(HomePageState.initial()) {

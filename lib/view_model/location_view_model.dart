@@ -4,7 +4,7 @@ import 'package:location_shop/repository/respository.dart';
 import '../common/enums.dart';
 import '../model/chip_location_data.dart';
 import '../model/hospital_data.dart';
-import '../repository/repository_by_location.dart';
+import '../repository/repository_location.dart';
 
 class LocationScreenPageState {
   final AsyncValue<List<HospitalData>> hospitalDatasByLocation;

@@ -7,8 +7,9 @@ import '../model/hospital_data.dart';
 
 class RepositoryNewBeauty {
   final DataSourceNewBeauty _dataSourceNewBeauty = DataSourceNewBeauty();
-
   Future<List<HospitalData>> getNewBeautyDatas() async {
+    await Future.delayed(const Duration(seconds: Constants.delayTime));
     return await _dataSourceNewBeauty.getNewBeautyDatas();
   }
 }
+

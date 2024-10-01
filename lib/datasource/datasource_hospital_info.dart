@@ -18,16 +18,32 @@ import '../server/jsondata/event_data_json.dart';
 import '../server/jsondata/hospital_data_json.dart';
 import '../server/jsondata/hospital_detail_desc_json.dart';
 
-class DataSourceNewBeauty {
-  Future<List<HospitalData>> getNewBeautyDatas() async {
+class DataSourceHospitalInfo {
+
+  Future<HospitalData?> getHospitalInfoById(int id) async {
     await Future.delayed(const Duration(seconds: Constants.delayTime));
-    List<HospitalData> hospitalDatas = await DumpServer().getHospitalDataAllList();
-    Random random = Random();
-    Set<int> randomIndices = {};
-    while (randomIndices.length < 6) {
-      randomIndices.add(
-          random.nextInt(hospitalDatas.length));
+    try {
+      return await DumpServer().getHospitalDataById(id);
+    } catch (e) {
+      return null;
     }
-    return randomIndices.map((index) => hospitalDatas[index]).toList();
+  }
+
+  Future<HospitalDetail?> getHospitalDetailInfoById(int id) async {
+    await Future.delayed(const Duration(seconds: Constants.delayTime));
+    try {
+      return await DumpServer().getHospitalDetailDataById(id);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<HospitalDetailInfoDesc?> getDetailHospitalInfoDescData(int id) async {
+    await Future.delayed(const Duration(seconds: Constants.delayTime));
+    try {
+      return await DumpServer().getDetailHospitalInfoDescDataById(id);
+    } catch (e) {
+      return null;
+    }
   }
 }

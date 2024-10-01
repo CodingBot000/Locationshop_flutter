@@ -7,7 +7,6 @@ import '../model/hospital_data.dart';
 class RepositoryByLocation {
   final DataSourceLocation _dataSourceLocation = DataSourceLocation();
   Future<List<HospitalData>> getHospitalListByLocation(String currentRegion) async {
-    await Future.delayed(const Duration(seconds: Constants.delayTime));
     return await _dataSourceLocation.getHospitalListByLocation(currentRegion);
   }
 }

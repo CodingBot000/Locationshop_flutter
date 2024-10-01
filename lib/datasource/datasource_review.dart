@@ -18,16 +18,16 @@ import '../server/jsondata/event_data_json.dart';
 import '../server/jsondata/hospital_data_json.dart';
 import '../server/jsondata/hospital_detail_desc_json.dart';
 
-class DataSourceNewBeauty {
-  Future<List<HospitalData>> getNewBeautyDatas() async {
+class DataSourceReview {
+
+  Future<List<ReviewData>> getReviewAllDataList() async {
     await Future.delayed(const Duration(seconds: Constants.delayTime));
-    List<HospitalData> hospitalDatas = await DumpServer().getHospitalDataAllList();
-    Random random = Random();
-    Set<int> randomIndices = {};
-    while (randomIndices.length < 6) {
-      randomIndices.add(
-          random.nextInt(hospitalDatas.length));
-    }
-    return randomIndices.map((index) => hospitalDatas[index]).toList();
+    return DumpServer().getReviewDataAllList();
+  }
+
+  Future<List<ReviewData>> getReviewDataListById(int id) async {
+    await Future.delayed(const Duration(seconds: Constants.delayTime));
+    var list =  DumpServer().getReviewDataAllList();
+    return list.where((data) => data.hospitalId == id).toList();
   }
 }
