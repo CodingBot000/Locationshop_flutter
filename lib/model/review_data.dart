@@ -28,15 +28,15 @@ class ReviewData {
   }
 }
 
-class ReviewDatas {
+class ReviewDataResponse {
   final List<ReviewData> datas;
 
-  ReviewDatas({required this.datas});
+  ReviewDataResponse({required this.datas});
 
-  factory ReviewDatas.fromJson(Map<String, dynamic> json) {
+  factory ReviewDataResponse.fromJson(Map<String, dynamic> json) {
     var reviewsJson = json['reviews'] as List;
     List<ReviewData> reviewList = reviewsJson.map((review) => ReviewData.fromJson(review)).toList();
 
-    return ReviewDatas(datas: reviewList);
+    return ReviewDataResponse(datas: reviewList);
   }
 }

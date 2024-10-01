@@ -4,8 +4,9 @@ import 'package:location_shop/model/hospital_data.dart';
 import 'package:location_shop/model/hospital_detail_data.dart';
 import 'package:location_shop/model/hospital_detail_info_desc.dart';
 import 'package:location_shop/model/review_data.dart';
-import 'package:location_shop/datasource/data_source.dart';
+import 'package:location_shop/datasource/dump_server.dart';
 
+import '../common/constants.dart';
 import '../model/menu_section.dart';
 import '../model/chip_location_data.dart';
 import '../model/event_data.dart';
@@ -16,30 +17,14 @@ class DataRepository {
   /// Home's banner Slider
   static List<HomeBannerData> homeBannerDatas = [];
 
-  /// home's' New Beauty List
-  static List<HospitalData> newBeautyList = [];
-
   /// home's Location Chips List
   static List<LocationChipData> locationChipList = [];
 
-  /// home's Location Hospital List
-  // static List<HospitalData> homeLocationHospitals = [];
-  // /**
-  //  * Event Datas
-  //  */
-  // static List<String> eventDatas = [];
-  //
   static Map<String, String> surgeryImgMaps = {};
-
-  // static List<String> bannerSliders = [];
-  static List<String> menuMainCategories = [];
-  static List<SectionSubData> menuSubCosmetics = [];
-  static List<SectionSubData> menuSubSurgery = [];
 
   DataRepository._internal() {
     DumpServer();
 
-    // _buildNewBeautyDatas();
   }
 
   // The single instance of DumpServer
@@ -52,62 +37,6 @@ class DataRepository {
   }
   static DataRepository get instance => _instance;
 
-  static const delayTime = 2;
-  Future<List<HospitalData>> getNewBeautyDatas() async {
-    await Future.delayed(Duration(seconds: delayTime));
-    List<HospitalData> hospitalDatas = DumpServer().getHospitalData();
-    Random random = Random();
-    Set<int> randomIndices = {};
-    while (randomIndices.length < 6) {
-      randomIndices.add(
-          random.nextInt(hospitalDatas.length));
-    }
-    return randomIndices.map((index) => hospitalDatas[index]).toList();
-    // newBeautyList = randomIndices.map((index) => hospitalDatas[index]).toList();
-  }
-
-  // void _buildNewBeautyDatas() {
-  //
-  //   List<HospitalData> hospitalDatas = DumpServer().getHospitalData();
-  //   Random random = Random();
-  //   Set<int> randomIndices = {};
-  //   while (randomIndices.length < 6) {
-  //     randomIndices.add(
-  //         random.nextInt(hospitalDatas.length)); // 0부터 리스트 크기 - 1까지 랜덤한 인덱스 생성
-  //   }
-  //   newBeautyList = randomIndices.map((index) => hospitalDatas[index]).toList();
-  // }
-
-  HospitalData? getHospitalInfoById(int id) {
-    try {
-      return DumpServer().getHospitalData().firstWhere((data) => data.id == id);
-    } catch (e) {
-      return null;
-    }
-  }
-
-  HospitalDetail? getHospitalDetailInfoById(int id) {
-    try {
-      return DumpServer().getHospitalDetailData().firstWhere((data) => data.id == id);
-    } catch (e) {
-      return null;
-    }
-  }
-
-  Future<List<HospitalData>> getHospitalListByLocationAsync(String currentRegion) async {
-    await Future.delayed(Duration(seconds: delayTime));
-    var list = DumpServer().getHospitalData()
-        .where((data) => data.region.toLowerCase() == (currentRegion.toLowerCase())).toList();
-    return list;
-  }
-
-  List<HospitalData> getHospitalListByLocation(String currentRegion) {
-    // var hopsitalDatas = DumpServer().getHospitalData();
-    // testGroupBy(hopsitalDatas);
-      var list = DumpServer().getHospitalData()
-          .where((data) => data.region.toLowerCase() == (currentRegion.toLowerCase())).toList();
-      return list;
-    }
   testGroupBy(List<HospitalData> hospitalList) {
       Map<String, int> regionCounts = {};
 
@@ -138,30 +67,23 @@ class DataRepository {
     return SurgeryData(id: 999, surgeryName: surgeryName, surgeryImgs: [], surgeryDesc: "Developing...");
   }
 
-  List<EventData> getEventAllDatas() {
-    return DumpServer().getEventData();
-  }
-
-  List<EventData> getEventDataListById(int id) {
-    var list =  DumpServer().getEventData();
-    return list.where((data) => data.hospitalId == id).toList();
-  }
-
+  // Future<List<ReviewData>> getReviewAllDatas() async {
+  //   await Future.delayed(const Duration(seconds: Constants.delayTime));
+  //   return DumpServer().getReviewData();
+  // }
+  //
+  // Future<List<ReviewData>> getReviewDataListById(int id) async {
+  //   await Future.delayed(const Duration(seconds: Constants.delayTime));
+  //   var list =  DumpServer().getReviewData();
+  //   return list.where((data) => data.hospitalId == id).toList();
+  // }
   List<ReviewData> getReviewAllDatas() {
-    return DumpServer().getReviewData();
+    return DumpServer().getReviewDataAllList();
   }
 
   List<ReviewData> getReviewDataListById(int id) {
-    var list =  DumpServer().getReviewData();
+    var list =  DumpServer().getReviewDataAllList();
     return list.where((data) => data.hospitalId == id).toList();
   }
 
-  DetailHospitalInfoDesc? getDetailHospitalInfoDescData(int id) {
-    var list =  DumpServer().getDetailHospitalInfoDescData();
-    // var data = list.firstWhere((data) => data.id == id);
-    DetailHospitalInfoDesc? data = list.firstWhere((data) => data.id == id);
-    return data;
-    // return DumpServer().getDetailHospitalInfoDescData()
-    //     .firstWhere((data) => data.id == id);
-  }
 }

@@ -16,10 +16,9 @@ class InitValue {
 // Private constructor to prevent external instantiation
   InitValue._internal() {
     _bannerListInit();
-    // _bannerSliderInit();
     _locationChipListInit();
     _surgeryImgMapsInit();
-    _menuMainCategoriesInit();
+
   }
 
   // The single instance of DumpServer
@@ -79,19 +78,6 @@ class InitValue {
       '$imageSurgery/surgery_skinbooster.png',
     ];
   }
-
-  // Main Categories
-  void _menuMainCategoriesInit() {
-    DataRepository.menuMainCategories = [
-      MainMenuName.SURGICAL_PROCEDURE,
-      MainMenuName.COSMETIC_PROCEDURE,
-      MainMenuName.LOCATION,
-      MainMenuName.FAVORITE,
-      MainMenuName.EVENT,
-      MainMenuName.ABOUT_US,
-    ];
-  }
-
 
   // Locations Data
   static List<String> getHospitalList(LocationNames location) {

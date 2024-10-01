@@ -19,7 +19,7 @@ class DumpServer {
   late final List<EventData> _eventDataList;
   late final List<HospitalData> _hospitalDataList;
   late final List<HospitalDetail> _hospitalDetailDataList;
-  late final List<DetailHospitalInfoDesc> _hospitalDetailInfoDescDataList;
+  late final List<HospitalDetailInfoDesc> _hospitalDetailInfoDescDataList;
   late final List<ReviewData> _reviewDataList;
   late final List<SurgeryData> _surgeryDataList;
   final isLocalData = true;
@@ -43,35 +43,64 @@ class DumpServer {
     return _instance;
   }
 
-  List<EventData> getEventData() {
+  Future<List<EventData>> getEventDataAllList() async {
     if (_eventDataList.isEmpty) {
       _buildEventData();
     }
     return _eventDataList;
   }
 
-  List<HospitalData> getHospitalData() {
+  Future<HospitalData> getHospitalDataById(int id) async {
+    if (_hospitalDataList.isEmpty) {
+      _buildHospitalData();
+    }
+    return _hospitalDataList.firstWhere((data) => data.id == id, orElse: null);
+  }
+
+  Future<List<HospitalData>> getHospitalDataAllList() async {
     if (_hospitalDataList.isEmpty) {
       _buildHospitalData();
     }
     return _hospitalDataList;
   }
 
-  List<HospitalDetail> getHospitalDetailData() {
+  Future<List<HospitalDetail?>> getHospitalDetailDataAllList() async {
     if (_hospitalDetailDataList.isEmpty) {
       _buildHospitalDetailData();
     }
     return _hospitalDetailDataList;
   }
 
-  List<DetailHospitalInfoDesc> getDetailHospitalInfoDescData() {
+  Future<HospitalDetail?> getHospitalDetailDataById(int id) async {
+    if (_hospitalDetailDataList.isEmpty) {
+      _buildHospitalDetailData();
+    }
+    return _hospitalDetailDataList.firstWhere((data) => data.id == id,
+        orElse: null);
+  }
+
+  Future<List<HospitalDetailInfoDesc>> getHospitalInfoDescData() async {
     if (_hospitalDetailInfoDescDataList.isEmpty) {
       _buildHospitalDetailInfoDescData();
     }
     return _hospitalDetailInfoDescDataList;
   }
 
-  List<ReviewData> getReviewData() {
+  Future<HospitalDetailInfoDesc?> getDetailHospitalInfoDescDataById(
+      int id) async {
+    if (_hospitalDetailInfoDescDataList.isEmpty) {
+      _buildHospitalDetailInfoDescData();
+    }
+    return _hospitalDetailInfoDescDataList.firstWhere((data) => data.id == id,
+        orElse: null);
+  }
+
+  Future<List<HospitalData>> getHospitalListByLocation(String currentRegion) async {
+    var list = await getHospitalDataAllList();
+    list.where((data) => data.region.toLowerCase() == (currentRegion.toLowerCase())).toList();
+    return list;
+  }
+  List<ReviewData> getReviewDataAllList() {
     if (_reviewDataList.isEmpty) {
       _buildReviewData();
     }
@@ -92,7 +121,6 @@ class DumpServer {
     return convertStr;
   }
 
-
   void updateLocalImagePathReview() {
     List<ReviewData> updatedReviewDataList = _reviewDataList.map((review) {
       return ReviewData(
@@ -107,80 +135,83 @@ class DumpServer {
     _reviewDataList = updatedReviewDataList;
   }
 
+  ///
+  /// prepare server dump data
+  ///
   void _buildEventData() {
     if (isLocalData) {
       Map<String, dynamic> jsonData =
-          jsonDecode(convertLocalData(eventDataJson));
-      _eventDataList = EventDatas.fromJson(jsonData).datas;
+      jsonDecode(convertLocalData(eventDataJson));
+      _eventDataList = EventsResponse.fromJson(jsonData).datas;
     } else {
       Map<String, dynamic> jsonData = jsonDecode(eventDataJson);
-      _eventDataList = EventDatas.fromJson(jsonData).datas;
+      _eventDataList = EventsResponse.fromJson(jsonData).datas;
     }
   }
+
 
   void _buildHospitalData() {
     if (isLocalData) {
       Map<String, dynamic> jsonData =
-          jsonDecode(convertLocalData(hospitalDataJson));
-      _hospitalDataList = HospitalDatas.fromJson(jsonData).datas;
+      jsonDecode(convertLocalData(hospitalDataJson));
+      _hospitalDataList = HospitalDataResponse.fromJson(jsonData).datas;
     } else {
       Map<String, dynamic> jsonData = jsonDecode(hospitalDataJson);
-      _hospitalDataList = HospitalDatas.fromJson(jsonData).datas;
+      _hospitalDataList = HospitalDataResponse.fromJson(jsonData).datas;
     }
   }
 
   void _buildHospitalDetailData() {
     if (isLocalData) {
       Map<String, dynamic> jsonData =
-          jsonDecode(convertLocalData(hospitalDetailJson));
-      _hospitalDetailDataList = HospitalDetails.fromJson(jsonData).datas;
+      jsonDecode(convertLocalData(hospitalDetailJson));
+      _hospitalDetailDataList = HospitalDetailResponse.fromJson(jsonData).datas;
     } else {
       Map<String, dynamic> jsonData = jsonDecode(hospitalDetailJson);
-      _hospitalDetailDataList = HospitalDetails.fromJson(jsonData).datas;
+      _hospitalDetailDataList = HospitalDetailResponse.fromJson(jsonData).datas;
     }
   }
 
   void _buildHospitalDetailInfoDescData() {
     if (isLocalData) {
       Map<String, dynamic> jsonData =
-          jsonDecode(convertLocalData(detailHospitalInfoDescJson));
+      jsonDecode(convertLocalData(detailHospitalInfoDescJson));
       _hospitalDetailInfoDescDataList =
-          DetailHospitalInfoDescList.fromJson(jsonData).datas;
+          DetailHospitalInfoDescResponse.fromJson(jsonData).datas;
     } else {
       Map<String, dynamic> jsonData = jsonDecode(detailHospitalInfoDescJson);
       _hospitalDetailInfoDescDataList =
-          DetailHospitalInfoDescList.fromJson(jsonData).datas;
+          DetailHospitalInfoDescResponse.fromJson(jsonData).datas;
     }
   }
 
   void _buildReviewData() {
     if (isLocalData) {
-
       RegExp regExp = RegExp(r'review_.*?\.(png|jpg|jpeg)');
       // 모든 매치를 찾아서 변환
-      String modifyImgaePathDataJson = reviewDataJson.replaceAllMapped(regExp, (match) {
+      String modifyImgaePathDataJson =
+      reviewDataJson.replaceAllMapped(regExp, (match) {
         return 'assets/images/reviews/${match.group(0)}';
       });
       Map<String, dynamic> jsonData =
       jsonDecode(convertLocalData(modifyImgaePathDataJson));
 
-      _reviewDataList = ReviewDatas.fromJson(jsonData).datas;
+      _reviewDataList = ReviewDataResponse.fromJson(jsonData).datas;
       // updateLocalImagePathReview();
     } else {
       Map<String, dynamic> jsonData = jsonDecode(reviewDataJson);
-      _reviewDataList = ReviewDatas.fromJson(jsonData).datas;
+      _reviewDataList = ReviewDataResponse.fromJson(jsonData).datas;
     }
   }
-
 
   void _buildSurgeryData() {
     if (isLocalData) {
       Map<String, dynamic> jsonData =
-          jsonDecode(convertLocalData(surgeryDataJson));
-      _surgeryDataList = SurgeryDatas.fromJson(jsonData).datas;
+      jsonDecode(convertLocalData(surgeryDataJson));
+      _surgeryDataList = SurgeryDataResponse.fromJson(jsonData).datas;
     } else {
       Map<String, dynamic> jsonData = jsonDecode(surgeryDataJson);
-      _surgeryDataList = SurgeryDatas.fromJson(jsonData).datas;
+      _surgeryDataList = SurgeryDataResponse.fromJson(jsonData).datas;
     }
   }
 }

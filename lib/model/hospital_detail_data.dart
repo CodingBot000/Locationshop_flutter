@@ -45,15 +45,15 @@ class HospitalDetail {
   }
 }
 
-class HospitalDetails {
+class HospitalDetailResponse {
   final List<HospitalDetail> datas;
 
-  HospitalDetails({required this.datas});
+  HospitalDetailResponse({required this.datas});
 
-  factory HospitalDetails.fromJson(Map<String, dynamic> json) {
+  factory HospitalDetailResponse.fromJson(Map<String, dynamic> json) {
     var detailsJson = json['details'] as List;
     List<HospitalDetail> detailList = detailsJson.map((detail) => HospitalDetail.fromJson(detail)).toList();
 
-    return HospitalDetails(datas: detailList);
+    return HospitalDetailResponse(datas: detailList);
   }
 }

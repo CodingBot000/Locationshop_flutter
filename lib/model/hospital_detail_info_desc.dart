@@ -1,4 +1,4 @@
-class DetailHospitalInfoDesc {
+class HospitalDetailInfoDesc {
   final int id;
   final List<String> doctors;
   final String descAddress;
@@ -6,7 +6,7 @@ class DetailHospitalInfoDesc {
   final String facilities;
   final String etc;
 
-  DetailHospitalInfoDesc({
+  HospitalDetailInfoDesc({
     required this.id,
     required this.doctors,
     required this.descAddress,
@@ -15,8 +15,8 @@ class DetailHospitalInfoDesc {
     required this.etc,
   });
 
-  factory DetailHospitalInfoDesc.fromJson(Map<String, dynamic> json) {
-    return DetailHospitalInfoDesc(
+  factory HospitalDetailInfoDesc.fromJson(Map<String, dynamic> json) {
+    return HospitalDetailInfoDesc(
       id: json['id'],
       doctors: List<String>.from(json['doctors']),
       descAddress: json['descAddress'],
@@ -27,15 +27,15 @@ class DetailHospitalInfoDesc {
   }
 }
 
-class DetailHospitalInfoDescList {
-  final List<DetailHospitalInfoDesc> datas;
+class DetailHospitalInfoDescResponse {
+  final List<HospitalDetailInfoDesc> datas;
 
-  DetailHospitalInfoDescList({required this.datas});
+  DetailHospitalInfoDescResponse({required this.datas});
 
-  factory DetailHospitalInfoDescList.fromJson(Map<String, dynamic> json) {
+  factory DetailHospitalInfoDescResponse.fromJson(Map<String, dynamic> json) {
     var detailsJson = json['detailsdesc'] as List;
-    List<DetailHospitalInfoDesc> detailList = detailsJson.map((detail) => DetailHospitalInfoDesc.fromJson(detail)).toList();
+    List<HospitalDetailInfoDesc> detailList = detailsJson.map((detail) => HospitalDetailInfoDesc.fromJson(detail)).toList();
 
-    return DetailHospitalInfoDescList(datas: detailList);
+    return DetailHospitalInfoDescResponse(datas: detailList);
   }
 }

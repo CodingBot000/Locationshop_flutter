@@ -29,14 +29,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// void Test() {
-//   List<EventData> test1 = DumpServer().getEventData();
-//   List<HospitalData> test2 = DumpServer().getHospitalData();
-//   List<HospitalDetail> test3 = DumpServer().getHospitalDetailData();
-//   List<DetailHospitalInfoDesc> test4 = DumpServer().getDetailHospitalInfoDescData();
-//   List<ReviewData> test5 = DumpServer().getReviewData();
-//   List<SurgeryData> test6 = DumpServer().getSurgeryData();
-//
-//   print("aaaA");
-// }

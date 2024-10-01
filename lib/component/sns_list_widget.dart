@@ -4,23 +4,21 @@ import 'package:location_shop/common/enums.dart';
 import 'package:location_shop/model/hospital_detail_data.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../common/utils/helper.dart';
+import '../common/utils/helper.dart';
 
 class SnsListWidget extends StatelessWidget {
-  const SnsListWidget({super.key, required this.detailData});
-
-  final HospitalDetail detailData;
+  const SnsListWidget({super.key, required this.snsInfoList});
+  final List<SNSInfoResult> snsInfoList;
 
   @override
   Widget build(BuildContext context) {
-    final List<SNSInfoResult> snsList = getSNSInfoList(detailData);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: snsList.map((snsInfo) {
+      children: snsInfoList.map((snsInfo) {
 
         return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: GestureDetector(
             onTap: () async => {
                 print('snsInfo.hyperText: ${snsInfo.hyperText}'),
