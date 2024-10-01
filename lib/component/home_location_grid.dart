@@ -9,16 +9,14 @@ import '../model/hospital_data.dart';
 import '../pages/hospital/hospital_detail.dart';
 
 class HomeLocationGrid extends ConsumerWidget {
-  // const HomeLocationGrid({super.key});
   const HomeLocationGrid({super.key, required this.selectedCurLocationData, required this.hosptialList});
 
   final List<HospitalData> hosptialList;
   final LocationChipData selectedCurLocationData;
 
-
   int getItemCount() {
-    if (hosptialList.length >= 6) {
-      return 6;
+    if (hosptialList.length >= Constants.GRID_MAX_COUNT) {
+      return Constants.GRID_MAX_COUNT;
     } else {
       return hosptialList.length;
     }
@@ -29,22 +27,22 @@ class HomeLocationGrid extends ConsumerWidget {
 
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            GestureDetector(
-              onTap: () => {
-                Navigator.pushNamed(context, LocationScreen.routeName,
-                    arguments:
-                        MenuScreenLocationArguments(selectedCurLocationData))
-              },
-              child: const Text(
-                "See All >",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ],
-        ),
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.end,
+        //   children: [
+        //     GestureDetector(
+        //       onTap: () => {
+        //         Navigator.pushNamed(context, LocationScreen.routeName,
+        //             arguments:
+        //             MenuScreenLocationArguments(selectedCurLocationData))
+        //       },
+        //       child: const Text(
+        //         "See All >",
+        //         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        //       ),
+        //     ),
+        //   ],
+        // ),
         const SizedBox(height: 10),
         GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
@@ -80,7 +78,9 @@ class HomeLocationGrid extends ConsumerWidget {
                 ),
               );
             }),
+
       ],
     );
+
   }
 }

@@ -1,19 +1,21 @@
 
+import '../datasource/dump_server.dart';
 import '../model/chip_location_data.dart';
 import '../model/home_banner_data.dart';
+import '../model/surgery_data.dart';
 import '../repository/respository.dart';
 import 'enums.dart';
 
 class InitValue {
-  // static late final List<LocationChipData> locationChipList;
-  // static late final Map<String, String> surgeryImgMaps;
-  // static late final List<HomeBannerData> homeBannerData;
-  // static late final List<String> bannerSliders;
-  // static late final List<String> menuMainCategories;
-  // static late final List<SectionSubData> menuSubCosmetics;
-  // static late final List<SectionSubData> menuSubSurgery;
 
-// Private constructor to prevent external instantiation
+  /// Home's banner Slider
+  static List<HomeBannerData> homeBannerDatas = [];
+
+  /// home's Location Chips List
+  static List<LocationChipData> locationChipList = [];
+
+  static Map<String, String> surgeryImgMaps = {};
+
   InitValue._internal() {
     _bannerListInit();
     _locationChipListInit();
@@ -29,8 +31,26 @@ class InitValue {
     return _instance;
   }
 
+  static SurgeryData getSurgeryDataByName(String surgeryName) {
+    var list = DumpServer().getSurgeryData();
+    for (var data in list) {
+      if (surgeryName.toLowerCase().replaceAll(" ", "").contains(
+          data.surgeryName.toLowerCase().replaceAll(" ", ""))
+      ) {
+        if (data.surgeryImgs.isNotEmpty) {
+          if (!data.surgeryImgs[0].contains('assets/images/surger')) {
+            data.surgeryImgs[0] =
+            "assets/images/surgery/${data.surgeryImgs[0]}";
+          }
+        }
+        return data;
+      }
+    }
+    return SurgeryData(id: 999, surgeryName: surgeryName, surgeryImgs: [], surgeryDesc: "Developing...");
+  }
+
   void _locationChipListInit() {
-    DataRepository.locationChipList = LocationNames.values.map((locationName) {
+    locationChipList = LocationNames.values.map((locationName) {
       return LocationChipData(
         region: locationName,
         isSelected: locationName == LocationNames.ApguJeong,
@@ -39,7 +59,7 @@ class InitValue {
   }
 
   void _surgeryImgMapsInit() {
-    DataRepository.surgeryImgMaps = {
+    surgeryImgMaps = {
       "surgery_acne": "path/to/surgery_acne.png",
       "surgery_body": "path/to/surgery_body.png",
       "surgery_botox": "path/to/surgery_botox.png",
@@ -54,7 +74,7 @@ class InitValue {
   void _bannerListInit() {
     List<String> bannerSlideImage = _bannerSliderInit();
     SurgeryResList.values.asMap().forEach((index, surgeryRes) {
-      DataRepository.homeBannerDatas.add(HomeBannerData(
+      homeBannerDatas.add(HomeBannerData(
         id: index,
         urlImg: bannerSlideImage[index],
         name: surgeryRes.name,

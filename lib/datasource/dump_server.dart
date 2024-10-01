@@ -100,7 +100,8 @@ class DumpServer {
     list.where((data) => data.region.toLowerCase() == (currentRegion.toLowerCase())).toList();
     return list;
   }
-  List<ReviewData> getReviewDataAllList() {
+
+  Future<List<ReviewData>> getReviewDataAllList() async {
     if (_reviewDataList.isEmpty) {
       _buildReviewData();
     }

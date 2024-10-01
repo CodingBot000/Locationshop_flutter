@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:location_shop/common/init_value.dart';
 
 import 'package:location_shop/repository/respository.dart';
 
@@ -17,7 +18,7 @@ class ChipsLocation extends StatefulWidget {
 
 class _ChipsLocationState extends State<ChipsLocation> {
   int? _value = 0;
-  List<LocationChipData> locationChipsList = DataRepository.locationChipList;
+  List<LocationChipData> locationChipsList = InitValue.locationChipList;
   late LocationChipData _selectedCurLocationData;
 
   @override

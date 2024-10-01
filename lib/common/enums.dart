@@ -1,3 +1,4 @@
+import 'package:location_shop/common/init_value.dart';
 import 'package:location_shop/repository/respository.dart';
 
 enum MenuTitleList {
@@ -33,7 +34,7 @@ enum SurgeryResList {
 
   const SurgeryResList(this.value);
 
-  String get imagePath => DataRepository.surgeryImgMaps[value] ?? "";
+  String get imagePath => InitValue.surgeryImgMaps[value] ?? "";
 
   static List<String> namesList() {
     return SurgeryResList.values.map((data) => data.value).toList();
@@ -51,7 +52,7 @@ enum CosmeticResList {
 
   const CosmeticResList(this.value);
 
-  String get imagePath => DataRepository.surgeryImgMaps[value] ?? "";
+  String get imagePath => InitValue.surgeryImgMaps[value] ?? "";
 
   static List<String> namesList() {
     return CosmeticResList.values.map((data) => data.value).toList();

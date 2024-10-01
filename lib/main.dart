@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:location_shop/datasource/dump_server.dart';
 import 'package:location_shop/pages/home/home.dart';
 import 'package:location_shop/repository/respository.dart';
 import 'package:location_shop/common/constants.dart';
@@ -6,8 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'common/page_router.dart';
 
 void main() {
-  DataRepository();
-  runApp(ProviderScope(child: MyApp())) ;
+  DumpServer();
+  runApp(const ProviderScope(child: MyApp())) ;
 }
 
 class MyApp extends StatelessWidget {

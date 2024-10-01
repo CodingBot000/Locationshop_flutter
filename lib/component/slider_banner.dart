@@ -1,5 +1,6 @@
 import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:location_shop/common/init_value.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../repository/respository.dart';
@@ -29,9 +30,9 @@ class _SliderBannerState extends State<SliderBanner> {
             activeIndex = index;
           }),
         ),
-        itemCount: DataRepository.homeBannerDatas.length,
+        itemCount: InitValue.homeBannerDatas.length,
         itemBuilder: (context, index, realIndex) {
-          final path = DataRepository.homeBannerDatas[index].urlImg;
+          final path = InitValue.homeBannerDatas[index].urlImg;
           return imageSlider(path, index);
         },
       ),
@@ -64,7 +65,7 @@ class _SliderBannerState extends State<SliderBanner> {
       alignment: Alignment.bottomCenter,
       child: AnimatedSmoothIndicator(
         activeIndex: activeIndex,
-        count: DataRepository.homeBannerDatas.length,
+        count: InitValue.homeBannerDatas.length,
         effect: JumpingDotEffect(
             dotHeight: 6,
             dotWidth: 6,

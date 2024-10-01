@@ -12,8 +12,10 @@ import 'package:location_shop/pages/auth/login_screen.dart';
 import 'package:location_shop/view_model/home_view_model.dart';
 
 import '../../common/constants.dart';
+import '../../common/route_arguments.dart';
 import '../../component/footer_view.dart';
 import '../drawer_menu/side_menu.dart';
+import '../location_screen/location_screen.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -44,43 +46,87 @@ class HomePage extends ConsumerWidget {
             const SliderBanner(),
             const SizedBox(height: 40),
             Padding(
-                padding: const EdgeInsets.only(
-                    left: Dimens.home_grid_horizontal_padding,
-                    right: Dimens.home_grid_horizontal_padding),
-                child: Column(
-                  children: [
-                    homePageState.hospitalDatasNewBeauty.when(
-                      data: (data) {
-                        return HomeGridWidget(hospitalDatas: data);
-                      },
-                      loading: () => Center(child: CircularProgressIndicator()),
-                      error: (error, stack) =>
-                          Center(child: Text('Error HomeGridWidget: $error')),
+              padding: const EdgeInsets.only(
+                  left: Dimens.home_grid_horizontal_padding,
+                  right: Dimens.home_grid_horizontal_padding),
+              child: Column(
+                children: [
+                  homePageState.hospitalDatasNewBeauty.when(
+                    data: (data) {
+                      return HomeGridWidget(hospitalDatas: data);
+                    },
+                    loading: () => Center(child: CircularProgressIndicator()),
+                    error: (error, stack) =>
+                        Center(child: Text('Error HomeGridWidget: $error')),
+                  ),
+                  const SizedBox(height: 40),
+                  const TitleMainAndSub(
+                      mainTitle: 'Hospitals',
+                      subTitle: 'Choose the region you want'),
+                  ChipsLocation(
+                      onButtonPressed: (LocationChipData selectChipData) =>
+                          {viewModel.selectLocationChipData(selectChipData)}),
+                  const SizedBox(height: 5),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () => {
+                          Navigator.pushNamed(context, LocationScreen.routeName,
+                              arguments:
+                              MenuScreenLocationArguments(homePageState.selectLocationButton.value!))
+                        },
+                        child: const Text(
+                          "See All >",
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: HomeFixedDimens().getGridHeight(), // Ensure the Stack has a fixed height
+                    width: double.infinity,
+                    child: Stack(
+                      children: [
+                        // Background view occupying space for 6 items
+                        Container(
+                          // height: 400,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            // color: Colors.grey.shade200,
+                            // Example background color
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          // Optional: Add any widgets you want in the background
+                          // child: Center(
+                          //   child: Text(
+                          //     'Background Placeholder',
+                          //     style: TextStyle(
+                          //         color: Colors.grey.shade400, fontSize: 16),
+                          //   ),
+                          // ),
+                        ),
+                        homePageState.hospitalDatasByLocation.when(
+                          data: (data) {
+                            return HomeLocationGrid(
+                              selectedCurLocationData:
+                                  homePageState.selectLocationButton.value!,
+                              hosptialList: data,
+                            );
+                          },
+                          loading: () =>
+                              Center(child: CircularProgressIndicator()),
+                          error: (error, stack) => Center(
+                              child: Text('Error HomeLocationGrid : $error')),
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 40),
-                    const TitleMainAndSub(
-                        mainTitle: 'Hospitals',
-                        subTitle: 'Choose the region you want'),
-                    ChipsLocation(
-                        onButtonPressed: (LocationChipData selectChipData) =>
-                            {viewModel.selectLocationChipData(selectChipData)}),
-                    const SizedBox(height: 5),
-                    homePageState.hospitalDatasByLocation.when(
-                      data: (data) {
-                        return HomeLocationGrid(
-                          selectedCurLocationData:
-                              homePageState.selectLocationButton.value!,
-                          hosptialList: data,
-                        );
-                      },
-                      loading: () => Center(child: CircularProgressIndicator()),
-                      error: (error, stack) => Center(
-                          child: Text('Error HomeLocationGrid : $error')),
-                    ),
-                  ],
-                )),
-            const SizedBox(height: 20),
-            const FooterView()
+                  ),
+                  const SizedBox(height: 20),
+                  const FooterView()
+                ],
+              ),
+            ),
           ],
         ),
       ),

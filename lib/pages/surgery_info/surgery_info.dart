@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:location_shop/repository/respository.dart';
 
+import '../../common/init_value.dart';
 import '../../common/route_arguments.dart';
 import '../../component/top_app_bar_sub.dart';
 
@@ -14,13 +15,8 @@ class SurgeryInfo extends StatelessWidget {
     final args =
         ModalRoute.of(context)!.settings.arguments as MenuScreenArguments;
     String title = args.menuTitle;
-    // if (title.contains('surgery_')) {
-    //   title = title.replaceAll('surgery_', '');
-    // } else {
-    //   title = title.replaceAll('cosmetic_', '');
-    // }
 
-    var surgeryData = DataRepository.instance.getSurgeryDataByName(title);
+    var surgeryData = InitValue.getSurgeryDataByName(title);
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: TopAppBarSub(title: args.menuTitle),

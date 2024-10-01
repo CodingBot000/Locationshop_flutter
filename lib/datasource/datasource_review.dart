@@ -22,12 +22,12 @@ class DataSourceReview {
 
   Future<List<ReviewData>> getReviewAllDataList() async {
     await Future.delayed(const Duration(seconds: Constants.delayTime));
-    return DumpServer().getReviewDataAllList();
+    return await DumpServer().getReviewDataAllList();
   }
 
   Future<List<ReviewData>> getReviewDataListById(int id) async {
     await Future.delayed(const Duration(seconds: Constants.delayTime));
-    var list =  DumpServer().getReviewDataAllList();
+    var list = await DumpServer().getReviewDataAllList();
     return list.where((data) => data.hospitalId == id).toList();
   }
 }
