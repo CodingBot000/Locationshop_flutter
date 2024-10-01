@@ -8,6 +8,7 @@ import 'package:location_shop/presentation/hospital/hospital_detail_screen.dart'
 import 'package:location_shop/view_model/location_view_model.dart';
 
 import '../../common/constants.dart';
+import '../../common/provider_location_select.dart';
 import '../../component/empty_view.dart';
 import '../../component/top_app_bar_sub.dart';
 
@@ -25,11 +26,14 @@ class _LocationScreenState extends ConsumerState<LocationScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final args = ModalRoute.of(context)!.settings.arguments
-          as MenuScreenLocationArguments;
       final viewModel = ref.read(locationViewModelProvider.notifier);
-      print("qq qq qq q q q q  qq q :${args.chipData.region.value}");
-      viewModel.selectLocationChipData(args.chipData);
+      final locationChips = ref.read(locationChipProvider);
+
+      final lastSelected = locationChips.firstWhere(
+            (chip) => chip.isSelected,
+        orElse: () => locationChips.first,
+      );
+      viewModel.selectLocationChipData(lastSelected);
     });
   }
 
@@ -49,8 +53,6 @@ class _LocationScreenState extends ConsumerState<LocationScreen> {
             ChipsLocation(
               onButtonPressed: (LocationChipData chipData) =>
                   {viewModel.selectLocationChipData(chipData)},
-              selectedCurLocationData:
-                  locationPageState.selectLocationButton.value,
             ),
             locationPageState.hospitalDatasByLocation.when(
               data: (data) {

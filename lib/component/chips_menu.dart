@@ -18,38 +18,33 @@ class ChipsMenu extends StatefulWidget {
 }
 
 class _ChipsMenuState extends State<ChipsMenu> {
-  void _handleButtonPress(String data) {
-    widget.onButtonPressed(data);
-  }
-
   @override
   Widget build(BuildContext context) {
-    return  Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const SizedBox(height: 10.0),
-          Wrap(
-            spacing: 5.0,
-            children: List<Widget>.generate(
-              widget.chipsList.length,
-              (int index) {
-                String menuStr = widget.chipsList[index];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        const SizedBox(height: 10.0),
+        Wrap(
+          spacing: 5.0,
+          children: List<Widget>.generate(
+            widget.chipsList.length,
+            (int index) {
+              String menuStr = widget.chipsList[index];
 
-                return RawChip(
-                  label: Text(menuStr),
-                  labelPadding: const EdgeInsets.all(1.0),
-                  onSelected: (bool selected) {
-                    setState(() {
-                      _handleButtonPress(menuStr);
-                    });
-                  },
-                );
-              },
-            ).toList(),
-          ),
-        ],
-
+              return RawChip(
+                label: Text(menuStr),
+                labelPadding: const EdgeInsets.all(1.0),
+                onSelected: (bool selected) {
+                  setState(() {
+                    widget.onButtonPressed(menuStr);
+                  });
+                },
+              );
+            },
+          ).toList(),
+        ),
+      ],
     );
   }
 }

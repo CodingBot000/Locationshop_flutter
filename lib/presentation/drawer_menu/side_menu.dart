@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:location_shop/common/provider_location_select.dart';
 import 'package:location_shop/common/route_arguments.dart';
 import 'package:location_shop/component/chips_menu.dart';
 import 'package:location_shop/model/chip_location_data.dart';
@@ -7,17 +8,18 @@ import 'package:location_shop/presentation/event_screen/event_screen.dart';
 import 'package:location_shop/presentation/favorite_screen/favorite_screen.dart';
 import 'package:location_shop/presentation/location_screen/location_screen.dart';
 import 'package:location_shop/presentation/surgery_info/surgery_info_screen.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../common/enums.dart';
 import 'menu_title.dart';
 
-class MenuPage extends StatelessWidget {
+class MenuPage extends ConsumerWidget {
   const MenuPage({super.key});
 
   static const routeName = '/menu';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
@@ -50,24 +52,12 @@ class MenuPage extends StatelessWidget {
           MenuTitleWidget(title: MenuTitleList.location.value),
           ChipsMenu(
               onButtonPressed: (String location) {
-                LocationChipData? locationData;
-                for (var locationName in LocationNames.values) {
-                  if (locationName.value == location) {
-                    locationData = LocationChipData(
-                        region: locationName,
-                        isSelected: true);
-                    break;
-                  }
-                }
-
-                locationData ??= LocationChipData(
-                      region: LocationNames.ApguJeong,
-                      isSelected: true);
+                final read = ref.read(locationChipProvider.notifier);
+                read.toggleSelection(location);
 
                 Navigator.popAndPushNamed(
                   context,
                   LocationScreen.routeName,
-                  arguments: MenuScreenLocationArguments(locationData),
                 );
               },
               mainMenuName: MenuTitleList.location,

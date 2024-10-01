@@ -16,6 +16,7 @@ import '../../common/route_arguments.dart';
 import '../../component/footer_view.dart';
 import '../drawer_menu/side_menu.dart';
 import '../location_screen/location_screen.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -72,23 +73,30 @@ class HomeScreen extends ConsumerWidget {
                     children: [
                       GestureDetector(
                         onTap: () => {
-                          Navigator.pushNamed(context, LocationScreen.routeName,
-                              arguments:
-                              MenuScreenLocationArguments(homePageState.selectLocationButton.value!))
+                          Navigator.pushNamed(context, LocationScreen.routeName)
                         },
-                        child: const Text(
-                          "See All >",
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        child: const Row(
+                          children: [
+                            Text(
+                              "See All",
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(width: 3),
+                            FaIcon(
+                              FontAwesomeIcons.arrowUpRightFromSquare,
+                              color: Colors.red,
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: HomeFixedDimens().getGridHeight(), // Ensure the Stack has a fixed height
+                    height: HomeFixedDimens().getGridHeight(),
                     width: double.infinity,
                     child: Stack(
                       children: [
-                        // Background view occupying space for 6 items
                         Container(
                           // height: 400,
                           width: double.infinity,
@@ -97,10 +105,9 @@ class HomeScreen extends ConsumerWidget {
                             // Example background color
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          // Optional: Add any widgets you want in the background
                           // child: Center(
                           //   child: Text(
-                          //     'Background Placeholder',
+                          //     'Background',
                           //     style: TextStyle(
                           //         color: Colors.grey.shade400, fontSize: 16),
                           //   ),
