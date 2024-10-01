@@ -17,4 +17,4 @@ Android, iOS, Flutter, and React can all be converted to each other.
 
 ## Tech stack
 - Dart, RiverPod
-- MVVM Architecture
+- MVVM Architecture  [ presentation - viewmodel - repository - datasource - server (local) ]
