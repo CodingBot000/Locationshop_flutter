@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:location_shop/common/route_arguments.dart';
 import 'package:location_shop/component/chips_menu.dart';
 import 'package:location_shop/model/chip_location_data.dart';
-import 'package:location_shop/pages/about_us/about_us.dart';
-import 'package:location_shop/pages/event_screen/event_screen.dart';
-import 'package:location_shop/pages/favorite_screen/favorite_screen.dart';
-import 'package:location_shop/pages/location_screen/location_screen.dart';
-import 'package:location_shop/pages/surgery_info/surgery_info.dart';
+import 'package:location_shop/presentation/about_us/about_us_screen.dart';
+import 'package:location_shop/presentation/event_screen/event_screen.dart';
+import 'package:location_shop/presentation/favorite_screen/favorite_screen.dart';
+import 'package:location_shop/presentation/location_screen/location_screen.dart';
+import 'package:location_shop/presentation/surgery_info/surgery_info_screen.dart';
 
 import '../../common/enums.dart';
 import 'menu_title.dart';

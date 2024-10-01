@@ -5,7 +5,7 @@ import 'package:location_shop/component/empty_view.dart';
 import 'package:location_shop/component/slider_image.dart';
 import 'package:location_shop/model/hospital_detail_data.dart';
 import 'package:location_shop/component/sns_list_widget.dart';
-import 'package:location_shop/pages/hospital/tabs_detail.dart';
+import 'package:location_shop/presentation/hospital/tabs_detail_widget.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../common/route_arguments.dart';

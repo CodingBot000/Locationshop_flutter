@@ -3,9 +3,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:location_shop/common/enums.dart';
 import 'package:location_shop/model/hospital_detail_data.dart';
 import 'package:location_shop/model/hospital_detail_info_desc.dart';
-import 'package:location_shop/pages/event_screen/event_list_widget.dart';
-import 'package:location_shop/pages/hospital/hospital_info_widget.dart';
-import 'package:location_shop/pages/review/review_widget.dart';
+import 'package:location_shop/presentation/event_screen/event_list_widget.dart';
+import 'package:location_shop/presentation/hospital/hospital_info_widget.dart';
+import 'package:location_shop/presentation/review/review_widget.dart';
 
 import 'package:location_shop/view_model/hospitaldetail_view_model.dart';
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:location_shop/datasource/dump_server.dart';
-import 'package:location_shop/pages/home/home.dart';
+import 'package:location_shop/presentation/home/home_screen.dart';
 
 import 'package:location_shop/common/constants.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'common/page_router.dart';
+import 'common/screen_router.dart';
 
 void main() {
   DumpServer();
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         useMaterial3: true,
       ),
-      initialRoute: HomePage.routeName,
+      initialRoute: HomeScreen.routeName,
       routes: appRoutes,
     );
   }

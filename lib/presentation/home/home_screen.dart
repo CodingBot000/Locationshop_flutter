@@ -8,7 +8,7 @@ import 'package:location_shop/component/slider_banner.dart';
 import 'package:location_shop/component/title_main_and_sub.dart';
 import 'package:location_shop/component/top_app_bar_home.dart';
 import 'package:location_shop/model/chip_location_data.dart';
-import 'package:location_shop/pages/auth/login_screen.dart';
+import 'package:location_shop/presentation/auth/login_screen.dart';
 import 'package:location_shop/view_model/home_view_model.dart';
 
 import '../../common/constants.dart';
@@ -17,8 +17,8 @@ import '../../component/footer_view.dart';
 import '../drawer_menu/side_menu.dart';
 import '../location_screen/location_screen.dart';
 
-class HomePage extends ConsumerWidget {
-  const HomePage({super.key});
+class HomeScreen extends ConsumerWidget {
+  const HomeScreen({super.key});
 
   static const routeName = '/';
 

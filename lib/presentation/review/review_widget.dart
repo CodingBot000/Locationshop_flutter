@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:location_shop/component/empty_view.dart';
 import 'package:location_shop/model/review_data.dart';
-import 'package:location_shop/pages/review/review_list_cell.dart';
+import 'package:location_shop/presentation/review/review_list_cell.dart';
 
 import 'package:location_shop/view_model/review_view_model.dart';
 

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:location_shop/pages/location_screen/location_screen.dart';
+import 'package:location_shop/presentation/location_screen/location_screen.dart';
 
 import '../common/constants.dart';
 import '../common/route_arguments.dart';
 import '../model/chip_location_data.dart';
 import '../model/hospital_data.dart';
-import '../pages/hospital/hospital_detail.dart';
+import '../presentation/hospital/hospital_detail_screen.dart';
 
 class HomeLocationGrid extends ConsumerWidget {
   const HomeLocationGrid({super.key, required this.selectedCurLocationData, required this.hosptialList});

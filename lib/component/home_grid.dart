@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:location_shop/common/route_arguments.dart';
 import 'package:location_shop/model/hospital_data.dart';
-import 'package:location_shop/pages/hospital/hospital_detail.dart';
+import 'package:location_shop/presentation/hospital/hospital_detail_screen.dart';
 
 import '../common/constants.dart';
 

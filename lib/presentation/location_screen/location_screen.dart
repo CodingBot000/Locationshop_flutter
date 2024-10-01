@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:location_shop/common/route_arguments.dart';
 import 'package:location_shop/component/chips_location.dart';
 import 'package:location_shop/model/chip_location_data.dart';
-import 'package:location_shop/pages/drawer_menu/menu_title.dart';
-import 'package:location_shop/pages/hospital/hospital_detail.dart';
+import 'package:location_shop/presentation/drawer_menu/menu_title.dart';
+import 'package:location_shop/presentation/hospital/hospital_detail_screen.dart';
 import 'package:location_shop/view_model/location_view_model.dart';
 
 import '../../common/constants.dart';
