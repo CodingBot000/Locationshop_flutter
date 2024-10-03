@@ -7,18 +7,19 @@ import '../common/route_arguments.dart';
 import '../model/chip_location_data.dart';
 import '../model/hospital_data.dart';
 import '../presentation/hospital/hospital_detail_screen.dart';
+import 'grid_item_hospital.dart';
 
 class HomeLocationGrid extends ConsumerWidget {
-  const HomeLocationGrid({super.key, required this.selectedCurLocationData, required this.hosptialList});
+  const HomeLocationGrid({super.key, required this.selectedCurLocationData, required this.hospitalList});
 
-  final List<HospitalData> hosptialList;
+  final List<HospitalData> hospitalList;
   final LocationChipData selectedCurLocationData;
 
   int getItemCount() {
-    if (hosptialList.length >= Constants.GRID_MAX_COUNT) {
+    if (hospitalList.length >= Constants.GRID_MAX_COUNT) {
       return Constants.GRID_MAX_COUNT;
     } else {
-      return hosptialList.length;
+      return hospitalList.length;
     }
   }
 
@@ -27,22 +28,6 @@ class HomeLocationGrid extends ConsumerWidget {
 
     return Column(
       children: [
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.end,
-        //   children: [
-        //     GestureDetector(
-        //       onTap: () => {
-        //         Navigator.pushNamed(context, LocationScreen.routeName,
-        //             arguments:
-        //             MenuScreenLocationArguments(selectedCurLocationData))
-        //       },
-        //       child: const Text(
-        //         "See All >",
-        //         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        //       ),
-        //     ),
-        //   ],
-        // ),
         const SizedBox(height: 10),
         GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
@@ -59,23 +44,15 @@ class HomeLocationGrid extends ConsumerWidget {
                 onTap: () => {
                   Navigator.pushNamed(context, HospitalDetailScreen.routeName,
                       arguments: HosptialDetailArguments(
-                          hosptialList[index].id))
+                          hospitalList[index].id))
                 },
-                child: Center(
-                  child: Image.asset(
-                    hosptialList[index].images[0],
-                    width: Dimens.gridImageSize,
-                    height: Dimens.gridImageSize,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Icon(
-                        Icons.error,
-                        size: Dimens.gridImageSize,
-                        color: Colors.red,
-                      );
-                    },
+                child: Expanded(
+                  child: GridItemHospital(
+                      imagePath: hospitalList[index].images[0],
+                      name: hospitalList[index].productName
                   ),
-                ),
+                )
+
               );
             }),
 

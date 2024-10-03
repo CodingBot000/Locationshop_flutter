@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:location_shop/common/route_arguments.dart';
 import 'package:location_shop/component/chips_location.dart';
+import 'package:location_shop/component/grid_item_hospital.dart';
 import 'package:location_shop/model/chip_location_data.dart';
 import 'package:location_shop/presentation/drawer_menu/menu_title.dart';
 import 'package:location_shop/presentation/hospital/hospital_detail_screen.dart';
@@ -56,6 +57,7 @@ class _LocationScreenState extends ConsumerState<LocationScreen> {
               onButtonPressed: (LocationChipData chipData) =>
                   {viewModel.selectLocationChipData(chipData)},
             ),
+            const SizedBox(height: 20,),
             locationPageState.hospitalDatasByLocation.when(
               data: (data) {
                 return Expanded(
@@ -64,10 +66,6 @@ class _LocationScreenState extends ConsumerState<LocationScreen> {
                         : SingleChildScrollView(
                             child: Column(
                               children: [
-                                // SizedBox(
-                                //   height: 300,
-                                //   child: googleMap(),
-                                // ),
                                 GridView.builder(
                                   physics: const NeverScrollableScrollPhysics(),
                                   shrinkWrap: true,
@@ -87,22 +85,9 @@ class _LocationScreenState extends ConsumerState<LocationScreen> {
                                             arguments: HosptialDetailArguments(
                                                 data[index].id))
                                       },
-                                      child: Center(
-                                        child: Image.asset(
-                                          data[index].images[0],
-                                          width: Dimens.gridImageSize,
-                                          height: Dimens.gridImageSize,
-                                          fit: BoxFit.cover,
-                                          errorBuilder:
-                                              (context, error, stackTrace) {
-                                            return Icon(
-                                              Icons.error,
-                                              size: Dimens.gridImageSize,
-                                              color: Colors.red,
-                                            );
-                                          },
-                                        ),
-                                      ),
+                                      child: GridItemHospital(
+                                          imagePath: data[index].images[0],
+                                          name: data[index].productName),
                                     );
                                   },
                                 ),

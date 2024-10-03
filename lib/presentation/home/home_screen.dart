@@ -80,10 +80,12 @@ class HomeScreen extends ConsumerWidget {
                             Text(
                               "See All",
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                                  fontSize: 16, fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(220, 230, 30, 30)),
                             ),
                             SizedBox(width: 3),
                             FaIcon(
+                              size: 20,
                               FontAwesomeIcons.arrowUpRightFromSquare,
                               color: Colors.red,
                             ),
@@ -110,7 +112,7 @@ class HomeScreen extends ConsumerWidget {
                             return HomeLocationGrid(
                               selectedCurLocationData:
                                   homePageState.selectLocationButton.value!,
-                              hosptialList: data,
+                              hospitalList: data,
                             );
                           },
                           loading: () =>
@@ -121,11 +123,11 @@ class HomeScreen extends ConsumerWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 20),
-                  const FooterView()
                 ],
               ),
             ),
+            const SizedBox(height: 20),
+            const FooterView()
           ],
         ),
       ),
