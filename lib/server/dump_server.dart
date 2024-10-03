@@ -97,8 +97,7 @@ class DumpServer {
 
   Future<List<HospitalData>> getHospitalListByLocation(String currentRegion) async {
     var list = await getHospitalDataAllList();
-    list.where((data) => data.region.toLowerCase() == (currentRegion.toLowerCase())).toList();
-    return list;
+    return list.where((data) => data.region.toLowerCase() == (currentRegion.toLowerCase())).toList();
   }
 
   Future<List<ReviewData>> getReviewDataAllList() async {
