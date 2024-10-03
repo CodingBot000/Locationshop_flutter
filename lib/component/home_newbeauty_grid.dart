@@ -9,10 +9,8 @@ import '../common/constants.dart';
 import 'title_main_and_sub.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeGridWidget extends ConsumerWidget {
-  // const HomeGridWidget({super.key});
-
-  const HomeGridWidget({super.key, required this.hospitalDatas});
+class HomeNewBeautyGridWidget extends ConsumerWidget {
+  const HomeNewBeautyGridWidget({super.key, required this.hospitalDatas});
   final List<HospitalData> hospitalDatas;
 
   @override

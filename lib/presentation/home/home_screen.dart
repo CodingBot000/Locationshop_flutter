@@ -2,7 +2,7 @@ import 'package:flutter/material.dart' hide CarouselController;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:location_shop/component/alert_widget.dart';
 import 'package:location_shop/component/chips_location.dart';
-import 'package:location_shop/component/home_grid.dart';
+import 'package:location_shop/component/home_newbeauty_grid.dart';
 import 'package:location_shop/component/home_location_grid.dart';
 import 'package:location_shop/component/slider_banner.dart';
 import 'package:location_shop/component/title_main_and_sub.dart';
@@ -54,7 +54,7 @@ class HomeScreen extends ConsumerWidget {
                 children: [
                   homePageState.hospitalDatasNewBeauty.when(
                     data: (data) {
-                      return HomeGridWidget(hospitalDatas: data);
+                      return HomeNewBeautyGridWidget(hospitalDatas: data);
                     },
                     loading: () => Center(child: CircularProgressIndicator()),
                     error: (error, stack) =>
