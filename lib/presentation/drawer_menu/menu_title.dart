@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MenuTitleWidget extends StatelessWidget {
-  const MenuTitleWidget({super.key, required this.title, this.onButtonPressed});
+  const MenuTitleWidget({super.key, required this.title, this.titleAlignment = Alignment.centerLeft, this.onButtonPressed});
 
   final String title;
+  final Alignment titleAlignment;
   final Function()? onButtonPressed;
 
   @override
@@ -17,7 +18,7 @@ class MenuTitleWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(top: 5, bottom: 5),
         child: Align(
-          alignment: Alignment.centerLeft,
+          alignment: titleAlignment,
           child: Text(
             title,
             style: const TextStyle(

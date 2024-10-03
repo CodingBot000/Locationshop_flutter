@@ -49,7 +49,9 @@ class _LocationScreenState extends ConsumerState<LocationScreen> {
           children: [
             MenuTitleWidget(
                 title:
-                    locationPageState.selectLocationButton.value!.region.value),
+                    locationPageState.selectLocationButton.value!.region.value,
+              titleAlignment: Alignment.center
+            ),
             ChipsLocation(
               onButtonPressed: (LocationChipData chipData) =>
                   {viewModel.selectLocationChipData(chipData)},
@@ -62,10 +64,10 @@ class _LocationScreenState extends ConsumerState<LocationScreen> {
                         : SingleChildScrollView(
                             child: Column(
                               children: [
-                                SizedBox(
-                                  height: 300,
-                                  child: googleMap(),
-                                ),
+                                // SizedBox(
+                                //   height: 300,
+                                //   child: googleMap(),
+                                // ),
                                 GridView.builder(
                                   physics: const NeverScrollableScrollPhysics(),
                                   shrinkWrap: true,
@@ -108,7 +110,11 @@ class _LocationScreenState extends ConsumerState<LocationScreen> {
                             ),
                           ));
               },
-              loading: () => Center(child: CircularProgressIndicator()),
+              loading: () => Container(
+                height: 300,
+                width: double.infinity,
+                child: const Center(child: CircularProgressIndicator()),
+              ),
               error: (error, stack) =>
                   Center(child: Text('Error LocationScreen: $error')),
             ),

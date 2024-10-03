@@ -11,7 +11,7 @@ final String hospitalDataJson = '''
               "searchQuery": "리원피부과의원",                     
               "region": "${LocationNames.ApguJeong.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["reone1"]}", "${StaticServerUrlPath.hospitalImgUrlMaps["reone2"]}", "${StaticServerUrlPath.hospitalImgUrlMaps["reone3"]}", "${StaticServerUrlPath.hospitalImgUrlMaps["reone4"]}"],
-              "surgeries": [2002, 2004, 2005, 1000, 1001, 1002, 1003, 1004],
+              "surgeries": [2002, 2004, 1001, 1002, 1003],
               "wish": false
             },
             {
@@ -20,7 +20,7 @@ final String hospitalDataJson = '''
               "searchQuery": "청담에이스의원",
               "region": "${LocationNames.ApguJeong.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["chungdam_ace"]}"],
-              "surgeries": [2004, 2005, 1000, 1001, 1002, 1003, 1004],
+              "surgeries": [2004, 2005, 1000, 1003, 1004],
               "wish": false
             },
             {
@@ -29,7 +29,7 @@ final String hospitalDataJson = '''
               "searchQuery": "워나성형외과의원",
               "region": "${LocationNames.ApguJeong.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["wanna"]}"],
-              "surgeries": [2000, 2001, 2007, 1000, 1001, 1002, 1003, 1004],
+              "surgeries": [2007, 1000, 1001, 1002],
               "wish": false
             },
             {
@@ -38,7 +38,7 @@ final String hospitalDataJson = '''
               "searchQuery": "청담오라클피부과의원",
               "region": "${LocationNames.ChungDam.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["hospital1"]}"],
-              "surgeries": [2002, 2003, 2004, 1000, 1001, 1002, 1003, 1004],
+              "surgeries": [2002, 1002, 1003, 1004],
               "wish": false
             },
             {
@@ -56,7 +56,7 @@ final String hospitalDataJson = '''
             "searchQuery": "브릴린의원",
               "region": "${LocationNames.ApguJeong.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["brillyn"]}"],
-              "surgeries": [2000, 2001, 2003, 2004, 2007,1000, 1001, 1004],
+              "surgeries": [2000, 1001, 1004],
               "wish": false
             },
             {
@@ -65,7 +65,7 @@ final String hospitalDataJson = '''
             "searchQuery": "보스의원",
               "region": "${LocationNames.HongDae.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["boss"]}"],
-              "surgeries": [2000, 2001, 2004, 2005, 1001, 1002, 1003, 1004],
+              "surgeries": [2000, 2004,1002],
               "wish": false
             },
             {
@@ -74,7 +74,7 @@ final String hospitalDataJson = '''
             "searchQuery": "청담포레브",
               "region": "${LocationNames.SongDo.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["vline"]}"],
-              "surgeries": [2000,  2003, 2004, 2006, 2007,1000, 1002, 1003, 1004],
+              "surgeries": [2003, 2004, 1003, 1004],
               "wish": false
             },
             {
@@ -83,7 +83,7 @@ final String hospitalDataJson = '''
           "searchQuery": "청담포레브",
               "region": "${LocationNames.MyungDong.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["vline"]}"],
-              "surgeries": [2001, 2002, 2003, 2006, 2007,1000, 1001, 1004],
+              "surgeries": [2001, 2002, 2007, 1001],
               "wish": false
             },
             {
@@ -92,7 +92,7 @@ final String hospitalDataJson = '''
              "searchQuery": "청담포레브",
               "region": "${LocationNames.MyungDong.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["hospital1"]}"],
-              "surgeries": [2000, 2001, 2005, 2006, 2007,1000, 1002, 1003, 1004],
+              "surgeries": [2001, 2006, 1002, 1003, 1004],
               "wish": false
             },
             {
@@ -101,7 +101,7 @@ final String hospitalDataJson = '''
            "searchQuery": "청담포레브",
               "region": "${LocationNames.ApguJeong.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["youjins"]}"],
-              "surgeries": [2000, 2001, 2002, 2005, 2006, 2007,1000, 1003, 1004],
+              "surgeries": [2000, 2001, 2002, 2005],
               "wish": false
             },
             {
@@ -110,7 +110,7 @@ final String hospitalDataJson = '''
           "searchQuery": "청담포레브",
               "region": "${LocationNames.ApguJeong.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["brillyn"]}"],
-              "surgeries": [2000, 2001, 2002, 1002, 1003],
+              "surgeries": [2001, 2002, 1002, 1003],
               "wish": false
             },
             {
@@ -119,7 +119,7 @@ final String hospitalDataJson = '''
               "searchQuery": "청담포레브",
               "region": "${LocationNames.ChungDam.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["boss"]}"],
-              "surgeries": [2002, 2003, 2004, 2005, 1000, 1001],
+              "surgeries": [2002, 2005, 1001],
               "wish": false
             },
             {
@@ -128,7 +128,7 @@ final String hospitalDataJson = '''
               "searchQuery": "청담포레브",
               "region": "${LocationNames.ChungDam.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["vline"]}"],
-              "surgeries": [2000, 2001, 2005, 2006, 2007,1001, 1002, 1003],
+              "surgeries": [2001, 2005, 1002, 1003],
               "wish": false
             },
             {
@@ -137,7 +137,7 @@ final String hospitalDataJson = '''
             "searchQuery": "청담포레브",
               "region": "${LocationNames.GangNam.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["hospital1"]}"],
-              "surgeries": [2003, 2004, 2005, 2007,1000, 1001],
+              "surgeries": [2003, 2005, 2007, 1001],
               "wish": false
             },
             {
@@ -146,7 +146,7 @@ final String hospitalDataJson = '''
           "searchQuery": "청담포레브",
               "region": "${LocationNames.GangNam.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["youjins"]}"],
-              "surgeries": [2000, 2001, 2002, 2003, 2007,1000, 1001, 1002,1004],
+              "surgeries": [2000, 2001, 2007,1001, 1002],
               "wish": false
             },
             {
@@ -155,7 +155,7 @@ final String hospitalDataJson = '''
             "searchQuery": "청담포레브",
               "region": "${LocationNames.HongDae.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["brillyn"]}"],
-              "surgeries": [2000,  2003, 2004, 2005, 2006, 2007,1000,  1003, 1004],
+              "surgeries": [2000,  2003, 1004],
               "wish": false
             },
             {
@@ -164,7 +164,7 @@ final String hospitalDataJson = '''
             "searchQuery": "청담포레브",
               "region": "${LocationNames.GangNam.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["boss"]}"],
-              "surgeries": [2000, 2004, 2005, 2006, 2007,1000,  1004],
+              "surgeries": [2000, 2007,1000,  1004],
               "wish": false
             },
             {
@@ -173,7 +173,7 @@ final String hospitalDataJson = '''
             "searchQuery": "청담포레브",
               "region": "${LocationNames.HongDae.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["vline"]}"],
-              "surgeries": [ 2002, 2003, 2004, 2005, 1000, 1001, 1002, 1004],
+              "surgeries": [ 2002, 2003],
               "wish": false
             },
             {
@@ -182,7 +182,7 @@ final String hospitalDataJson = '''
            "searchQuery": "청담포레브",
               "region": "${LocationNames.HongDae.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["hospital1"]}"],
-              "surgeries": [2000, 2001, 2002, 2003, 2007,1000, 1001, 1002, 1003, 1004],
+              "surgeries": [2007,1000],
               "wish": false
             },
             {
@@ -191,7 +191,7 @@ final String hospitalDataJson = '''
                  "searchQuery": "청담포레브",
               "region": "${LocationNames.MyungDong.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["youjins"]}"],
-              "surgeries": [2004, 2005, 2006, 2007,1000, 1001],
+              "surgeries": [2006, 2007,1000, 1001],
               "wish": false
             },
             {
@@ -200,7 +200,7 @@ final String hospitalDataJson = '''
             "searchQuery": "청담포레브",
               "region": "${LocationNames.MyungDong.value}",
               "images": ["${StaticServerUrlPath.hospitalImgUrlMaps["brillyn"]}"],
-              "surgeries": [2000, 2001, 2005, 2006, 2007,1000, 1003, 1004],
+              "surgeries": [2000, 2001, 2005],
               "wish": false
             }
           ]

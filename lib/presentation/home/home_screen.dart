@@ -102,16 +102,8 @@ class HomeScreen extends ConsumerWidget {
                           width: double.infinity,
                           decoration: BoxDecoration(
                             // color: Colors.grey.shade200,
-                            // Example background color
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          // child: Center(
-                          //   child: Text(
-                          //     'Background',
-                          //     style: TextStyle(
-                          //         color: Colors.grey.shade400, fontSize: 16),
-                          //   ),
-                          // ),
                         ),
                         homePageState.hospitalDatasByLocation.when(
                           data: (data) {
@@ -122,7 +114,7 @@ class HomeScreen extends ConsumerWidget {
                             );
                           },
                           loading: () =>
-                              Center(child: CircularProgressIndicator()),
+                              const Center(child: CircularProgressIndicator()),
                           error: (error, stack) => Center(
                               child: Text('Error HomeLocationGrid : $error')),
                         ),
